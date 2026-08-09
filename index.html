@@ -4,12 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Talia Naiman — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#000000; --bg-card:#0d0d0d; --bg-raised:#141414;
-    --red:#E50914; --white:#ffffff; --grey:#b3b3b3; --grey-dim:#7a7a7a;
-    --serif:"Playfair Display","Didot","Bodoni MT","Times New Roman",Georgia,serif;
-    --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    /* COLOR EXPERIMENT — violet / pink / lime, inspired by the Espoleta type specimen.
+       Original black/red Netflix theme lives on the `main` branch; this is a trial branch. */
+    --bg:#140A30; --bg-card:#1E1348; --bg-raised:#28185C;
+    --accent:#F0399F; --violet:#6C2BF0; --lime:#D6F32C;
+    --red:var(--accent);
+    --white:#ffffff; --grey:#bcaee0; --grey-dim:#8677ad;
+    --serif:"Baloo 2","Fredoka",sans-serif;
+    --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
     --shadow:0 12px 34px rgba(0,0,0,.75);
     color-scheme:dark;
   }
@@ -26,7 +33,7 @@
     background:linear-gradient(to bottom, rgba(0,0,0,.9), transparent);
     transition:background-color .3s}
   header.solid{background-color:var(--bg)}
-  .logo{font-family:var(--serif); font-size:1.45rem; letter-spacing:.28em;
+  .logo{font-family:var(--serif); font-weight:700; font-size:1.45rem; letter-spacing:.04em;
     text-transform:uppercase; white-space:nowrap}
   nav{display:flex; gap:1.9rem; font-size:.8rem; letter-spacing:.08em; margin:0 auto}
   nav a{color:#e5e5e5; text-decoration:none; text-transform:uppercase;
@@ -58,15 +65,15 @@
     .hero-content{max-width:100%}
   }
   .eyebrow{color:var(--red); font-size:.8rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase}
-  .hero h1{font-family:var(--serif); font-weight:500; font-size:clamp(2.8rem,6.2vw,5.2rem);
-    line-height:1.06; letter-spacing:.01em; text-wrap:balance}
+  .hero h1{font-family:var(--serif); font-weight:800; font-size:clamp(2.8rem,6.2vw,5.2rem);
+    line-height:1; letter-spacing:-.01em; text-wrap:balance}
   .hero p{font-size:1.15rem; line-height:1.5; color:#e8e8e8; max-width:38ch}
   .hero-btns{display:flex; gap:.9rem; margin-top:.6rem}
   .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.78rem 1.7rem;
     border-radius:4px; font-weight:600; font-size:.95rem; letter-spacing:.06em;
     text-transform:uppercase; transition:opacity .2s, background-color .2s}
   .btn svg{width:1.05em; height:1.05em}
-  .btn-play{background:var(--red); color:var(--white)}
+  .btn-play{background:var(--violet); color:var(--white)}
   .btn-play:hover{opacity:.85}
   .btn-info{background:rgba(60,60,60,.65); color:var(--white)}
   .btn-info:hover{background:rgba(90,90,90,.6)}
@@ -75,7 +82,7 @@
   .sound-hint{display:flex; align-items:center; gap:.4rem; font-size:.78rem; color:var(--grey);
     letter-spacing:.06em; text-transform:uppercase; opacity:0; height:0; overflow:hidden; transition:opacity .3s}
   .hero.playing .sound-hint{opacity:1; height:auto; margin-top:-.4rem}
-  .sound-hint svg{width:1em; height:1em; color:var(--red)}
+  .sound-hint svg{width:1em; height:1em; color:var(--lime)}
 
   /* ---------- Rows ---------- */
   main{display:flex; flex-direction:column; gap:2.6rem; padding-bottom:4rem}
@@ -106,8 +113,8 @@
   .card .label strong{font-size:.92rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; line-height:1.25}
   .card .label span{font-size:.72rem; color:var(--grey); letter-spacing:.1em; text-transform:uppercase}
   .card .label .new{color:var(--red); font-size:.66rem; font-weight:700; letter-spacing:.22em}
-  .card.serif-title .label strong{font-family:var(--serif); font-weight:500;
-    text-transform:none; font-size:1.35rem; letter-spacing:.01em}
+  .card.serif-title .label strong{font-family:var(--serif); font-weight:700;
+    text-transform:none; font-size:1.35rem; letter-spacing:0}
   .card .playhint{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
     opacity:0; transition:opacity .2s}
   .card:hover .playhint{opacity:1}
@@ -137,8 +144,8 @@
   .sheet-hero::after{content:""; position:absolute; inset:0; pointer-events:none;
     background:linear-gradient(to top, #0f0f0f 3%, transparent 45%)}
   .sheet-hero h2{position:absolute; left:2.2rem; bottom:1.4rem; right:2.2rem; z-index:2;
-    font-family:var(--serif); font-weight:500; font-size:clamp(1.7rem,3.6vw,2.7rem);
-    letter-spacing:.01em; text-wrap:balance; pointer-events:none}
+    font-family:var(--serif); font-weight:700; font-size:clamp(1.7rem,3.6vw,2.7rem);
+    letter-spacing:0; text-wrap:balance; pointer-events:none}
   .sheet-hero.has-video::after,.sheet-hero.has-video h2{opacity:0}
   .sheet-close{position:absolute; top:14px; right:14px; z-index:3; width:36px; height:36px;
     border-radius:50%; background:#000; display:flex; align-items:center; justify-content:center}
@@ -160,7 +167,7 @@
   /* ---------- Footer ---------- */
   footer{padding:3rem 2.6% 4rem; color:var(--grey-dim); font-size:.85rem;
     display:flex; flex-direction:column; gap:1.2rem; border-top:1px solid #161616}
-  footer .foot-logo{font-family:var(--serif); letter-spacing:.28em; text-transform:uppercase;
+  footer .foot-logo{font-family:var(--serif); font-weight:700; letter-spacing:.04em; text-transform:uppercase;
     color:var(--white); font-size:1rem}
   footer .contact{display:flex; gap:1.6rem; flex-wrap:wrap}
   footer a{color:var(--grey); text-decoration:none}

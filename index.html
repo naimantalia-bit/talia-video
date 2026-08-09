@@ -95,28 +95,6 @@
   .arrow svg{width:1.9rem; height:1.9rem}
   .arrow.prev{left:0} .arrow.next{right:0}
 
-  /* ---------- Art carousel ---------- */
-  .carousel{display:flex; flex-direction:column; align-items:center; gap:1.1rem; padding:0 2.6%}
-  .carousel-stage{position:relative; display:flex; align-items:center; gap:1rem;
-    width:100%; max-width:640px}
-  .carousel-frame{position:relative; flex:1; aspect-ratio:1/1; border-radius:8px;
-    overflow:hidden; background:var(--bg-raised); display:flex; align-items:center; justify-content:center}
-  .carousel-frame img{max-width:92%; max-height:92%; object-fit:contain;
-    transition:opacity .3s ease; box-shadow:0 8px 30px rgba(0,0,0,.5)}
-  .carousel-btn{flex:0 0 auto; width:44px; height:44px; border-radius:50%;
-    background:rgba(255,255,255,.08); color:var(--white); display:flex; align-items:center;
-    justify-content:center; transition:background-color .2s, transform .15s}
-  .carousel-btn:hover{background:rgba(255,255,255,.18); transform:scale(1.06)}
-  .carousel-btn svg{width:1.5rem; height:1.5rem}
-  .carousel-caption{display:flex; flex-direction:column; align-items:center; gap:.3rem; text-align:center}
-  .carousel-caption strong{font-family:var(--serif); font-weight:500; font-size:1.2rem; letter-spacing:.01em}
-  .carousel-counter{font-size:.72rem; color:var(--grey-dim); letter-spacing:.12em;
-    font-variant-numeric:tabular-nums; text-transform:uppercase}
-  @media (max-width:560px){
-    .carousel-frame{aspect-ratio:4/5}
-    .carousel-btn{width:38px; height:38px}
-  }
-
   .card{position:relative; flex:0 0 auto; width:min(345px,72vw); aspect-ratio:16/9;
     border-radius:4px; overflow:hidden; background:var(--bg-card); text-align:left;
     transition:transform .25s ease, box-shadow .25s ease}
@@ -337,6 +315,28 @@ const DATA = {
       {title:"1-UP Coffee × Super Mario", sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
        img:"media/mario/mug.jpg", href:"1up-coffee.html",
        desc:"A full identity for a Mushroom Kingdom coffee roaster — brick-pattern packaging, a question-block mug, and a jolt strong enough for an extra life.", p:6}
+    ]},
+    {id:"row-art", name:"Art", items:[
+      {title:"Swans in Flight", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/swans_flock.jpg", desc:"Original hand-drawn illustration — cranes over Springfield rooftops, under a night sky.", p:5},
+      {title:"Crane, Line Study", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/crane_line.jpg", desc:"Original hand-drawn illustration.", p:5},
+      {title:"Crane, Line Study II", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/crane_line2.jpg", desc:"Original hand-drawn illustration.", p:5},
+      {title:"Cranes & Blossoms", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/cranes_blossoms.jpg", desc:"Original hand-drawn illustration.", p:2},
+      {title:"Cranes & Blossoms II", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/cranes_blossoms2.jpg", desc:"Original hand-drawn illustration.", p:6},
+      {title:"Horse & Swan Ride", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/horse_swan_ride.jpg", desc:"Original hand-drawn illustration.", p:5},
+      {title:"Horses & Flowers", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/horses_flowers.jpg", desc:"Original hand-drawn illustration.", p:2},
+      {title:"Horses & Swans", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/horses_swans.jpg", desc:"Original hand-drawn illustration.", p:5},
+      {title:"Lavender & Birds", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/lavender_birds.jpg", desc:"Original hand-drawn illustration.", p:4},
+      {title:"Lotus & Lion", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/lotus_lion.jpg", desc:"Original hand-drawn illustration.", p:1},
+      {title:"The Rabbit's Hat", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/rabbit_hat.jpg", desc:"Original hand-drawn illustration.", p:4},
+      {title:"Shabbat Papercut", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/shabbat_papercut.jpg", desc:"Original hand-drawn illustration.", p:6},
+      {title:"Swan Carousel Ride", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/swans_ride.jpg", desc:"Original hand-drawn illustration.", p:6},
+      {title:"Swans & Teacup", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/swans_teacup.jpg", desc:"Original hand-drawn illustration.", p:2},
+      {title:"Alice's Bottle", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/alice_bottle.jpg", desc:"Original hand-drawn illustration.", p:4},
+      {title:"Bear Hug", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/baby_bear.jpg", desc:"Original hand-drawn illustration.", p:3},
+      {title:"Sleepy Bear, Line Study", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/baby_bear_sketch.jpg", desc:"Original hand-drawn illustration.", p:2},
+      {title:"Baby & Poppies", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/baby_poppies.jpg", desc:"Original hand-drawn illustration.", p:3},
+      {title:"Shabbat Wreath", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/shabbat_wreath.jpg", desc:"Original hand-drawn illustration.", p:1},
+      {title:"Herons & Paper Boats", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/herons_boats.jpg", desc:"Original hand-drawn illustration.", p:7}
     ]}
   ],
   cases:[
@@ -350,24 +350,6 @@ const DATA = {
      cat:"Case Studies", format:"Process", role:"—", desc:"Placeholder — outcomes and impact: metrics, reach, response."}
   ]
 };
-
-/* Hand-drawn illustrations — this list grows as new pieces come in */
-const ART = [
-  {title:"Crane, Line Study", img:"media/art/crane_line.jpg"},
-  {title:"Crane, Line Study II", img:"media/art/crane_line2.jpg"},
-  {title:"Cranes & Blossoms", img:"media/art/cranes_blossoms.jpg"},
-  {title:"Cranes & Blossoms II", img:"media/art/cranes_blossoms2.jpg"},
-  {title:"Horse & Swan Ride", img:"media/art/horse_swan_ride.jpg"},
-  {title:"Horses & Flowers", img:"media/art/horses_flowers.jpg"},
-  {title:"Horses & Swans", img:"media/art/horses_swans.jpg"},
-  {title:"Lavender & Birds", img:"media/art/lavender_birds.jpg"},
-  {title:"Lotus & Lion", img:"media/art/lotus_lion.jpg"},
-  {title:"The Rabbit's Hat", img:"media/art/rabbit_hat.jpg"},
-  {title:"Shabbat Papercut", img:"media/art/shabbat_papercut.jpg"},
-  {title:"Swans in Flight", img:"media/art/swans_flock.jpg"},
-  {title:"Swan Carousel Ride", img:"media/art/swans_ride.jpg"},
-  {title:"Swans & Teacup", img:"media/art/swans_teacup.jpg"}
-];
 
 /* ---------- placeholder art palettes (for cards without media yet) ---------- */
 const PALETTES = [
@@ -464,43 +446,8 @@ function makeRow(id, heading, nodes){
   return row;
 }
 
-function makeCarouselRow(id, heading, items){
-  const row=document.createElement("section");
-  row.className="row"; row.id=id;
-  row.innerHTML=`<h2 class="row-head">${heading}<span class="chev">${icons.chev}</span></h2>
-    <div class="carousel">
-      <div class="carousel-stage">
-        <button class="carousel-btn prev" aria-label="Previous piece">${icons.chevL}</button>
-        <div class="carousel-frame"><img alt=""></div>
-        <button class="carousel-btn next" aria-label="Next piece">${icons.chevR}</button>
-      </div>
-      <div class="carousel-caption">
-        <strong class="carousel-title"></strong>
-        <span class="carousel-counter"></span>
-      </div>
-    </div>`;
-  let i=0;
-  const img=row.querySelector(".carousel-frame img");
-  const title=row.querySelector(".carousel-title");
-  const counter=row.querySelector(".carousel-counter");
-  function render(){
-    const item=items[i];
-    img.style.opacity=0;
-    const swap=new Image();
-    swap.onload=()=>{ img.src=item.img; img.alt=item.title; img.style.opacity=1; };
-    swap.src=item.img;
-    title.textContent=item.title;
-    counter.textContent=`${i+1} / ${items.length}`;
-  }
-  row.querySelector(".prev").onclick=()=>{ i=(i-1+items.length)%items.length; render(); };
-  row.querySelector(".next").onclick=()=>{ i=(i+1)%items.length; render(); };
-  render();
-  return row;
-}
-
 const main=document.querySelector("main");
 DATA.rows.forEach(r=>main.appendChild(makeRow(r.id, r.name, r.items.map(makeCard))));
-main.appendChild(makeCarouselRow("row-art","Art", ART));
 main.appendChild(makeRow("row-case","Case Studies", DATA.cases.map(makeCaseCard)));
 
 /* ---------- hero media: Play/Pause toggle with sound ---------- */

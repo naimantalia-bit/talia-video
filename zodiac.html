@@ -80,11 +80,21 @@
   #videoLightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center;
     justify-content:center; background:rgba(0,0,0,.94); padding:6vh 4vw}
   #videoLightbox.open{display:flex}
-  .vlb-frame{position:relative; width:100%; max-width:960px; aspect-ratio:16/9; border-radius:8px;
+  .vlb-stage{position:relative; display:flex; align-items:center; gap:1.1rem; max-width:960px; width:100%}
+  .vlb-frame{position:relative; flex:1; min-width:0; aspect-ratio:16/9; border-radius:8px;
     overflow:hidden; background:#000}
   .vlb-frame video{width:100%; height:100%; object-fit:contain; display:block}
+  .vlb-btn{flex:0 0 auto; width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,.1);
+    color:#fff; display:flex; align-items:center; justify-content:center; transition:background-color .2s;
+    border:none; padding:0}
+  .vlb-btn:hover{background:rgba(255,255,255,.2)}
+  .vlb-btn svg{width:1.4rem; height:1.4rem}
   .vlb-close{position:absolute; top:-3.4rem; right:0; width:40px; height:40px; border-radius:50%;
     background:rgba(255,255,255,.1); color:#fff; display:flex; align-items:center; justify-content:center}
+  .vlb-caption{position:absolute; left:0; right:0; bottom:-2.3rem; text-align:center;
+    color:var(--ink-dim); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+    font-variant-numeric:tabular-nums}
+  @media (max-width:640px){ .vlb-stage{gap:.5rem} .vlb-btn{width:38px; height:38px} }
 
   footer{padding:3rem 4% 4rem; text-align:center; color:var(--ink-dim); font-size:.85rem;
     border-top:1px solid rgba(255,255,255,.1)}
@@ -200,11 +210,20 @@
 </div>
 
 <div id="videoLightbox" role="dialog" aria-modal="true" aria-label="Film player">
-  <div class="vlb-frame">
-    <video id="vlbVideo" controls playsinline></video>
-    <button class="vlb-close" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <div class="vlb-stage">
+    <button class="vlb-btn vlb-prev" aria-label="Previous film">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg>
     </button>
+    <div class="vlb-frame">
+      <video id="vlbVideo" controls playsinline></video>
+      <button class="vlb-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <button class="vlb-btn vlb-next" aria-label="Next film">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="vlb-caption" id="vlbCaption"></div>
   </div>
 </div>
 
@@ -256,21 +275,35 @@
   }
   const vlb=document.getElementById('videoLightbox');
   const vlbVideo=document.getElementById('vlbVideo');
-  function openVideo(){
+  const vlbCaption=document.getElementById('vlbCaption');
+  function renderVideo(){
+    vlbVideo.pause(); vlbVideo.removeAttribute('src'); vlbVideo.load();
     vlbVideo.src=FILMS[i].video;
+    vlbCaption.textContent=`${FILMS[i].title} — ${i+1} / ${FILMS.length}`;
+    vlbVideo.play().catch(()=>{});
+  }
+  function openVideo(){
+    renderVideo();
     vlb.classList.add('open');
     document.body.style.overflow='hidden';
-    vlbVideo.play().catch(()=>{});
   }
   function closeVideo(){
     vlbVideo.pause(); vlbVideo.removeAttribute('src'); vlbVideo.load();
     vlb.classList.remove('open');
     document.body.style.overflow='';
+    render(); // sync the small preview stage to whatever film was last viewed
   }
   playBtn.addEventListener('click', openVideo);
   vlb.querySelector('.vlb-close').addEventListener('click', closeVideo);
+  vlb.querySelector('.vlb-prev').addEventListener('click',()=>{ i=(i-1+FILMS.length)%FILMS.length; renderVideo(); });
+  vlb.querySelector('.vlb-next').addEventListener('click',()=>{ i=(i+1)%FILMS.length; renderVideo(); });
   vlb.addEventListener('click', e=>{ if(e.target===vlb) closeVideo(); });
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && vlb.classList.contains('open')) closeVideo(); });
+  document.addEventListener('keydown', e=>{
+    if(!vlb.classList.contains('open')) return;
+    if(e.key==='Escape') closeVideo();
+    if(e.key==='ArrowLeft') vlb.querySelector('.vlb-prev').click();
+    if(e.key==='ArrowRight') vlb.querySelector('.vlb-next').click();
+  });
   document.querySelector('.film-prev').onclick=()=>{ i=(i-1+FILMS.length)%FILMS.length; render(); };
   document.querySelector('.film-next').onclick=()=>{ i=(i+1)%FILMS.length; render(); };
   render();

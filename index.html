@@ -180,6 +180,28 @@
   footer a:hover{color:var(--white)}
   .proto-note{border:1px dashed rgba(255,255,255,.25); border-radius:6px; padding:.9rem 1.2rem; max-width:62ch; line-height:1.5}
 
+  /* ---------- Full-image lightbox (Art) ---------- */
+  #lightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center;
+    justify-content:center; background:rgba(0,0,0,.94); padding:6vh 4vw}
+  #lightbox.open{display:flex}
+  .lb-stage{position:relative; display:flex; align-items:center; gap:1.1rem; max-width:1080px; width:100%}
+  .lb-frame{flex:1; min-width:0; max-height:80vh; border-radius:8px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; background:var(--bg-card)}
+  .lb-frame img{max-width:100%; max-height:80vh; object-fit:contain; display:block}
+  .lb-btn{flex:0 0 auto; width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,.1);
+    color:#fff; display:flex; align-items:center; justify-content:center; transition:background-color .2s}
+  .lb-btn:hover{background:rgba(255,255,255,.2)}
+  .lb-btn svg{width:1.4rem; height:1.4rem}
+  .lb-close{position:absolute; top:-3.4rem; right:0; width:40px; height:40px; border-radius:50%;
+    background:rgba(255,255,255,.1); color:#fff; display:flex; align-items:center; justify-content:center}
+  .lb-caption{position:absolute; left:0; right:0; bottom:-2.3rem; text-align:center;
+    color:var(--grey); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+    font-variant-numeric:tabular-nums}
+  @media (max-width:640px){
+    .lb-stage{gap:.6rem}
+    .lb-btn{width:38px; height:38px}
+  }
+
   @media (prefers-reduced-motion:reduce){
     *{transition:none !important; animation:none !important; scroll-behavior:auto !important}
   }
@@ -259,6 +281,22 @@
   </div>
 </div>
 
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Illustration viewer">
+  <div class="lb-stage">
+    <button class="lb-btn lb-prev" aria-label="Previous piece">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="lb-frame"><img id="lbImg" alt=""></div>
+    <button class="lb-btn lb-next" aria-label="Next piece">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <button class="lb-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+</div>
+
 <footer id="contact">
   <span class="foot-logo">Talia Naiman</span>
   <div class="contact">
@@ -318,8 +356,8 @@ const DATA = {
        desc:"An Abbey Road homage, reimagined.", p:1},
       {title:"Captain Travel", sub:"Screen Saver Series", cat:"AI Films", format:"Screen saver series", role:"Creator", desc:"Placeholder — AI screen-saver travel series.", p:5},
       {title:"Zodiac Series", sub:"AI Concepts", cat:"AI Films", format:"Concept series", role:"Creator",
-       img:"media/zodiac-poster.jpg", video:"zodiac Taurus.mp4",
-       desc:"AI zodiac concept series — Taurus, on the Ripples display.", p:7}
+       img:"media/zodiac/wheel.gif", href:"zodiac.html",
+       desc:"Twelve signs, twelve original illustrations, and a short film for each.", p:7}
     ]},
     {id:"row-branding", name:"Branding", items:[
       {title:"Mmm...Coffee × The Simpsons", sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
@@ -330,26 +368,7 @@ const DATA = {
        desc:"A full identity for a Mushroom Kingdom coffee roaster — brick-pattern packaging, a question-block mug, and a jolt strong enough for an extra life.", p:6}
     ]},
     {id:"row-art", name:"Art", items:[
-      {title:"Swans in Flight", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/swans_flock.jpg", desc:"Original hand-drawn illustration — cranes over Springfield rooftops, under a night sky.", p:5},
-      {title:"Crane, Line Study", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/crane_line.jpg", desc:"Original hand-drawn illustration.", p:5},
-      {title:"Crane, Line Study II", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/crane_line2.jpg", desc:"Original hand-drawn illustration.", p:5},
-      {title:"Cranes & Blossoms", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/cranes_blossoms.jpg", desc:"Original hand-drawn illustration.", p:2},
-      {title:"Cranes & Blossoms II", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/cranes_blossoms2.jpg", desc:"Original hand-drawn illustration.", p:6},
-      {title:"Horse & Swan Ride", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/horse_swan_ride.jpg", desc:"Original hand-drawn illustration.", p:5},
-      {title:"Horses & Flowers", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/horses_flowers.jpg", desc:"Original hand-drawn illustration.", p:2},
-      {title:"Horses & Swans", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/horses_swans.jpg", desc:"Original hand-drawn illustration.", p:5},
-      {title:"Lavender & Birds", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/lavender_birds.jpg", desc:"Original hand-drawn illustration.", p:4},
-      {title:"Lotus & Lion", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/lotus_lion.jpg", desc:"Original hand-drawn illustration.", p:1},
-      {title:"The Rabbit's Hat", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/rabbit_hat.jpg", desc:"Original hand-drawn illustration.", p:4},
-      {title:"Shabbat Papercut", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/shabbat_papercut.jpg", desc:"Original hand-drawn illustration.", p:6},
-      {title:"Swan Carousel Ride", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/swans_ride.jpg", desc:"Original hand-drawn illustration.", p:6},
-      {title:"Swans & Teacup", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/swans_teacup.jpg", desc:"Original hand-drawn illustration.", p:2},
-      {title:"Alice's Bottle", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/alice_bottle.jpg", desc:"Original hand-drawn illustration.", p:4},
-      {title:"Bear Hug", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/baby_bear.jpg", desc:"Original hand-drawn illustration.", p:3},
-      {title:"Sleepy Bear, Line Study", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/baby_bear_sketch.jpg", desc:"Original hand-drawn illustration.", p:2},
-      {title:"Baby & Poppies", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/baby_poppies.jpg", desc:"Original hand-drawn illustration.", p:3},
-      {title:"Shabbat Wreath", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/shabbat_wreath.jpg", desc:"Original hand-drawn illustration.", p:1},
-      {title:"Herons & Paper Boats", cat:"Art", format:"Original illustration", role:"Illustrator", img:"media/art/herons_boats.jpg", desc:"Original hand-drawn illustration.", p:7}
+      {title:"Art", sub:"Original Illustrations", cat:"Art", img:"media/art/swans_flock.jpg", lightbox:"art", p:5}
     ]}
   ],
   cases:[
@@ -363,6 +382,30 @@ const DATA = {
      cat:"Case Studies", format:"Process", role:"—", desc:"Placeholder — outcomes and impact: metrics, reach, response."}
   ]
 };
+
+/* Full-size illustrations shown in the Art lightbox — this list grows as new pieces come in */
+const ART_ITEMS = [
+  {title:"Swans in Flight", img:"media/art/swans_flock.jpg"},
+  {title:"Crane, Line Study", img:"media/art/crane_line.jpg"},
+  {title:"Crane, Line Study II", img:"media/art/crane_line2.jpg"},
+  {title:"Cranes & Blossoms", img:"media/art/cranes_blossoms.jpg"},
+  {title:"Cranes & Blossoms II", img:"media/art/cranes_blossoms2.jpg"},
+  {title:"Horse & Swan Ride", img:"media/art/horse_swan_ride.jpg"},
+  {title:"Horses & Flowers", img:"media/art/horses_flowers.jpg"},
+  {title:"Horses & Swans", img:"media/art/horses_swans.jpg"},
+  {title:"Lavender & Birds", img:"media/art/lavender_birds.jpg"},
+  {title:"Lotus & Lion", img:"media/art/lotus_lion.jpg"},
+  {title:"The Rabbit's Hat", img:"media/art/rabbit_hat.jpg"},
+  {title:"Shabbat Papercut", img:"media/art/shabbat_papercut.jpg"},
+  {title:"Swan Carousel Ride", img:"media/art/swans_ride.jpg"},
+  {title:"Swans & Teacup", img:"media/art/swans_teacup.jpg"},
+  {title:"Alice's Bottle", img:"media/art/alice_bottle.jpg"},
+  {title:"Bear Hug", img:"media/art/baby_bear.jpg"},
+  {title:"Sleepy Bear, Line Study", img:"media/art/baby_bear_sketch.jpg"},
+  {title:"Baby & Poppies", img:"media/art/baby_poppies.jpg"},
+  {title:"Shabbat Wreath", img:"media/art/shabbat_wreath.jpg"},
+  {title:"Herons & Paper Boats", img:"media/art/herons_boats.jpg"}
+];
 
 /* ---------- placeholder art palettes (for cards without media yet) ---------- */
 const PALETTES = [
@@ -420,10 +463,12 @@ function makeCard(item){
   const idx=registry.push(item)-1;
   const b=document.createElement(item.href ? "a" : "button");
   b.className="card"+(item.serif?" serif-title":"");
-  if(item.href) b.href=item.href; else { b.dataset.open=idx; b.dataset.p=item.p; }
+  if(item.href) b.href=item.href;
+  else if(item.lightbox) b.dataset.lightbox=item.lightbox;
+  else { b.dataset.open=idx; b.dataset.p=item.p; }
   b.innerHTML=`
     ${item.img?`<img src="${item.img}" alt="" loading="lazy">`:`<canvas></canvas>`}<span class="shade"></span>
-    <span class="playhint">${item.href ? icons.view : icons.play}</span>
+    <span class="playhint">${item.href||item.lightbox ? icons.view : icons.play}</span>
     <span class="label">
       <strong>${item.title}</strong>
       ${item.sub?`<span>${item.sub}</span>`:""}
@@ -546,8 +591,39 @@ document.addEventListener("click",e=>{
   const t=e.target.closest("[data-open]");
   if(t) openModal(+t.dataset.open);
   if(e.target===modal||e.target.closest(".sheet-close")) closeModal();
+  const lbTrigger=e.target.closest("[data-lightbox]");
+  if(lbTrigger) openLightbox(0);
 });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&modal.classList.contains("open")) closeModal(); });
+
+/* ---------- lightbox (Art) ---------- */
+const lightbox=document.getElementById("lightbox");
+let lbIndex=0;
+function renderLightbox(){
+  const item=ART_ITEMS[lbIndex];
+  document.getElementById("lbImg").src=item.img;
+  document.getElementById("lbImg").alt=item.title;
+  document.getElementById("lbCaption").textContent=`${item.title} — ${lbIndex+1} / ${ART_ITEMS.length}`;
+}
+function openLightbox(idx){
+  lbIndex=idx; renderLightbox();
+  lightbox.classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeLightbox(){
+  lightbox.classList.remove("open");
+  document.body.style.overflow="";
+}
+lightbox.querySelector(".lb-prev").onclick=()=>{ lbIndex=(lbIndex-1+ART_ITEMS.length)%ART_ITEMS.length; renderLightbox(); };
+lightbox.querySelector(".lb-next").onclick=()=>{ lbIndex=(lbIndex+1)%ART_ITEMS.length; renderLightbox(); };
+lightbox.querySelector(".lb-close").onclick=closeLightbox;
+lightbox.addEventListener("click",e=>{ if(e.target===lightbox) closeLightbox(); });
+document.addEventListener("keydown",e=>{
+  if(!lightbox.classList.contains("open")) return;
+  if(e.key==="Escape") closeLightbox();
+  if(e.key==="ArrowLeft") lightbox.querySelector(".lb-prev").click();
+  if(e.key==="ArrowRight") lightbox.querySelector(".lb-next").click();
+});
 
 /* ---------- nav ---------- */
 addEventListener("scroll",()=>{

@@ -85,6 +85,28 @@
     .bag-grid{grid-template-columns:1fr}
   }
   @media (prefers-reduced-motion:reduce){ *{transition:none !important; scroll-behavior:auto !important} }
+
+  /* ---------- Gallery lightbox ---------- */
+  .gallery figure{cursor:pointer}
+  #lightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center;
+    justify-content:center; background:rgba(0,0,0,.92); padding:6vh 4vw}
+  #lightbox.open{display:flex}
+  .lb-stage{position:relative; display:flex; align-items:center; gap:1.1rem; max-width:1080px; width:100%}
+  .lb-frame{flex:1; min-width:0; max-height:80vh; border-radius:8px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; background:var(--bg-card)}
+  .lb-frame img{max-width:100%; max-height:80vh; object-fit:contain; display:block}
+  .lb-btn{flex:0 0 auto; width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,.1);
+    color:#fff; display:flex; align-items:center; justify-content:center; transition:background-color .2s}
+  .lb-btn:hover{background:rgba(255,255,255,.2)}
+  .lb-btn svg{width:1.4rem; height:1.4rem}
+  .lb-close{position:absolute; top:-3.4rem; right:0; width:40px; height:40px; border-radius:50%;
+    background:rgba(255,255,255,.1); color:#fff; display:flex; align-items:center; justify-content:center}
+  .lb-caption{position:absolute; left:0; right:0; bottom:-2.3rem; text-align:center;
+    color:var(--ink-dim); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase}
+  @media (max-width:640px){
+    .lb-stage{gap:.6rem}
+    .lb-btn{width:38px; height:38px}
+  }
 </style>
 </head>
 <body>
@@ -173,6 +195,53 @@
 <footer>
   <a href="index.html">← Back to the full portfolio</a>
 </footer>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="lb-stage">
+    <button class="lb-btn lb-prev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="lb-frame"><img id="lbImg" alt=""></div>
+    <button class="lb-btn lb-next" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <button class="lb-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const imgs=[...document.querySelectorAll('.gallery img')];
+  if(!imgs.length) return;
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lbImg');
+  const lbCaption=document.getElementById('lbCaption');
+  let i=0;
+  function render(){
+    const img=imgs[i];
+    lbImg.src=img.src; lbImg.alt=img.alt;
+    lbCaption.textContent=img.closest('figure').querySelector('figcaption')?.textContent||'';
+  }
+  function open(idx){ i=idx; render(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  imgs.forEach((img,idx)=>{
+    img.closest('figure').addEventListener('click', ()=>open(idx));
+  });
+  lb.querySelector('.lb-prev').onclick=()=>{ i=(i-1+imgs.length)%imgs.length; render(); };
+  lb.querySelector('.lb-next').onclick=()=>{ i=(i+1)%imgs.length; render(); };
+  lb.querySelector('.lb-close').onclick=close;
+  lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
+  document.addEventListener('keydown', e=>{
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowLeft') lb.querySelector('.lb-prev').click();
+    if(e.key==='ArrowRight') lb.querySelector('.lb-next').click();
+  });
+})();
+</script>
 
 </body>
 </html>

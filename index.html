@@ -109,10 +109,8 @@
     background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.25) 45%, transparent 65%)}
   .card .label{position:absolute; left:16px; right:16px; bottom:12px; display:flex; flex-direction:column; gap:3px; color:#fff}
   .card .label strong{font-size:.92rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; line-height:1.25}
-  .card .label span{font-size:.72rem; color:#ccc; letter-spacing:.1em; text-transform:uppercase}
+  .card .label span{font-size:.72rem; color:var(--red); letter-spacing:.1em; text-transform:uppercase}
   .card .label .new{color:var(--red); font-size:.66rem; font-weight:700; letter-spacing:.22em}
-  .card.serif-title .label strong{font-family:var(--serif); font-weight:700;
-    text-transform:none; font-size:1.35rem; letter-spacing:0}
   .card .playhint{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
     opacity:0; transition:opacity .2s}
   .card:hover .playhint{opacity:1}
@@ -304,7 +302,7 @@ const DATA = {
     desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0},
   rows:[
     {id:"row-documentary", name:"Documentary", items:[
-      {title:"How I Met Talia Naiman", sub:"", extra:"New Series", serif:true, cat:"Documentary", format:"Docu-series", role:"Creator · Director",
+      {title:"How I Met Talia Naiman", sub:"", extra:"New Series", cat:"Documentary", format:"Docu-series", role:"Creator · Director",
        img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
        desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0},
       {title:"Showreel", sub:"Selected Works", cat:"Documentary", format:"Showreel", role:"Director · Editor",

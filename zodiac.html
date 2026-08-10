@@ -63,7 +63,8 @@
   .film-stage{position:relative; display:flex; align-items:center; gap:1rem; width:100%; max-width:640px}
   .film-frame{position:relative; flex:1; aspect-ratio:16/9; border-radius:8px; overflow:hidden;
     background:var(--bg-card); display:flex; align-items:center; justify-content:center}
-  .film-frame img,.film-frame video{width:100%; height:100%; object-fit:cover; display:block}
+  .film-frame img,.film-frame video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+  .film-frame img[hidden],.film-frame video[hidden]{display:none}
   .film-frame video{cursor:default}
   .film-frame .play-btn{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
     background:rgba(0,0,0,.25); transition:background-color .2s}

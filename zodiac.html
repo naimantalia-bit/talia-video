@@ -62,13 +62,11 @@
   .film-carousel{display:flex; flex-direction:column; align-items:center; gap:1.1rem}
   .film-stage{position:relative; display:flex; align-items:center; gap:1rem; width:100%; max-width:640px}
   .film-frame{position:relative; flex:1; aspect-ratio:16/9; border-radius:8px; overflow:hidden;
-    background:var(--bg-card); display:flex; align-items:center; justify-content:center}
-  .film-frame img,.film-frame video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-  .film-frame img[hidden],.film-frame video[hidden]{display:none}
-  .film-frame video{cursor:default}
+    background:var(--bg-card); cursor:pointer; border:none; padding:0; font:inherit; display:block}
+  .film-frame img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
   .film-frame .play-btn{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
     background:rgba(0,0,0,.25); transition:background-color .2s}
-  .film-frame .play-btn:hover{background:rgba(0,0,0,.4)}
+  .film-frame:hover .play-btn{background:rgba(0,0,0,.4)}
   .film-frame .play-btn svg{width:64px; height:64px; filter:drop-shadow(0 2px 10px rgba(0,0,0,.6))}
   .film-btn{flex:0 0 auto; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.08);
     color:#fff; display:flex; align-items:center; justify-content:center; transition:background-color .2s, transform .15s}
@@ -77,6 +75,16 @@
   .film-caption{display:flex; flex-direction:column; align-items:center; gap:.3rem; text-align:center}
   .film-caption strong{font-family:var(--serif); font-weight:700; font-size:1.1rem}
   .film-counter{font-size:.72rem; color:var(--ink-dim); letter-spacing:.12em; text-transform:uppercase; font-variant-numeric:tabular-nums}
+
+  /* Enlarged video lightbox */
+  #videoLightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center;
+    justify-content:center; background:rgba(0,0,0,.94); padding:6vh 4vw}
+  #videoLightbox.open{display:flex}
+  .vlb-frame{position:relative; width:100%; max-width:960px; aspect-ratio:16/9; border-radius:8px;
+    overflow:hidden; background:#000}
+  .vlb-frame video{width:100%; height:100%; object-fit:contain; display:block}
+  .vlb-close{position:absolute; top:-3.4rem; right:0; width:40px; height:40px; border-radius:50%;
+    background:rgba(255,255,255,.1); color:#fff; display:flex; align-items:center; justify-content:center}
 
   footer{padding:3rem 4% 4rem; text-align:center; color:var(--ink-dim); font-size:.85rem;
     border-top:1px solid rgba(255,255,255,.1)}
@@ -154,13 +162,12 @@
       <button class="film-btn film-prev" aria-label="Previous film">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg>
       </button>
-      <div class="film-frame">
+      <button class="film-frame" id="filmPlayBtn" aria-label="Play film, enlarged">
         <img id="filmPoster" alt="">
-        <video id="filmVideo" controls playsinline hidden></video>
-        <button class="play-btn" id="filmPlayBtn" aria-label="Play film">
+        <span class="play-btn">
           <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" fill="rgba(0,0,0,.5)" stroke="#fff" stroke-width="2"/><path d="M19 15l14 9-14 9z" fill="#fff"/></svg>
-        </button>
-      </div>
+        </span>
+      </button>
       <button class="film-btn film-next" aria-label="Next film">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg>
       </button>
@@ -192,6 +199,15 @@
   </div>
 </div>
 
+<div id="videoLightbox" role="dialog" aria-modal="true" aria-label="Film player">
+  <div class="vlb-frame">
+    <video id="vlbVideo" controls playsinline></video>
+    <button class="vlb-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</div>
+
 <script>
 /* ---------- signs lightbox ---------- */
 (function(){
@@ -220,7 +236,7 @@
   });
 })();
 
-/* ---------- films carousel ---------- */
+/* ---------- films carousel: small stage browses, click enlarges into a video lightbox ---------- */
 (function(){
   const FILMS=[
     {title:"Aries", poster:"media/zodiac/aries-poster.jpg", video:"media/zodiac/aries.mp4"},
@@ -229,22 +245,32 @@
   ];
   let i=0;
   const poster=document.getElementById('filmPoster');
-  const video=document.getElementById('filmVideo');
   const playBtn=document.getElementById('filmPlayBtn');
   const title=document.getElementById('filmTitle');
   const counter=document.getElementById('filmCounter');
   function render(){
     const f=FILMS[i];
-    video.pause(); video.removeAttribute('src'); video.load(); video.hidden=true;
-    poster.src=f.poster; poster.hidden=false; playBtn.hidden=false;
+    poster.src=f.poster; poster.alt=f.title;
     title.textContent=f.title;
     counter.textContent=`${i+1} / ${FILMS.length}`;
   }
-  playBtn.addEventListener('click',()=>{
-    const f=FILMS[i];
-    video.src=f.video; video.hidden=false; poster.hidden=true; playBtn.hidden=true;
-    video.play().catch(()=>{});
-  });
+  const vlb=document.getElementById('videoLightbox');
+  const vlbVideo=document.getElementById('vlbVideo');
+  function openVideo(){
+    vlbVideo.src=FILMS[i].video;
+    vlb.classList.add('open');
+    document.body.style.overflow='hidden';
+    vlbVideo.play().catch(()=>{});
+  }
+  function closeVideo(){
+    vlbVideo.pause(); vlbVideo.removeAttribute('src'); vlbVideo.load();
+    vlb.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  playBtn.addEventListener('click', openVideo);
+  vlb.querySelector('.vlb-close').addEventListener('click', closeVideo);
+  vlb.addEventListener('click', e=>{ if(e.target===vlb) closeVideo(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && vlb.classList.contains('open')) closeVideo(); });
   document.querySelector('.film-prev').onclick=()=>{ i=(i-1+FILMS.length)%FILMS.length; render(); };
   document.querySelector('.film-next').onclick=()=>{ i=(i+1)%FILMS.length; render(); };
   render();

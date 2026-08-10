@@ -49,10 +49,8 @@
     padding:110px 2.6% 70px; overflow:hidden; background:var(--bg)}
   .hero-art{position:absolute; top:0; right:0; bottom:0; z-index:0;
     width:clamp(320px,50vw,760px); overflow:hidden; background:#0a0a0a}
-  .hero-art img,.hero-art video{position:absolute; inset:0; width:100%; height:100%;
+  .hero-art img{position:absolute; inset:0; width:100%; height:100%;
     object-fit:cover; object-position:62% 14%}
-  .hero-art video{opacity:0; transition:opacity 1.4s ease}
-  .hero-art video.on{opacity:1}
   .hero-art::before{content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
     background:linear-gradient(to right, var(--bg) 0%, rgba(0,0,0,.82) 12%, rgba(0,0,0,.28) 38%, transparent 62%)}
   .hero-art::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
@@ -61,7 +59,7 @@
   /* Dark scrim under the text column alone — guarantees the (always-light) hero text
      stays legible even where hero-art's own photo panel doesn't reach (wide viewports). */
   .hero::before{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(to right, rgba(20,10,48,.6) 0%, rgba(20,10,48,.6) 42%, transparent 66%)}
+    background:linear-gradient(to right, rgba(0,0,0,.6) 0%, rgba(0,0,0,.6) 42%, transparent 66%)}
   .hero-content{position:relative; z-index:2; max-width:560px; display:flex; flex-direction:column; gap:1.2rem}
   @media (max-width:820px){
     .hero-art{width:100%; left:0}
@@ -81,14 +79,8 @@
   .btn svg{width:1.05em; height:1.05em}
   .btn-play{background:var(--violet); color:#fff}
   .btn-play:hover{opacity:.85}
-  .btn-info{background:rgba(20,10,48,.65); color:#fff}
+  .btn-info{background:rgba(0,0,0,.65); color:#fff}
   .btn-info:hover{background:rgba(90,90,90,.6)}
-  .hero-art video::-webkit-media-controls-panel{background:linear-gradient(to top, rgba(0,0,0,.6), transparent)}
-  .hero.playing .hero-art video{opacity:1}
-  .sound-hint{display:flex; align-items:center; gap:.4rem; font-size:.78rem; color:#e8e8e8;
-    letter-spacing:.06em; text-transform:uppercase; opacity:0; height:0; overflow:hidden; transition:opacity .3s}
-  .hero.playing .sound-hint{opacity:1; height:auto; margin-top:-.4rem}
-  .sound-hint svg{width:1em; height:1em; color:var(--lime-pop)}
 
   /* ---------- Rows ---------- */
   main{display:flex; flex-direction:column; gap:2.6rem; padding-bottom:4rem}
@@ -233,25 +225,19 @@
 <section class="hero" id="hero">
   <div class="hero-art">
     <img id="heroPoster" src="media/how-i-met-talia-poster.jpg" alt="Talia Naiman — How I Met Talia Naiman, series still">
-    <video id="heroVid" src="media/how-i-met-talia.mp4" muted loop playsinline preload="auto"></video>
   </div>
   <div class="hero-content">
     <span class="eyebrow">New Series</span>
     <h1>How I Met<br><span class="marker">Talia Naiman</span></h1>
     <p>A witty visual docu-series about the woman behind the worlds.</p>
     <div class="hero-btns">
-      <button class="btn btn-play" id="heroPlayBtn" aria-pressed="false">
-        <svg id="heroPlayIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg>
-        <span id="heroPlayLabel">Play</span>
+      <button class="btn btn-play" data-open="0">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg> Play
       </button>
       <button class="btn btn-info" data-open="0">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7.5v.01"/></svg> More Info
       </button>
     </div>
-    <span class="sound-hint">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9v6h4l5 4V5l-5 4H5z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg>
-      Playing with sound
-    </span>
   </div>
 </section>
 
@@ -509,46 +495,6 @@ function makeRow(id, heading, nodes){
 const main=document.querySelector("main");
 DATA.rows.forEach(r=>main.appendChild(makeRow(r.id, r.name, r.items.map(makeCard))));
 main.appendChild(makeRow("row-case","Case Studies", DATA.cases.map(makeCaseCard)));
-
-/* ---------- hero media: Play/Pause toggle with sound ---------- */
-{
-  const vid=document.getElementById("heroVid");
-  const heroSection=document.getElementById("hero");
-  const playBtn=document.getElementById("heroPlayBtn");
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches){
-    vid.removeAttribute("autoplay"); vid.pause();
-  } else {
-    vid.addEventListener("playing",()=>vid.classList.add("on"),{once:true});
-    vid.play().catch(()=>{});
-  }
-  let watching=false;
-  const playIcon='<path d="M6 4l14 8-14 8z"/>';
-  const pauseIcon='<path d="M8 5h3v14H8zM13 5h3v14h-3z"/>';
-  const playIconEl=document.getElementById("heroPlayIcon");
-  const playLabelEl=document.getElementById("heroPlayLabel");
-  function syncPlayBtn(){
-    const showingPause = watching && !vid.paused;
-    playBtn.setAttribute("aria-pressed", showingPause?"true":"false");
-    playLabelEl.textContent = showingPause?"Pause":"Play";
-    playIconEl.innerHTML = showingPause?pauseIcon:playIcon;
-  }
-  playBtn.addEventListener("click",()=>{
-    if(!watching){
-      watching=true;
-      vid.muted=false;
-      vid.controls=true;
-      heroSection.classList.add("playing");
-      vid.classList.add("on");
-      vid.play().catch(()=>{});
-    } else if(vid.paused){
-      vid.play().catch(()=>{});
-    } else {
-      vid.pause();
-    }
-  });
-  vid.addEventListener("play", syncPlayBtn);
-  vid.addEventListener("pause", syncPlayBtn);
-}
 
 /* ---------- modal ---------- */
 const modal=document.getElementById("modal");

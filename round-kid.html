@@ -43,12 +43,34 @@
     padding:.05em .2em; border-radius:2px; transform:rotate(-1.5deg)}
   .hero p{max-width:56ch; color:var(--ink-dim); font-size:1.08rem; line-height:1.6}
 
-  .gallery{display:grid; grid-template-columns:repeat(3, 1fr); gap:1.1rem}
-  .gallery figure{border-radius:6px; overflow:hidden; background:#000;
-    border:1px solid rgba(255,255,255,.08); aspect-ratio:4/3;
+  .section-label{display:flex; align-items:center; gap:.9rem; margin:0 0 1.6rem;
+    font-size:.78rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-dim)}
+  .section-label::after{content:""; flex:1; height:1px; background:rgba(255,255,255,.15)}
+
+  .bag-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1.6rem; margin-bottom:5rem}
+  .bag-card figure{background:#000; border:1px solid rgba(255,255,255,.08); border-radius:6px; overflow:hidden;
+    aspect-ratio:4/3; display:flex; align-items:center; justify-content:center}
+  .bag-card img{width:100%; height:100%; object-fit:contain; padding:.5rem}
+  .bag-card .who{margin-top:1rem; font-size:.72rem; font-weight:700; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--accent); text-align:center}
+  .bag-card h3{font-family:var(--serif); font-weight:700; font-size:1.25rem; text-align:center; margin-top:.35rem}
+  .bag-card p{font-size:.88rem; line-height:1.5; color:var(--ink-dim); text-align:center; margin-top:.5rem}
+
+  .feature{display:grid; grid-template-columns:1.1fr 1fr; gap:3.2rem; align-items:center; margin-bottom:5.5rem}
+  .feature.reverse{grid-template-columns:1fr 1.1fr}
+  .feature.reverse .feature-media{order:2}
+  .feature-media{border-radius:6px; overflow:hidden; background:#000; border:1px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:center; aspect-ratio:4/3}
+  .feature-media img{width:100%; height:100%; object-fit:contain; padding:.5rem}
+  .feature-text .eyebrow{margin-bottom:.6rem}
+  .feature-text h2{font-family:var(--serif); font-weight:700; font-size:clamp(1.6rem,3vw,2.3rem); margin-bottom:.8rem}
+  .feature-text p{color:var(--ink-dim); font-size:1rem; line-height:1.65; max-width:42ch}
+
+  .char-grid{display:grid; grid-template-columns:repeat(5, 1fr); gap:1.1rem; margin-bottom:5rem}
+  .char-grid figure{border-radius:6px; overflow:hidden; background:#F4EFE4; aspect-ratio:1/1;
     cursor:pointer; display:flex; align-items:center; justify-content:center}
-  .gallery img{width:100%; height:100%; object-fit:contain; padding:.5rem}
-  .gallery figcaption{margin-top:.6rem; font-size:.75rem; letter-spacing:.06em;
+  .char-grid img{width:100%; height:100%; object-fit:contain; padding:.6rem}
+  .char-grid figcaption{margin-top:.6rem; font-size:.75rem; letter-spacing:.06em;
     text-transform:uppercase; color:var(--ink-dim); text-align:center}
 
   footer{padding:3rem 4% 4rem; text-align:center; color:var(--ink-dim); font-size:.85rem;
@@ -56,14 +78,18 @@
   footer a{text-decoration:none; font-weight:700}
 
   @media (max-width:820px){
-    .gallery{grid-template-columns:1fr 1fr}
+    .bag-grid{grid-template-columns:1fr 1fr}
+    .feature, .feature.reverse{grid-template-columns:1fr; gap:1.4rem}
+    .feature.reverse .feature-media{order:0}
+    .char-grid{grid-template-columns:repeat(3, 1fr)}
   }
   @media (max-width:520px){
-    .gallery{grid-template-columns:1fr}
+    .bag-grid{grid-template-columns:1fr}
+    .char-grid{grid-template-columns:1fr 1fr}
   }
   @media (prefers-reduced-motion:reduce){ *{transition:none !important; scroll-behavior:auto !important} }
 
-  /* ---------- Gallery lightbox ---------- */
+  /* ---------- Gallery lightbox (original illustrations) ---------- */
   #lightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center;
     justify-content:center; background:rgba(0,0,0,.92); padding:6vh 4vw}
   #lightbox.open{display:flex}
@@ -104,63 +130,101 @@
        and the shop window.</p>
   </section>
 
-  <div class="gallery">
-    <figure>
-      <img src="media/round-kid/cup-only.jpg" alt="Round Kid coffee cup under an espresso machine, football illustration">
-      <figcaption>The Cup</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/pour.jpg" alt="Latte being poured into a Round Kid cup, drum kid illustration">
-      <figcaption>The Pour</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/bag.jpg" alt="Round Kid whole bean coffee bag">
-      <figcaption>The Bean</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/tote.jpg" alt="Round Kid pink tote bag with mascot illustration">
-      <figcaption>The Tote</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/storefront.jpg" alt="Round Kid Coffee House storefront window signage">
-      <figcaption>The Shopfront</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/togo-box.jpg" alt="Round Kid takeaway box carried by hand, pink handle bag">
-      <figcaption>To Go</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/keychain.jpg" alt="Round Kid zip pouch keychain clipped to a belt loop">
-      <figcaption>The Keychain</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/stamp-card.jpg" alt="Round Kid business card and loyalty stamp card">
-      <figcaption>Stamp Card</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/cap.jpg" alt="Round Kid embroidered cap, worn">
-      <figcaption>The Cap</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/char-kida5.jpg" alt="Round Kid mascot illustration, playing soccer">
-      <figcaption>Football</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/char-kida3.jpg" alt="Round Kid mascot illustration, eating pizza">
-      <figcaption>Pizza Slice</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/char-kida4.jpg" alt="Round Kid mascot illustration, playing drums">
-      <figcaption>Drum Solo</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/char-kida2.jpg" alt="Round Kid mascot illustration, cooling off by a fan">
-      <figcaption>Heat Wave</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/char-kida.jpg" alt="Round Kid mascot illustration, meltdown mode with ice cream">
-      <figcaption>Meltdown Mode</figcaption>
-    </figure>
+  <div class="section-label">On the Cup</div>
+  <div class="bag-grid">
+    <div class="bag-card">
+      <figure><img src="media/round-kid/cup-only.jpg" alt="Round Kid coffee cup under an espresso machine, football illustration"></figure>
+      <div class="who">The Line-up</div>
+      <h3>Cream, Navy & Pink</h3>
+      <p>One character, three colorways — a different scene drawn on every cup.</p>
+    </div>
+    <div class="bag-card">
+      <figure><img src="media/round-kid/pour.jpg" alt="Latte being poured into a Round Kid cup"></figure>
+      <div class="who">The Pour</div>
+      <h3>The Drum Kid</h3>
+      <p>The mascot mid-drum-solo, printed right where the milk hits the cream.</p>
+    </div>
+    <div class="bag-card">
+      <figure><img src="media/round-kid/bag.jpg" alt="Round Kid whole bean coffee bag"></figure>
+      <div class="who">The Bean</div>
+      <h3>Whole Bean, 12oz</h3>
+      <p>Kraft and burgundy, with the football kid running across the front.</p>
+    </div>
+  </div>
+
+  <div class="section-label">The Character</div>
+  <div class="char-grid">
+    <figure><img src="media/round-kid/char-kida5.jpg" alt="Round Kid mascot illustration, playing soccer"></figure>
+    <figure><img src="media/round-kid/char-kida3.jpg" alt="Round Kid mascot illustration, eating pizza"></figure>
+    <figure><img src="media/round-kid/char-kida4.jpg" alt="Round Kid mascot illustration, playing drums"></figure>
+    <figure><img src="media/round-kid/char-kida2.jpg" alt="Round Kid mascot illustration, cooling off by a fan"></figure>
+    <figure><img src="media/round-kid/char-kida.jpg" alt="Round Kid mascot illustration, meltdown mode with ice cream"></figure>
+  </div>
+
+  <div class="section-label">Take-Home</div>
+  <div class="feature">
+    <div class="feature-media"><img src="media/round-kid/tote.jpg" alt="Round Kid pink tote bag with mascot illustration"></div>
+    <div class="feature-text">
+      <span class="eyebrow">Merch</span>
+      <h2>Big mood, good coffee</h2>
+      <p>The same line art that lives on the cup, blown up big on a canvas tote — one of a
+         handful of take-home pieces built to carry the brand past the counter.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Storefront</div>
+  <div class="feature reverse">
+    <div class="feature-media"><img src="media/round-kid/storefront.jpg" alt="Round Kid Coffee House storefront window signage"></div>
+    <div class="feature-text">
+      <span class="eyebrow">Signage</span>
+      <h2>A window you can spot from the street</h2>
+      <p>The wordmark, the roundel and the running kid, painted straight onto the glass —
+         legible at storefront scale without losing any of the hand-drawn warmth.</p>
+    </div>
+  </div>
+
+  <div class="section-label">To Go</div>
+  <div class="feature">
+    <div class="feature-media"><img src="media/round-kid/togo-box.jpg" alt="Round Kid takeaway box carried by hand, pink handle bag"></div>
+    <div class="feature-text">
+      <span class="eyebrow">Packaging</span>
+      <h2>A handle that doubles as a billboard</h2>
+      <p>The two-cup carrier folds up into its own carton — the wordmark and roundel
+         big enough to read from across the street.</p>
+    </div>
+  </div>
+
+  <div class="section-label">The Keychain</div>
+  <div class="feature reverse">
+    <div class="feature-media"><img src="media/round-kid/keychain.jpg" alt="Round Kid zip pouch keychain clipped to a belt loop"></div>
+    <div class="feature-text">
+      <span class="eyebrow">Merch</span>
+      <h2>A pocket-sized piece of the brand</h2>
+      <p>A zip pouch keychain in the same navy as the cup sleeve — small enough to
+         carry the roundel logo everywhere the coffee doesn't go.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Stamp Card</div>
+  <div class="feature">
+    <div class="feature-media"><img src="media/round-kid/stamp-card.jpg" alt="Round Kid business card and loyalty stamp card"></div>
+    <div class="feature-text">
+      <span class="eyebrow">Loyalty</span>
+      <h2>Six stamps, one free coffee</h2>
+      <p>The business card and the stamp card share the same system — six roundel
+         faces waiting to be punched, one for every visit.</p>
+    </div>
+  </div>
+
+  <div class="section-label">The Cap</div>
+  <div class="feature reverse">
+    <div class="feature-media"><img src="media/round-kid/cap.jpg" alt="Round Kid embroidered cap, worn"></div>
+    <div class="feature-text">
+      <span class="eyebrow">Merch</span>
+      <h2>The roundel, embroidered</h2>
+      <p>The mascot's face stitched in pink thread on stone-colored cotton — the
+         quietest touchpoint in the system, and one of the strongest.</p>
+    </div>
   </div>
 </main>
 
@@ -186,7 +250,7 @@
 
 <script>
 (function(){
-  const imgs=[...document.querySelectorAll('.gallery img')];
+  const imgs=[...document.querySelectorAll('.char-grid img')];
   if(!imgs.length) return;
   const lb=document.getElementById('lightbox');
   const lbImg=document.getElementById('lbImg');
@@ -195,7 +259,7 @@
   function render(){
     const img=imgs[i];
     lbImg.src=img.src; lbImg.alt=img.alt;
-    lbCaption.textContent=img.closest('figure').querySelector('figcaption')?.textContent||img.alt||'';
+    lbCaption.textContent=img.alt||'';
   }
   function open(idx){ i=idx; render(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
   function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }

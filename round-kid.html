@@ -10,7 +10,7 @@
 <style>
   :root{
     /* Matches the main portfolio's color-experiment: black ground, violet/pink/lime, Baloo 2. */
-    --bg:#000000; --bg-card:#120C1C; --ink:#ffffff; --ink-dim:#c7bfe0;
+    --bg:#000000; --ink:#ffffff; --ink-dim:#c7bfe0;
     --accent:#8A4DFF; --pink:#F0399F; --lime:#D6F32C;
     --serif:"Baloo 2","Fredoka",sans-serif;
     --sans:"Baloo 2","Fredoka",sans-serif;
@@ -43,37 +43,9 @@
     padding:.05em .2em; border-radius:2px; transform:rotate(-1.5deg)}
   .hero p{max-width:56ch; color:var(--ink-dim); font-size:1.08rem; line-height:1.6}
 
-  .section-label{display:flex; align-items:center; gap:.9rem; margin:0 0 1.6rem;
-    font-size:.78rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-dim)}
-  .section-label::after{content:""; flex:1; height:1px; background:rgba(255,255,255,.15)}
-
-  .bag-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1.6rem; margin-bottom:5rem}
-  .bag-card figure{background:var(--bg-card); border-radius:6px; overflow:hidden;
-    aspect-ratio:4/3; display:flex; align-items:center; justify-content:center}
-  .bag-card img{width:100%; height:100%; object-fit:contain; padding:.5rem}
-  .bag-card .who{margin-top:1rem; font-size:.72rem; font-weight:700; letter-spacing:.2em;
-    text-transform:uppercase; color:var(--accent); text-align:center}
-  .bag-card h3{font-family:var(--serif); font-weight:700; font-size:1.25rem; text-align:center; margin-top:.35rem}
-  .bag-card p{font-size:.88rem; line-height:1.5; color:var(--ink-dim); text-align:center; margin-top:.5rem}
-
-  .feature{display:grid; grid-template-columns:1.1fr 1fr; gap:3.2rem; align-items:center; margin-bottom:5.5rem}
-  .feature.reverse{grid-template-columns:1fr 1.1fr}
-  .feature.reverse .feature-media{order:2}
-  .feature-media{border-radius:6px; overflow:hidden; background:var(--bg-card)}
-  .feature-media img{width:100%; height:100%; object-fit:cover}
-  .feature-text .eyebrow{margin-bottom:.6rem}
-  .feature-text h2{font-family:var(--serif); font-weight:700; font-size:clamp(1.6rem,3vw,2.3rem); margin-bottom:.8rem}
-  .feature-text p{color:var(--ink-dim); font-size:1rem; line-height:1.65; max-width:42ch}
-
-  .char-grid{display:grid; grid-template-columns:repeat(5, 1fr); gap:1.1rem; margin-bottom:5rem}
-  .char-grid figure{border-radius:6px; overflow:hidden; background:#F4EFE4; aspect-ratio:1/1;
-    cursor:pointer; display:flex; align-items:center; justify-content:center}
-  .char-grid img{width:100%; height:100%; object-fit:contain; padding:.6rem}
-  .char-grid figcaption{margin-top:.6rem; font-size:.75rem; letter-spacing:.06em;
-    text-transform:uppercase; color:var(--ink-dim); text-align:center}
-
-  .gallery{display:grid; grid-template-columns:repeat(3, 1fr); gap:1.1rem; margin-bottom:4rem}
-  .gallery figure{border-radius:6px; overflow:hidden; background:var(--bg-card); aspect-ratio:4/3;
+  .gallery{display:grid; grid-template-columns:repeat(3, 1fr); gap:1.1rem}
+  .gallery figure{border-radius:6px; overflow:hidden; background:#000;
+    border:1px solid rgba(255,255,255,.08); aspect-ratio:4/3;
     cursor:pointer; display:flex; align-items:center; justify-content:center}
   .gallery img{width:100%; height:100%; object-fit:contain; padding:.5rem}
   .gallery figcaption{margin-top:.6rem; font-size:.75rem; letter-spacing:.06em;
@@ -84,15 +56,10 @@
   footer a{text-decoration:none; font-weight:700}
 
   @media (max-width:820px){
-    .bag-grid{grid-template-columns:1fr 1fr}
-    .feature, .feature.reverse{grid-template-columns:1fr; gap:1.4rem}
-    .feature.reverse .feature-media{order:0}
-    .char-grid{grid-template-columns:repeat(3, 1fr)}
     .gallery{grid-template-columns:1fr 1fr}
   }
   @media (max-width:520px){
-    .bag-grid{grid-template-columns:1fr}
-    .char-grid{grid-template-columns:1fr 1fr}
+    .gallery{grid-template-columns:1fr}
   }
   @media (prefers-reduced-motion:reduce){ *{transition:none !important; scroll-behavior:auto !important} }
 
@@ -137,72 +104,30 @@
        and the shop window.</p>
   </section>
 
-  <div class="section-label">On the Cup</div>
-  <div class="bag-grid">
-    <div class="bag-card">
-      <figure><img src="media/round-kid/cup-only.jpg" alt="Round Kid coffee cups being poured and stacked, cream, navy and pink"></figure>
-      <div class="who">The Line-up</div>
-      <h3>Cream, Navy & Pink</h3>
-      <p>One character, three colorways — a different scene drawn on every cup.</p>
-    </div>
-    <div class="bag-card">
-      <figure><img src="media/round-kid/pour.jpg" alt="Latte being poured into a Round Kid cup"></figure>
-      <div class="who">The Pour</div>
-      <h3>The Drum Kid</h3>
-      <p>The mascot mid-drum-solo, printed right where the milk hits the cream.</p>
-    </div>
-    <div class="bag-card">
-      <figure><img src="media/round-kid/bag.jpg" alt="Round Kid whole bean coffee bag"></figure>
-      <div class="who">The Bean</div>
-      <h3>Whole Bean, 12oz</h3>
-      <p>Kraft and burgundy, with the football kid running across the front.</p>
-    </div>
-  </div>
-
-  <div class="section-label">The Character</div>
-  <div class="char-grid">
-    <figure><img src="media/round-kid/char-kida5.jpg" alt="Round Kid mascot illustration, playing soccer"></figure>
-    <figure><img src="media/round-kid/char-kida3.jpg" alt="Round Kid mascot illustration, eating pizza"></figure>
-    <figure><img src="media/round-kid/char-kida4.jpg" alt="Round Kid mascot illustration, playing drums"></figure>
-    <figure><img src="media/round-kid/char-kida2.jpg" alt="Round Kid mascot illustration, cooling off by a fan"></figure>
-    <figure><img src="media/round-kid/char-kida.jpg" alt="Round Kid mascot illustration, meltdown mode with ice cream"></figure>
-  </div>
-
-  <div class="section-label">Take-Home</div>
-  <div class="feature">
-    <div class="feature-media"><img src="media/round-kid/tote.jpg" alt="Round Kid pink tote bag with mascot illustration"></div>
-    <div class="feature-text">
-      <span class="eyebrow">Merch</span>
-      <h2>Big mood, good coffee</h2>
-      <p>The same line art that lives on the cup, blown up big on a canvas tote — one of a
-         handful of take-home pieces built to carry the brand past the counter.</p>
-    </div>
-  </div>
-
-  <div class="section-label">Storefront</div>
-  <div class="feature reverse">
-    <div class="feature-media"><img src="media/round-kid/storefront.jpg" alt="Round Kid Coffee House storefront window signage"></div>
-    <div class="feature-text">
-      <span class="eyebrow">Signage</span>
-      <h2>A window you can spot from the street</h2>
-      <p>The wordmark, the roundel and the running kid, painted straight onto the glass —
-         legible at storefront scale without losing any of the hand-drawn warmth.</p>
-    </div>
-  </div>
-
-  <div class="section-label">In the Wild</div>
   <div class="gallery">
+    <figure>
+      <img src="media/round-kid/cup-only.jpg" alt="Round Kid coffee cup under an espresso machine, football illustration">
+      <figcaption>The Cup</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/pour.jpg" alt="Latte being poured into a Round Kid cup, drum kid illustration">
+      <figcaption>The Pour</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/bag.jpg" alt="Round Kid whole bean coffee bag">
+      <figcaption>The Bean</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/tote.jpg" alt="Round Kid pink tote bag with mascot illustration">
+      <figcaption>The Tote</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/storefront.jpg" alt="Round Kid Coffee House storefront window signage">
+      <figcaption>The Shopfront</figcaption>
+    </figure>
     <figure>
       <img src="media/round-kid/togo-box.jpg" alt="Round Kid takeaway box carried by hand, pink handle bag">
       <figcaption>To Go</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/cup-only.jpg" alt="Three Round Kid cups, espresso being pulled">
-      <figcaption>The Counter</figcaption>
-    </figure>
-    <figure>
-      <img src="media/round-kid/storefront.jpg" alt="Round Kid storefront window from the street">
-      <figcaption>The Shopfront</figcaption>
     </figure>
     <figure>
       <img src="media/round-kid/keychain.jpg" alt="Round Kid zip pouch keychain clipped to a belt loop">
@@ -215,6 +140,26 @@
     <figure>
       <img src="media/round-kid/cap.jpg" alt="Round Kid embroidered cap, worn">
       <figcaption>The Cap</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/char-kida5.jpg" alt="Round Kid mascot illustration, playing soccer">
+      <figcaption>Football</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/char-kida3.jpg" alt="Round Kid mascot illustration, eating pizza">
+      <figcaption>Pizza Slice</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/char-kida4.jpg" alt="Round Kid mascot illustration, playing drums">
+      <figcaption>Drum Solo</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/char-kida2.jpg" alt="Round Kid mascot illustration, cooling off by a fan">
+      <figcaption>Heat Wave</figcaption>
+    </figure>
+    <figure>
+      <img src="media/round-kid/char-kida.jpg" alt="Round Kid mascot illustration, meltdown mode with ice cream">
+      <figcaption>Meltdown Mode</figcaption>
     </figure>
   </div>
 </main>
@@ -241,7 +186,7 @@
 
 <script>
 (function(){
-  const imgs=[...document.querySelectorAll('.char-grid img, .gallery img')];
+  const imgs=[...document.querySelectorAll('.gallery img')];
   if(!imgs.length) return;
   const lb=document.getElementById('lightbox');
   const lbImg=document.getElementById('lbImg');

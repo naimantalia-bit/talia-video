@@ -107,7 +107,8 @@
     transition:transform .25s ease, box-shadow .25s ease}
   .card:hover,.card:focus-visible{transform:scale(1.08); z-index:4; box-shadow:var(--shadow)}
   .card canvas,.card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-  .card.fit-contain img{object-fit:contain; padding:8%; background:var(--bg-card)}
+  .card.fit-contain img{object-fit:contain; padding:2%; background:#000}
+  .card.fit-contain.invert-gif img{filter:invert(1); mix-blend-mode:screen}
   .card .shade{position:absolute; inset:0;
     background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.25) 45%, transparent 65%)}
   .card .label{position:absolute; left:16px; right:16px; bottom:12px; display:flex; flex-direction:column; gap:3px; color:#fff}
@@ -347,7 +348,7 @@ const DATA = {
       {title:"Zodiac Series", sub:"AI Concepts", cat:"AI Films", format:"Concept series", role:"Creator",
        img:"media/zodiac/wheel.gif", href:"zodiac.html", fit:"contain",
        desc:"Twelve signs, twelve original illustrations, and a short film for each.", p:7},
-      {title:"ASL Alphabet", sub:"AI Concepts", cat:"AI Films", format:"Concept series", role:"Creator", fit:"contain",
+      {title:"ASL Alphabet", sub:"AI Concepts", cat:"AI Films", format:"Concept series", role:"Creator", fit:"contain", invertGif:true,
        img:"media/asl/asl-alphabet.gif", href:"asl.html",
        desc:"Twenty-six letters, twenty-six original illustrations, and a film.", p:4}
     ]},
@@ -459,7 +460,7 @@ const registry=[DATA.featured];
 function makeCard(item){
   const idx=registry.push(item)-1;
   const b=document.createElement(item.href ? "a" : "button");
-  b.className="card"+(item.serif?" serif-title":"")+(item.fit==="contain"?" fit-contain":"");
+  b.className="card"+(item.serif?" serif-title":"")+(item.fit==="contain"?" fit-contain":"")+(item.invertGif?" invert-gif":"");
   if(item.href) b.href=item.href;
   else if(item.lightbox) b.dataset.lightbox=item.lightbox;
   else { b.dataset.open=idx; b.dataset.p=item.p; }

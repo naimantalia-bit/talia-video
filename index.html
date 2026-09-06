@@ -575,7 +575,7 @@ function renderLightbox(){
   const item=ART_ITEMS[lbIndex];
   document.getElementById("lbImg").src=item.img;
   document.getElementById("lbImg").alt=item.title;
-  document.getElementById("lbCaption").textContent=`${item.title}: ${lbIndex+1} / ${ART_ITEMS.length}`;
+  document.getElementById("lbCaption").textContent=`Original Hand-Drawn Illustrations: ${lbIndex+1} / ${ART_ITEMS.length}`;
 }
 function openLightbox(idx){
   lbIndex=idx; renderLightbox();

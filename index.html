@@ -165,9 +165,16 @@
   footer .contact{display:flex; gap:1.6rem; flex-wrap:wrap}
   footer a{color:var(--grey); text-decoration:none}
   footer a:hover{color:var(--ink)}
+  .about-wrap{display:flex; gap:2.4rem; align-items:flex-start; margin-top:.3rem}
+  .about-photo{flex:0 0 auto; width:150px; height:150px; border-radius:50%; overflow:hidden;
+    border:3px solid var(--accent)}
+  .about-photo img{width:100%; height:100%; object-fit:cover}
   .about-bio{max-width:62ch; display:flex; flex-direction:column; gap:.9rem; font-size:1rem; line-height:1.65; color:#e5e5e5}
   .about-bio strong{color:var(--white); font-weight:700}
   .about-bio .sign-off{color:var(--accent); font-style:italic}
+  @media (max-width:640px){
+    .about-wrap{flex-direction:column; align-items:center; text-align:center}
+  }
 
   /* ---------- Full-image lightbox (Art) ---------- */
   #lightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center;
@@ -205,8 +212,7 @@
     <a href="#hero" class="active">Home</a>
     <a href="#row-documentary">Showreel</a>
     <a href="#contact">About</a>
-    <a href="#row-case">Process</a>
-    <a href="#row-case">Case Study</a>
+    <a href="#row-branding">Branding</a>
     <a href="#row-ai">Films</a>
     <a href="#row-documentary">Series</a>
     <a href="#contact">Contact</a>
@@ -282,12 +288,15 @@
 
 <footer id="contact">
   <span class="foot-logo">Talia Naiman</span>
-  <div class="about-bio">
-    <p>I'm Talia Naiman, an AI Video Creative specializing in concept, visual storytelling, and creative direction.</p>
-    <p>I turn ideas into cinematic visual stories, taking projects from concept and storyboard through AI production, editing, and final delivery.</p>
-    <p>My background in art, illustration, fashion, and design shapes how I approach every frame: with a strong eye for composition, character, rhythm, and visual identity.</p>
-    <p>I work across AI video, design, and post-production, combining emerging technology with traditional creative craft to build work that feels intentional, distinctive, and human.</p>
-    <p class="sign-off">For me, AI is not the creative idea. It's the tool that lets the idea go further.</p>
+  <div class="about-wrap">
+    <div class="about-photo"><img src="media/about/talia-headshot.jpg" alt="Talia Naiman"></div>
+    <div class="about-bio">
+      <p>I'm Talia Naiman, an AI Video Creative specializing in concept, visual storytelling, and creative direction.</p>
+      <p>I turn ideas into cinematic visual stories, taking projects from concept and storyboard through AI production, editing, and final delivery.</p>
+      <p>My background in art, illustration, fashion, and design shapes how I approach every frame: with a strong eye for composition, character, rhythm, and visual identity.</p>
+      <p>I work across AI video, design, and post-production, combining emerging technology with traditional creative craft to build work that feels intentional, distinctive, and human.</p>
+      <p class="sign-off">For me, AI is not the creative idea. It's the tool that lets the idea go further.</p>
+    </div>
   </div>
   <div class="contact">
     <a href="mailto:naimantalia@gmail.com">naimantalia@gmail.com</a>
@@ -300,65 +309,64 @@
 <script>
 const DATA = {
   featured:{title:"How I Met Talia Naiman", cat:"Documentary", format:"Docu-series",
-    role:"Creator · Director", tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+    role:"Talia Naiman", tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
     img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
     desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds, shot and cut in Premiere and After Effects with Photoshop touch-ups.", p:0},
   rows:[
     {id:"row-documentary", name:"Documentary", items:[
-      {title:"How I Met Talia Naiman", sub:"", extra:"New Series", cat:"Documentary", format:"Docu-series", role:"Creator · Director",
+      {title:"How I Met Talia Naiman", sub:"", extra:"New Series", cat:"Documentary", format:"Docu-series", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
        desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds, shot and cut in Premiere and After Effects with Photoshop touch-ups.", p:0},
-      {title:"Showreel", sub:"Selected Works", cat:"Documentary", format:"Showreel", role:"Director · Editor",
+      {title:"Showreel", sub:"Selected Works", cat:"Documentary", format:"Showreel", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/showreel-poster.jpg", video:"showreel2025.mp4",
        desc:"A 2025 highlights reel of selected work, edited together in Premiere and After Effects.", p:1},
-      {title:"Behind the Process", sub:"Creative Journey", cat:"Documentary", format:"Behind the scenes", role:"Creator", desc:"Placeholder: a look into the creative journey: moodboards, drafts, iterations.", p:2},
-      {title:"Hey Siri, Who Are You?", sub:"AI Concept Film", cat:"Documentary", format:"Concept film", role:"Creator",
+      {title:"Hey Siri, Who Are You?", sub:"AI Concept Film", cat:"Documentary", format:"Concept film", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/siri/siri-poster.jpg", video:"media/siri/siri.mp4",
        desc:"A rainy New York walk, a coffee, and one loaded question for Siri: a short concept film about identity in the age of AI.", p:6}
     ]},
     {id:"row-brand", name:"Brand Stories", items:[
-      {title:"FIFA Live Scores", sub:"Campaign Film", cat:"Brand Stories", format:"Campaign film", role:"To be filled",
+      {title:"FIFA Live Scores", sub:"Campaign Film", cat:"Brand Stories", format:"Campaign film", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/fifa-poster.jpg", video:"fifa21mg.mp4",
        desc:"Campaign film for the Ripples Live Scores display: real-time match tracking on the bar counter during the tournament, built from Midjourney concept art and finished in Premiere.", p:6},
-      {title:"Amazon Ripple Maker", sub:"Product Film", cat:"Brand Stories", format:"Product film", role:"To be filled",
+      {title:"Amazon Ripple Maker", sub:"Product Film", cat:"Brand Stories", format:"Product film", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/amazon/amazon-ripple-maker-poster.jpg", video:"media/amazon/amazon-ripple-maker.mp4",
-       desc:"Product film for the Ripple Maker on Amazon: picking a latte-art design from the gallery, from tap to cup.", p:5},
-      {title:"Cocktail Recipe Films", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"To be filled",
+       desc:"Product film for the Ripple Maker on Amazon.", p:5},
+      {title:"Cocktail Recipe Films", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/cocktail-poster.jpg", video:"media/cocktail.mp4",
        desc:"Social recipe series: Hendrick's gin cocktail, step by step, shot on the Ripple Maker and finished in Premiere with Photoshop retouching.", p:2},
-      {title:"Matcha Recipe Film", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"To be filled",
+      {title:"Matcha Recipe Film", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/matcha-poster.jpg", video:"media/matcha.mp4",
        desc:"Social recipe series: matcha latte, step by step, shot on the Ripple Maker and finished in Premiere with Photoshop retouching.", p:3},
-      {title:"Seasonal Campaigns", sub:"Winter Olympics", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
+      {title:"Seasonal Campaigns", sub:"Winter Olympics", cat:"Brand Stories", format:"Multi-format campaign", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/winter-poster.jpg", video:"media/winter-olympics.mp4",
        desc:"Seasonal latte art: a Winter Olympics skier design on the Ripples display, animated with Kling and composited in After Effects.", p:8},
-      {title:"Summer Campaign", sub:"Seasonal", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
+      {title:"Summer Campaign", sub:"Seasonal", cat:"Brand Stories", format:"Multi-format campaign", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/summer-poster.jpg", video:"media/summer.mp4",
        desc:"Seasonal styling shot: a summer lemon cocktail, art-directed in Midjourney and finished in Photoshop and Premiere.", p:2},
-      {title:"Year of the Horse", sub:"Lunar New Year", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
+      {title:"Year of the Horse", sub:"Lunar New Year", cat:"Brand Stories", format:"Multi-format campaign", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/horse-poster.jpg", video:"media/horse.mp4",
        desc:"Seasonal campaign: Lunar New Year, Year of the Horse.", p:6}
     ]},
     {id:"row-ai", name:"AI Films", items:[
-      {title:"Friday the 13th", sub:"AI Short Film", cat:"AI Films", format:"AI short film", role:"Creator",
+      {title:"Friday the 13th", sub:"AI Short Film", cat:"AI Films", format:"AI short film", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/friday-13th-poster.jpg", video:"media/friday-the-13th.mp4",
        desc:"AI-made short film: a Friday the 13th latte-art gag.", p:4},
-      {title:"Beatles Day", sub:"AI Film", cat:"AI Films", format:"AI film", role:"Creator",
+      {title:"Beatles Day", sub:"AI Film", cat:"AI Films", format:"AI film", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/beatles-poster.jpg", video:"media/beatles.mp4",
        desc:"An Abbey Road homage, reimagined.", p:1},
-      {title:"Captain Cruz", sub:"Disney Cruise Line", cat:"AI Films", format:"Campaign film", role:"Creator",
+      {title:"Captain Cruz", sub:"Disney Cruise Line", cat:"AI Films", format:"Campaign film", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/captain-cruz/captain-cruz-poster.jpg", video:"media/captain-cruz/captain-cruz.mp4",
        desc:"A custom film made for Disney Cruise Line: Captain Mickey pours the coffee, latte art and all.", p:3},
@@ -521,7 +529,6 @@ function makeRow(id, heading, nodes){
 
 const main=document.querySelector("main");
 DATA.rows.forEach(r=>main.appendChild(makeRow(r.id, r.name, r.items.map(makeCard))));
-main.appendChild(makeRow("row-case","Case Studies", DATA.cases.map(makeCaseCard)));
 
 /* ---------- modal ---------- */
 const modal=document.getElementById("modal");

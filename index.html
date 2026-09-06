@@ -92,9 +92,9 @@
   .row-head .chev{color:var(--red); display:flex}
   .row-head .chev svg{width:1em; height:1em}
   .strip-wrap{position:relative}
-  .strip{display:flex; flex-wrap:wrap; gap:14px; padding:12px 2.6%}
+  .strip{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; padding:12px 2.6%}
 
-  .card{position:relative; flex:0 0 auto; width:min(345px,72vw); aspect-ratio:16/9;
+  .card{position:relative; width:100%; aspect-ratio:16/9;
     border-radius:4px; overflow:hidden; background:var(--bg-card); text-align:left;
     transition:transform .25s ease, box-shadow .25s ease}
   .card:hover,.card:focus-visible{transform:scale(1.08); z-index:4; box-shadow:var(--shadow)}
@@ -166,6 +166,9 @@
   footer a{color:var(--grey); text-decoration:none}
   footer a:hover{color:var(--ink)}
   .proto-note{border:1px dashed var(--line); border-radius:6px; padding:.9rem 1.2rem; max-width:62ch; line-height:1.5; color:var(--grey)}
+  .about-bio{max-width:62ch; display:flex; flex-direction:column; gap:.9rem; font-size:1rem; line-height:1.65; color:#e5e5e5}
+  .about-bio strong{color:var(--white); font-weight:700}
+  .about-bio .sign-off{color:var(--accent); font-style:italic}
 
   /* ---------- Full-image lightbox (Art) ---------- */
   #lightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center;
@@ -280,11 +283,18 @@
 
 <footer id="contact">
   <span class="foot-logo">Talia Naiman</span>
+  <div class="about-bio">
+    <p>I'm Talia Naiman, an AI Video Creative specializing in concept, visual storytelling, and creative direction.</p>
+    <p>I turn ideas into cinematic visual stories, taking projects from concept and storyboard through AI production, editing, and final delivery.</p>
+    <p>My background in art, illustration, fashion, and design shapes how I approach every frame: with a strong eye for composition, character, rhythm, and visual identity.</p>
+    <p>I work across AI video, design, and post-production, combining emerging technology with traditional creative craft to build work that feels intentional, distinctive, and human.</p>
+    <p class="sign-off">For me, AI is not the creative idea. It's the tool that lets the idea go further.</p>
+  </div>
   <div class="contact">
     <a href="mailto:talia@example.com">talia@example.com</a>
     <a href="https://www.instagram.com/talianaillustration/" target="_blank" rel="noopener">Instagram</a>
     <a href="https://www.linkedin.com/in/talianaiman/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="#">Showreel</a>
+    <a href="#" id="footShowreelLink">Showreel</a>
   </div>
   <p class="proto-note"><strong>Build note:</strong> real hosting: media loads from files in this
     repo instead of being embedded in the page, so there's no size ceiling.
@@ -296,41 +306,41 @@ const DATA = {
   featured:{title:"How I Met Talia Naiman", cat:"Documentary", format:"Docu-series",
     role:"Creator · Director", tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
     img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
-    desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0},
+    desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds, shot and cut in Premiere and After Effects with Photoshop touch-ups.", p:0},
   rows:[
     {id:"row-documentary", name:"Documentary", items:[
       {title:"How I Met Talia Naiman", sub:"", extra:"New Series", cat:"Documentary", format:"Docu-series", role:"Creator · Director",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
-       desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0},
+       desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds, shot and cut in Premiere and After Effects with Photoshop touch-ups.", p:0},
       {title:"Showreel", sub:"Selected Works", cat:"Documentary", format:"Showreel", role:"Director · Editor",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/showreel-poster.jpg", video:"showreel2025.mp4",
-       desc:"Selected works reel: 2025 highlights.", p:1},
+       desc:"A 2025 highlights reel of selected work, edited together in Premiere and After Effects.", p:1},
       {title:"Behind the Process", sub:"Creative Journey", cat:"Documentary", format:"Behind the scenes", role:"Creator", desc:"Placeholder: a look into the creative journey: moodboards, drafts, iterations.", p:2}
     ]},
     {id:"row-brand", name:"Brand Stories", items:[
       {title:"FIFA Live Scores", sub:"Campaign Film", cat:"Brand Stories", format:"Campaign film", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/fifa-poster.jpg", video:"fifa21mg.mp4",
-       desc:"Campaign film for the Ripples Live Scores display: real-time match tracking on the bar counter during the tournament.", p:6},
+       desc:"Campaign film for the Ripples Live Scores display: real-time match tracking on the bar counter during the tournament, built from Midjourney concept art and finished in Premiere.", p:6},
       {title:"Amazon Ripple Maker", sub:"Product Film", cat:"Brand Stories", format:"Product film", role:"To be filled", desc:"Placeholder: product film for the Ripple Maker on Amazon.", p:5},
       {title:"Cocktail Recipe Films", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/cocktail-poster.jpg", video:"media/cocktail.mp4",
-       desc:"Social recipe series: Hendrick's gin cocktail, step by step.", p:2},
+       desc:"Social recipe series: Hendrick's gin cocktail, step by step, shot on the Ripple Maker and finished in Premiere with Photoshop retouching.", p:2},
       {title:"Matcha Recipe Film", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/matcha-poster.jpg", video:"media/matcha.mp4",
-       desc:"Social recipe series: matcha latte, step by step.", p:3},
+       desc:"Social recipe series: matcha latte, step by step, shot on the Ripple Maker and finished in Premiere with Photoshop retouching.", p:3},
       {title:"Seasonal Campaigns", sub:"Winter Olympics", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/winter-poster.jpg", video:"media/winter-olympics.mp4",
-       desc:"Seasonal latte art: Winter Olympics skier design on the Ripples display.", p:8},
+       desc:"Seasonal latte art: a Winter Olympics skier design on the Ripples display, animated with Kling and composited in After Effects.", p:8},
       {title:"Summer Campaign", sub:"Seasonal", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/summer-poster.jpg", video:"media/summer.mp4",
-       desc:"Seasonal styling shot: summer lemon cocktail.", p:2},
+       desc:"Seasonal styling shot: a summer lemon cocktail, art-directed in Midjourney and finished in Photoshop and Premiere.", p:2},
       {title:"Year of the Horse", sub:"Lunar New Year", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/horse-poster.jpg", video:"media/horse.mp4",
@@ -376,13 +386,17 @@ const DATA = {
   ],
   cases:[
     {title:"Concept Development", sub:"From idea to story", icon:"bulb",
-     cat:"Case Studies", format:"Process", role:"To be filled", desc:"Placeholder: how an idea becomes a story: research, references, concept decks."},
+     cat:"Case Studies", format:"Process", role:"Creator",
+     desc:"Every project starts as a one-line brief: a brand, a character, a moment worth capturing. From there it's research and reference-gathering, then a concept deck that pins down the tone, the visual world, and the story arc before a single frame gets made."},
     {title:"Storyboard & Visual Language", sub:"Frames that tell the story", icon:"board",
-     cat:"Case Studies", format:"Process", role:"To be filled", desc:"Placeholder: storyboarding and defining the visual language per project."},
+     cat:"Case Studies", format:"Process", role:"Director",
+     desc:"Once the concept is set, it gets broken into shots: a storyboard that plans pacing, framing, and transitions, alongside a visual language pass: palette, typography, and motion rules that keep every frame recognizably part of the same world."},
     {title:"AI Production", sub:"Tools, process, and craft", icon:"clap",
-     cat:"Case Studies", format:"Process", role:"To be filled", desc:"Placeholder: the AI production stack: tools, workflow and craft."},
+     cat:"Case Studies", format:"Process", role:"Creator",
+     desc:"Midjourney and Nano Banana build the still frames and character designs; VEO3 and Kling bring them to motion. Photoshop cleans up the details, and After Effects and Premiere handle compositing, pacing, and the final cut: AI as a tool in the process, not a shortcut around it."},
     {title:"Results & Impact", sub:"Made to connect", icon:"chart",
-     cat:"Case Studies", format:"Process", role:"To be filled", desc:"Placeholder: outcomes and impact: metrics, reach, response."}
+     cat:"Case Studies", format:"Process", role:"Creator",
+     desc:"The measure of a good film isn't the render: it's whether people stop scrolling, share it, or remember the brand a week later. Every project here is built with that endpoint in mind, from the first concept sketch to the final export."}
   ]
 };
 
@@ -586,6 +600,13 @@ document.addEventListener("keydown",e=>{
 /* ---------- nav ---------- */
 addEventListener("scroll",()=>{
   document.getElementById("topbar").classList.toggle("solid", scrollY>40);
+});
+
+/* ---------- footer showreel link ---------- */
+document.getElementById("footShowreelLink").addEventListener("click", e=>{
+  e.preventDefault();
+  const idx=registry.findIndex(it=>it.title==="Showreel");
+  if(idx>-1) openModal(idx);
 });
 </script>
 </body>

@@ -10,8 +10,8 @@
 <style>
   :root{
     /* Matches the main portfolio's color-experiment: black ground, violet/pink/lime, Baloo 2. */
-    --bg:#F7F0E3; --bg-card:#EFE3CC; --ink:#4A3428; --ink-dim:#7A6C5D;
-    --accent:#1B94A6; --pink:#1B94A6; --lime:#1B94A6;
+    --bg:#1A1A1A; --bg-card:#242424; --ink:#F2EDE5; --ink-dim:#B5ADA3;
+    --accent:#1FA8BC; --pink:#1FA8BC; --lime:#1FA8BC;
     --serif:"Archivo",sans-serif;
     --sans:"Archivo",sans-serif;
     --signature:"Caveat",cursive;
@@ -25,7 +25,7 @@
 
   header{position:sticky; top:0; z-index:20; display:flex; align-items:center;
     justify-content:space-between; padding:1.3rem 4%; background:var(--bg);
-    border-bottom:1px solid rgba(0,0,0,.08)}
+    border-bottom:1px solid rgba(255,255,255,.08)}
   .logo{font-family:var(--signature); font-weight:700; font-size:1.7rem; letter-spacing:.01em;
     text-decoration:none; color:var(--accent)}
   .back{display:inline-flex; align-items:center; gap:.5rem; font-size:.82rem;
@@ -40,16 +40,16 @@
     }
   .hero h1{font-family:var(--serif); font-weight:800; font-size:clamp(2.4rem,5.5vw,3.8rem);
     letter-spacing:-.01em; line-height:1.2; text-wrap:balance}
-  .hero h1 .marker{display:inline-block; background:var(--accent); color:#F7F0E3;
+  .hero h1 .marker{display:inline-block; background:var(--accent); color:var(--bg);
     padding:.05em .2em; border-radius:2px; transform:rotate(-1.5deg)}
   .hero p{max-width:56ch; color:var(--ink-dim); font-size:1.08rem; line-height:1.6}
 
   .section-label{display:flex; align-items:center; gap:.9rem; margin:0 0 1.6rem;
     font-size:.78rem; font-weight:700; letter-spacing:.2em; color:var(--ink-dim)}
-  .section-label::after{content:""; flex:1; height:1px; background:rgba(0,0,0,.1)}
+  .section-label::after{content:""; flex:1; height:1px; background:rgba(255,255,255,.1)}
 
   .bag-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1.6rem; margin-bottom:5rem}
-  .bag-card figure{background:var(--bg-card); border:1px solid rgba(0,0,0,.08); border-radius:6px; overflow:hidden;
+  .bag-card figure{background:var(--bg-card); border:1px solid rgba(255,255,255,.08); border-radius:6px; overflow:hidden;
     aspect-ratio:4/3; display:flex; align-items:center; justify-content:center}
   .bag-card img{width:100%; height:100%; object-fit:contain; padding:.5rem}
   .bag-card .who{margin-top:1rem; font-size:.72rem; font-weight:700; letter-spacing:.2em;
@@ -67,7 +67,7 @@
   .feature{display:grid; grid-template-columns:1.1fr 1fr; gap:3.2rem; align-items:center; margin-bottom:5.5rem}
   .feature.reverse{grid-template-columns:1fr 1.1fr}
   .feature.reverse .feature-media{order:2}
-  .feature-media{border-radius:6px; overflow:hidden; background:var(--bg-card); border:1px solid rgba(0,0,0,.08);
+  .feature-media{border-radius:6px; overflow:hidden; background:var(--bg-card); border:1px solid rgba(255,255,255,.08);
     display:flex; align-items:center; justify-content:center; aspect-ratio:4/3}
   .feature-media img{width:100%; height:100%; object-fit:contain; padding:.5rem}
   .feature-text .eyebrow{margin-bottom:.6rem}
@@ -75,14 +75,14 @@
   .feature-text p{color:var(--ink-dim); font-size:1rem; line-height:1.65; max-width:42ch}
 
   .gallery{display:grid; grid-template-columns:repeat(4, 1fr); gap:1.1rem; margin-bottom:4rem}
-  .gallery figure{border-radius:6px; overflow:hidden; background:var(--bg-card); border:1px solid rgba(0,0,0,.08);
+  .gallery figure{border-radius:6px; overflow:hidden; background:var(--bg-card); border:1px solid rgba(255,255,255,.08);
     aspect-ratio:3/4; cursor:pointer; display:flex; align-items:center; justify-content:center}
   .gallery img{width:100%; height:100%; object-fit:contain; padding:.5rem}
   .gallery figcaption{margin-top:.6rem; font-size:.75rem; letter-spacing:.06em;
     color:var(--ink-dim); text-align:center}
 
   footer{padding:3rem 4% 4rem; text-align:center; color:var(--ink-dim); font-size:.85rem;
-    border-top:1px solid rgba(0,0,0,.08)}
+    border-top:1px solid rgba(255,255,255,.08)}
   footer a{text-decoration:none; font-weight:700}
 
   @media (max-width:820px){

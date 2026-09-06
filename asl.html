@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ASL Alphabet — Talia Naiman</title>
+<title>ASL Alphabet: Talia Naiman</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#000000; --bg-card:#120C1C; --ink:#ffffff; --ink-dim:#c7bfe0;
-    --accent:#8A4DFF; --pink:#F0399F; --lime:#D6F32C;
-    --serif:"Nanum Pen Script","Baloo 2",cursive;
-    --sans:"Nanum Pen Script","Baloo 2",cursive;
+    --bg:#F7F0E3; --bg-card:#EFE3CC; --ink:#4A3428; --ink-dim:#7A6C5D;
+    --accent:#1B94A6; --pink:#1B94A6; --lime:#1B94A6;
+    --serif:"Archivo",sans-serif;
+    --sans:"Archivo",sans-serif;
+    --signature:"Caveat",cursive;
   }
   *{box-sizing:border-box; margin:0; padding:0}
   html,body{background:var(--bg); color:var(--ink); font-family:var(--sans);
@@ -23,9 +24,9 @@
 
   header{position:sticky; top:0; z-index:20; display:flex; align-items:center;
     justify-content:space-between; padding:1.3rem 4%; background:var(--bg);
-    border-bottom:1px solid rgba(255,255,255,.1)}
-  .logo{font-family:var(--serif); font-weight:700; font-size:1.15rem; letter-spacing:.04em;
-    text-decoration:none}
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .logo{font-family:var(--signature); font-weight:700; font-size:1.7rem; letter-spacing:.01em;
+    text-decoration:none; color:var(--accent)}
   .back{display:inline-flex; align-items:center; gap:.5rem; font-size:.82rem;
     letter-spacing:.08em; text-decoration:none; color:var(--ink)}
   .back svg{width:1.1em; height:1.1em}
@@ -38,14 +39,14 @@
   .eyebrow{color:var(--pink); font-weight:700; font-size:.78rem; letter-spacing:.26em}
   .hero h1{font-family:var(--serif); font-weight:800; font-size:clamp(2.6rem,6vw,4.2rem);
     letter-spacing:-.01em; line-height:1.2; text-wrap:balance}
-  .hero h1 .marker{display:inline-block; background:var(--lime); color:#000;
+  .hero h1 .marker{display:inline-block; background:var(--accent); color:#F7F0E3;
     padding:.05em .2em; border-radius:2px; transform:rotate(-1.5deg)}
   .hero p{max-width:56ch; color:var(--ink-dim); font-size:1.08rem; line-height:1.6}
   .hero-gif{width:260px; max-width:60vw; filter:invert(1); mix-blend-mode:screen}
 
   .section-label{display:flex; align-items:center; gap:.9rem; margin:0 0 1.6rem;
     font-size:.78rem; font-weight:700; letter-spacing:.2em; color:var(--ink-dim)}
-  .section-label::after{content:""; flex:1; height:1px; background:rgba(255,255,255,.15)}
+  .section-label::after{content:""; flex:1; height:1px; background:rgba(0,0,0,.1)}
 
   .signs-grid{display:grid; grid-template-columns:repeat(6, 1fr); gap:1rem; margin-bottom:5rem}
   .sign-card{cursor:pointer; text-align:center; display:flex; flex-direction:column; gap:.5rem}
@@ -88,10 +89,10 @@
   .lb-close{position:absolute; top:-3.4rem; right:0; width:40px; height:40px; border-radius:50%;
     background:rgba(255,255,255,.1); color:#fff; display:flex; align-items:center; justify-content:center}
   .lb-caption{position:absolute; left:0; right:0; bottom:-2.3rem; text-align:center;
-    color:var(--ink-dim); font-size:.8rem; letter-spacing:.08em}
+    color:#c9c2be; font-size:.8rem; letter-spacing:.08em}
 
   footer{padding:3rem 4% 4rem; text-align:center; color:var(--ink-dim); font-size:.85rem;
-    border-top:1px solid rgba(255,255,255,.1)}
+    border-top:1px solid rgba(0,0,0,.08)}
   footer a{text-decoration:none; font-weight:700}
 
   @media (max-width:820px){ .signs-grid{grid-template-columns:repeat(4, 1fr)} }
@@ -115,13 +116,13 @@
     <div class="hero-content">
       <span class="eyebrow">AI Concept Series</span>
       <h1>The ASL <span class="marker">Alphabet</span></h1>
-      <p>Twenty-six letters, twenty-six original illustrations — each sign-language
+      <p>Twenty-six letters, twenty-six original hand-drawn illustrations: each sign-language
          handshape paired with an animal that shares its letter.</p>
     </div>
     <img class="hero-gif" src="media/asl/asl-alphabet.gif" alt="ASL alphabet, animated">
   </section>
 
-  <div class="section-label">The Letters — Original Illustrations</div>
+  <div class="section-label">The Letters: Original Hand-Drawn Illustrations</div>
   <div class="signs-grid">
     <div class="sign-card"><figure><img src="media/asl/a.jpg" alt="ASL letter A illustration"></figure><figcaption>A</figcaption></div>
     <div class="sign-card"><figure><img src="media/asl/b.jpg" alt="ASL letter B illustration"></figure><figcaption>B</figcaption></div>
@@ -203,7 +204,7 @@
   function render(){
     const card=cards[i], img=card.querySelector('img');
     lbImg.src=img.src; lbImg.alt=img.alt;
-    lbCaption.textContent=`${card.querySelector('figcaption').textContent} — ${i+1} / ${cards.length}`;
+    lbCaption.textContent=`${card.querySelector('figcaption').textContent}: ${i+1} / ${cards.length}`;
   }
   function open(idx){ i=idx; render(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
   function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }

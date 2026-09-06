@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Talia Naiman — Portfolio</title>
+<title>Talia Naiman: Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* REPETTO-inspired v5 — cream ground, mocha-brown ink, and a turquoise accent
+    /* REPETTO-inspired v5: cream ground, mocha-brown ink, and a turquoise accent
        (sampled from the necklace in the hero photo) for the signature and highlights. */
     --bg:#F7F0E3; --bg-card:#EFE3CC; --bg-raised:#E6D6B8;
     --accent:#1B94A6; --ink:#4A3428;
@@ -58,7 +58,7 @@
   .hero-art::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
     background:linear-gradient(to top, var(--bg) 0%, transparent 22%),
                linear-gradient(to bottom, var(--bg) 0%, transparent 16%)}
-  /* Light scrim under the text column alone — guarantees the (always-dark) hero text
+  /* Light scrim under the text column alone: guarantees the (always-dark) hero text
      stays legible even where hero-art's own photo panel doesn't reach (wide viewports). */
   .hero::before{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
     background:linear-gradient(to right, rgba(247,240,227,.72) 0%, rgba(247,240,227,.72) 42%, transparent 66%)}
@@ -92,15 +92,7 @@
   .row-head .chev{color:var(--red); display:flex}
   .row-head .chev svg{width:1em; height:1em}
   .strip-wrap{position:relative}
-  .strip{display:flex; gap:14px; overflow-x:auto; scroll-behavior:smooth;
-    padding:12px 2.6%; scrollbar-width:none}
-  .strip::-webkit-scrollbar{display:none}
-  .arrow{position:absolute; top:0; bottom:0; width:2.4%; z-index:5;
-    display:flex; align-items:center; justify-content:center;
-    background:rgba(247,240,227,.9); color:var(--ink); box-shadow:var(--shadow); opacity:0; transition:opacity .2s}
-  .strip-wrap:hover .arrow,.arrow:focus-visible{opacity:1}
-  .arrow svg{width:1.9rem; height:1.9rem}
-  .arrow.prev{left:0} .arrow.next{right:0}
+  .strip{display:flex; flex-wrap:wrap; gap:14px; padding:12px 2.6%}
 
   .card{position:relative; flex:0 0 auto; width:min(345px,72vw); aspect-ratio:16/9;
     border-radius:4px; overflow:hidden; background:var(--bg-card); text-align:left;
@@ -227,7 +219,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <button class="hero-art" data-open="0" aria-label="Play How I Met Talia Naiman">
-    <img id="heroPoster" src="media/hero-loop.gif" alt="Talia Naiman — How I Met Talia Naiman, series still">
+    <img id="heroPoster" src="media/hero-loop.gif" alt="Talia Naiman: How I Met Talia Naiman, series still">
   </button>
   <div class="hero-content">
     <span class="eyebrow">New Series</span>
@@ -294,7 +286,7 @@
     <a href="https://www.linkedin.com/in/talianaiman/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="#">Showreel</a>
   </div>
-  <p class="proto-note"><strong>Build note:</strong> real hosting — media loads from files in this
+  <p class="proto-note"><strong>Build note:</strong> real hosting: media loads from files in this
     repo instead of being embedded in the page, so there's no size ceiling.
     Cards without a photo/video yet still show placeholder art; they'll be replaced as footage comes in.</p>
 </footer>
@@ -314,41 +306,41 @@ const DATA = {
       {title:"Showreel", sub:"Selected Works", cat:"Documentary", format:"Showreel", role:"Director · Editor",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/showreel-poster.jpg", video:"showreel2025.mp4",
-       desc:"Selected works reel — 2025 highlights.", p:1},
-      {title:"Behind the Process", sub:"Creative Journey", cat:"Documentary", format:"Behind the scenes", role:"Creator", desc:"Placeholder — a look into the creative journey: moodboards, drafts, iterations.", p:2}
+       desc:"Selected works reel: 2025 highlights.", p:1},
+      {title:"Behind the Process", sub:"Creative Journey", cat:"Documentary", format:"Behind the scenes", role:"Creator", desc:"Placeholder: a look into the creative journey: moodboards, drafts, iterations.", p:2}
     ]},
     {id:"row-brand", name:"Brand Stories", items:[
       {title:"FIFA Live Scores", sub:"Campaign Film", cat:"Brand Stories", format:"Campaign film", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/fifa-poster.jpg", video:"fifa21mg.mp4",
-       desc:"Campaign film for the Ripples Live Scores display — real-time match tracking on the bar counter during the tournament.", p:6},
-      {title:"Amazon Ripple Maker", sub:"Product Film", cat:"Brand Stories", format:"Product film", role:"To be filled", desc:"Placeholder — product film for the Ripple Maker on Amazon.", p:5},
+       desc:"Campaign film for the Ripples Live Scores display: real-time match tracking on the bar counter during the tournament.", p:6},
+      {title:"Amazon Ripple Maker", sub:"Product Film", cat:"Brand Stories", format:"Product film", role:"To be filled", desc:"Placeholder: product film for the Ripple Maker on Amazon.", p:5},
       {title:"Cocktail Recipe Films", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/cocktail-poster.jpg", video:"media/cocktail.mp4",
-       desc:"Social recipe series — Hendrick's gin cocktail, step by step.", p:2},
+       desc:"Social recipe series: Hendrick's gin cocktail, step by step.", p:2},
       {title:"Matcha Recipe Film", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/matcha-poster.jpg", video:"media/matcha.mp4",
-       desc:"Social recipe series — matcha latte, step by step.", p:3},
+       desc:"Social recipe series: matcha latte, step by step.", p:3},
       {title:"Seasonal Campaigns", sub:"Winter Olympics", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/winter-poster.jpg", video:"media/winter-olympics.mp4",
-       desc:"Seasonal latte art — Winter Olympics skier design on the Ripples display.", p:8},
+       desc:"Seasonal latte art: Winter Olympics skier design on the Ripples display.", p:8},
       {title:"Summer Campaign", sub:"Seasonal", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/summer-poster.jpg", video:"media/summer.mp4",
-       desc:"Seasonal styling shot — summer lemon cocktail.", p:2},
+       desc:"Seasonal styling shot: summer lemon cocktail.", p:2},
       {title:"Year of the Horse", sub:"Lunar New Year", cat:"Brand Stories", format:"Multi-format campaign", role:"To be filled",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/horse-poster.jpg", video:"media/horse.mp4",
-       desc:"Seasonal campaign — Lunar New Year, Year of the Horse.", p:6}
+       desc:"Seasonal campaign: Lunar New Year, Year of the Horse.", p:6}
     ]},
     {id:"row-ai", name:"AI Films", items:[
       {title:"Friday the 13th", sub:"AI Short Film", cat:"AI Films", format:"AI short film", role:"Creator",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/friday-13th-poster.jpg", video:"media/friday-the-13th.mp4",
-       desc:"AI-made short film — a Friday the 13th latte-art gag.", p:4},
+       desc:"AI-made short film: a Friday the 13th latte-art gag.", p:4},
       {title:"Beatles Day", sub:"AI Film", cat:"AI Films", format:"AI film", role:"Creator",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/beatles-poster.jpg", video:"media/beatles.mp4",
@@ -356,7 +348,7 @@ const DATA = {
       {title:"Captain Cruz", sub:"Disney Cruise Line", cat:"AI Films", format:"Campaign film", role:"Creator",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/captain-cruz/captain-cruz-poster.jpg", video:"media/captain-cruz/captain-cruz.mp4",
-       desc:"A custom film made for Disney Cruise Line — Captain Mickey pours the coffee, latte art and all.", p:3},
+       desc:"A custom film made for Disney Cruise Line: Captain Mickey pours the coffee, latte art and all.", p:3},
       {title:"Zodiac Series", sub:"AI Concepts", cat:"AI Films", format:"Concept series", role:"Creator",
        img:"media/zodiac/wheel.gif", href:"zodiac.html", fit:"contain",
        desc:"Twelve signs, twelve original illustrations, and a short film for each.", p:7},
@@ -367,16 +359,16 @@ const DATA = {
     {id:"row-branding", name:"Branding", items:[
       {title:"Mmm...Coffee × The Simpsons", sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
        img:"media/branding/machine.jpg", href:"mmm-coffee.html",
-       desc:"A full identity for a Springfield coffee roaster — character-driven bags, a shop fit-out, and a machine that belongs on Evergreen Terrace.", p:8},
+       desc:"A full identity for a Springfield coffee roaster: character-driven bags, a shop fit-out, and a machine that belongs on Evergreen Terrace.", p:8},
       {title:"1-UP Coffee × Super Mario", sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
        img:"media/mario/mug.jpg", href:"1up-coffee.html",
-       desc:"A full identity for a Mushroom Kingdom coffee roaster — brick-pattern packaging, a question-block mug, and a jolt strong enough for an extra life.", p:6},
+       desc:"A full identity for a Mushroom Kingdom coffee roaster: brick-pattern packaging, a question-block mug, and a jolt strong enough for an extra life.", p:6},
       {title:"My Neighbor Coffee Co. × Totoro", sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
        img:"media/totoro/machine.jpg", href:"totoro.html",
-       desc:"A full identity for a forest-spirit coffee roaster — hand-illustrated bags, a shop that feels like stepping into the woods, and a machine with a face everyone recognizes.", p:9},
+       desc:"A full identity for a forest-spirit coffee roaster: hand-illustrated bags, a shop that feels like stepping into the woods, and a machine with a face everyone recognizes.", p:9},
       {title:"Round Kid Coffee House", sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
        img:"media/round-kid/cup-only.jpg", href:"round-kid.html",
-       desc:"A full identity built around one hand-drawn character — five original illustrations carried from the logo mark to the cup, the bag and the shop window.", p:5}
+       desc:"A full identity built around one hand-drawn character: five original illustrations carried from the logo mark to the cup, the bag and the shop window.", p:5}
     ]},
     {id:"row-art", name:"Art", items:[
       {title:"Art", sub:"Original Illustrations", cat:"Art", img:"media/art/swans_flock.jpg", lightbox:"art", p:5}
@@ -384,17 +376,17 @@ const DATA = {
   ],
   cases:[
     {title:"Concept Development", sub:"From idea to story", icon:"bulb",
-     cat:"Case Studies", format:"Process", role:"—", desc:"Placeholder — how an idea becomes a story: research, references, concept decks."},
+     cat:"Case Studies", format:"Process", role:"To be filled", desc:"Placeholder: how an idea becomes a story: research, references, concept decks."},
     {title:"Storyboard & Visual Language", sub:"Frames that tell the story", icon:"board",
-     cat:"Case Studies", format:"Process", role:"—", desc:"Placeholder — storyboarding and defining the visual language per project."},
+     cat:"Case Studies", format:"Process", role:"To be filled", desc:"Placeholder: storyboarding and defining the visual language per project."},
     {title:"AI Production", sub:"Tools, process, and craft", icon:"clap",
-     cat:"Case Studies", format:"Process", role:"—", desc:"Placeholder — the AI production stack: tools, workflow and craft."},
+     cat:"Case Studies", format:"Process", role:"To be filled", desc:"Placeholder: the AI production stack: tools, workflow and craft."},
     {title:"Results & Impact", sub:"Made to connect", icon:"chart",
-     cat:"Case Studies", format:"Process", role:"—", desc:"Placeholder — outcomes and impact: metrics, reach, response."}
+     cat:"Case Studies", format:"Process", role:"To be filled", desc:"Placeholder: outcomes and impact: metrics, reach, response."}
   ]
 };
 
-/* Full-size illustrations shown in the Art lightbox — this list grows as new pieces come in */
+/* Full-size illustrations shown in the Art lightbox: this list grows as new pieces come in */
 const ART_ITEMS = [
   {title:"Swans in Flight", img:"media/art/swans_flock.jpg"},
   {title:"Crane, Line Study", img:"media/art/crane_line.jpg"},
@@ -503,14 +495,10 @@ function makeRow(id, heading, nodes){
   row.className="row"; row.id=id;
   row.innerHTML=`<h2 class="row-head">${heading}<span class="chev">${icons.chev}</span></h2>
     <div class="strip-wrap">
-      <button class="arrow prev" aria-label="Scroll back">${icons.chevL}</button>
       <div class="strip"></div>
-      <button class="arrow next" aria-label="Scroll forward">${icons.chevR}</button>
     </div>`;
   const strip=row.querySelector(".strip");
   nodes.forEach(n=>strip.appendChild(n));
-  row.querySelector(".prev").onclick=()=>strip.scrollBy({left:-strip.clientWidth*.8, behavior:"smooth"});
-  row.querySelector(".next").onclick=()=>strip.scrollBy({left: strip.clientWidth*.8, behavior:"smooth"});
   return row;
 }
 
@@ -528,8 +516,8 @@ function openModal(idx){
   document.getElementById("modalMeta").innerHTML=
     `<span class="cat">${it.cat||""}</span>${it.sub?`<span>${it.sub}</span>`:""}`;
   document.getElementById("modalDesc").textContent=it.desc||"";
-  document.getElementById("modalRole").textContent=it.role||"—";
-  document.getElementById("modalFormat").textContent=it.format||"—";
+  document.getElementById("modalRole").textContent=it.role||"To be filled";
+  document.getElementById("modalFormat").textContent=it.format||"To be filled";
   document.getElementById("modalTools").textContent=it.tools||"To be filled";
   modal.classList.add("open");
   document.body.style.overflow="hidden";
@@ -573,7 +561,7 @@ function renderLightbox(){
   const item=ART_ITEMS[lbIndex];
   document.getElementById("lbImg").src=item.img;
   document.getElementById("lbImg").alt=item.title;
-  document.getElementById("lbCaption").textContent=`${item.title} — ${lbIndex+1} / ${ART_ITEMS.length}`;
+  document.getElementById("lbCaption").textContent=`${item.title}: ${lbIndex+1} / ${ART_ITEMS.length}`;
 }
 function openLightbox(idx){
   lbIndex=idx; renderLightbox();

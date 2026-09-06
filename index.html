@@ -94,7 +94,7 @@
   .strip-wrap{position:relative}
   .strip{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; padding:12px 2.6%}
 
-  .card{position:relative; width:100%; aspect-ratio:16/9;
+  .card{position:relative; width:100%; aspect-ratio:16/9; isolation:isolate;
     border-radius:4px; overflow:hidden; background:var(--bg-card); text-align:left;
     transition:transform .25s ease, box-shadow .25s ease}
   .card:hover,.card:focus-visible{transform:scale(1.08); z-index:4; box-shadow:var(--shadow)}

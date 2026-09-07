@@ -112,18 +112,6 @@
   .card:hover .playhint{opacity:1}
   .playhint svg{width:50px; height:50px; filter:drop-shadow(0 2px 8px rgba(0,0,0,.7))}
 
-  /* Case-study cards */
-  .cs-card{position:relative; flex:0 0 auto; width:min(345px,72vw); min-height:96px;
-    border-radius:4px; background:var(--bg-raised); text-align:left;
-    display:flex; align-items:center; gap:1.1rem; padding:1.2rem 1.4rem;
-    transition:transform .25s ease, background-color .25s}
-  .cs-card:hover,.cs-card:focus-visible{transform:scale(1.05); background:#3a3a3a; z-index:4}
-  .cs-card .icon{flex:0 0 auto; width:44px; height:44px; color:var(--red)}
-  .cs-card .icon svg{width:100%; height:100%}
-  .cs-card strong{display:block; font-size:.88rem; font-weight:700; letter-spacing:.1em;
-    margin-bottom:4px}
-  .cs-card span{font-size:.8rem; color:var(--grey)}
-
   /* ---------- Modal ---------- */
   #modal{position:fixed; inset:0; z-index:90; display:none; align-items:flex-start;
     justify-content:center; overflow-y:auto; background:rgba(0,0,0,.75); padding:4vh 1rem}
@@ -393,20 +381,6 @@ const DATA = {
     {id:"row-art", name:"Art", items:[
       {title:"Art", sub:"Original Illustrations", cat:"Art", img:"media/art/swans_flock.jpg", lightbox:"art", p:5}
     ]}
-  ],
-  cases:[
-    {title:"Concept Development", sub:"From idea to story", icon:"bulb",
-     cat:"Case Studies", format:"Process", role:"Creator",
-     desc:"Every project starts as a one-line brief: a brand, a character, a moment worth capturing. From there it's research and reference-gathering, then a concept deck that pins down the tone, the visual world, and the story arc before a single frame gets made."},
-    {title:"Storyboard & Visual Language", sub:"Frames that tell the story", icon:"board",
-     cat:"Case Studies", format:"Process", role:"Director",
-     desc:"Once the concept is set, it gets broken into shots: a storyboard that plans pacing, framing, and transitions, alongside a visual language pass: palette, typography, and motion rules that keep every frame recognizably part of the same world."},
-    {title:"AI Production", sub:"Tools, process, and craft", icon:"clap",
-     cat:"Case Studies", format:"Process", role:"Creator",
-     desc:"Midjourney and Nano Banana build the still frames and character designs; VEO3 and Kling bring them to motion. Photoshop cleans up the details, and After Effects and Premiere handle compositing, pacing, and the final cut: AI as a tool in the process, not a shortcut around it."},
-    {title:"Results & Impact", sub:"Made to connect", icon:"chart",
-     cat:"Case Studies", format:"Process", role:"Creator",
-     desc:"The measure of a good film isn't the render: it's whether people stop scrolling, share it, or remember the brand a week later. Every project here is built with that endpoint in mind, from the first concept sketch to the final export."}
   ]
 };
 
@@ -502,15 +476,6 @@ function makeCard(item){
     </span>`;
   const cv=b.querySelector("canvas");
   if(cv) requestAnimationFrame(()=>paint(cv, item.p, item.title));
-  return b;
-}
-
-function makeCaseCard(item){
-  const idx=registry.push(item)-1;
-  const b=document.createElement("button");
-  b.className="cs-card"; b.dataset.open=idx;
-  b.innerHTML=`<span class="icon">${icons[item.icon]}</span>
-    <span><strong>${item.title}</strong><span>${item.sub}</span></span>`;
   return b;
 }
 

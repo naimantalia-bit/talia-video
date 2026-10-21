@@ -92,6 +92,7 @@
   .row-head .chev{color:var(--red); display:flex}
   .row-head .chev svg{width:1em; height:1em}
   .strip-wrap{position:relative}
+  .strip>.card:only-child{aspect-ratio:21/9}
   .strip{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; padding:12px 2.6%}
 
   .card{position:relative; width:100%; aspect-ratio:16/9; isolation:isolate;
@@ -344,6 +345,10 @@ const DATA = {
        img:"media/horse-poster.jpg", video:"media/horse.mp4",
        desc:"Seasonal campaign: Lunar New Year, Year of the Horse.", p:6}
     ]},
+    {id:"row-upside", name:"Campaign Case Study", items:[
+      {title:"Till Cash Back Do Us Part", sub:"Upside Campaign", cat:"Campaign Case Study", img:"media/upside/upside-poster.jpg",
+       href:"https://naimantalia-bit.github.io/UP/", p:6}
+    ]},
     {id:"row-ai", name:"AI Films", items:[
       {title:"Friday the 13th", sub:"Short Film", cat:"AI Films", format:"Short film", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
@@ -463,7 +468,10 @@ function makeCard(item){
   const idx=registry.push(item)-1;
   const b=document.createElement(item.href ? "a" : "button");
   b.className="card"+(item.serif?" serif-title":"")+(item.fit==="contain"?" fit-contain":"");
-  if(item.href) b.href=item.href;
+  if(item.href){
+    b.href=item.href;
+    if(/^https?:/.test(item.href)){ b.target="_blank"; b.rel="noopener"; }
+  }
   else if(item.lightbox) b.dataset.lightbox=item.lightbox;
   else { b.dataset.open=idx; b.dataset.p=item.p; }
   b.innerHTML=`

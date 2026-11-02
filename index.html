@@ -468,10 +468,7 @@ function makeCard(item){
   const idx=registry.push(item)-1;
   const b=document.createElement(item.href ? "a" : "button");
   b.className="card"+(item.serif?" serif-title":"")+(item.fit==="contain"?" fit-contain":"");
-  if(item.href){
-    b.href=item.href;
-    if(/^https?:/.test(item.href)){ b.target="_blank"; b.rel="noopener"; }
-  }
+  if(item.href) b.href=item.href;
   else if(item.lightbox) b.dataset.lightbox=item.lightbox;
   else { b.dataset.open=idx; b.dataset.p=item.p; }
   b.innerHTML=`

@@ -10,7 +10,7 @@
 <style>
   :root{
     --gap:#E4E4E4; --bg:#F4F4F4; --bg-card:#E9E9E9;
-    --accent:#E8452C; --red:#E8452C; --ink:#111111;
+    --accent:#F2478F; --red:#F2478F; --ink:#111111;
     --white:#ffffff; --grey:#5E5E5E; --grey-dim:#8C8C8C;
     --line:#D6D6D6;
     --sans:"Inter Tight","Helvetica Neue",Arial,sans-serif;
@@ -50,22 +50,13 @@
   .bigplus{position:absolute; top:44px; right:8.5%; font-size:3.4rem; line-height:1; font-weight:400; color:var(--accent)}
 
   /* ---------- Hero ---------- */
-  .hero{display:grid; grid-template-columns:minmax(240px,34%) 1fr; gap:4.5%; align-items:center; min-height:calc(88vh - 60px)}
-  .hero-art{position:relative; display:block; width:100%; aspect-ratio:4/5; background:var(--bg-card); cursor:pointer}
-  .hero-art img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:62% 14%}
-  .hero-art .bigplus{top:-.62em; right:-.36em}
-  .hero-content{display:flex; flex-direction:column; gap:1.1rem; max-width:620px}
-  .eyebrow{color:var(--accent); font-size:.8rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase}
-  .hero h1{font-weight:500; font-size:clamp(2.4rem,5.6vw,4.6rem); line-height:.98; letter-spacing:-.055em; text-wrap:balance}
-  .hero p{font-size:1.02rem; line-height:1.5; color:var(--grey); max-width:44ch}
-  .hero-btns{display:flex; gap:.7rem; margin-top:.5rem}
-  .btn{display:inline-flex; align-items:center; gap:.55rem; padding:.7rem 1.5rem; border-radius:999px;
-    font-weight:600; font-size:.88rem; transition:background-color .2s, color .2s}
-  .btn svg{width:1em; height:1em}
-  .btn-play{background:var(--ink); color:var(--bg)}
-  .btn-play:hover{background:var(--accent)}
-  .btn-info{color:var(--ink); border:1.5px solid var(--ink)}
-  .btn-info:hover{background:var(--ink); color:var(--bg)}
+  .hero-art{position:relative; display:block; width:100%; aspect-ratio:16/9; background:#000; cursor:pointer; overflow:hidden}
+  .hero-art img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
+  .hero-art:hover img{transform:scale(1.02)}
+  .hero-play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center}
+  .hero-play svg{width:76px; height:76px; transition:transform .2s}
+  .hero-art:hover .hero-play svg{transform:scale(1.08)}
+  .hero-cap{margin-top:1rem; font-size:.95rem; line-height:1.5; color:var(--grey); max-width:52ch}
 
   /* ---------- About ---------- */
   .about-wrap{display:grid; grid-template-columns:minmax(180px,24%) 1fr; gap:4.5%; align-items:start}
@@ -145,8 +136,6 @@
     nav{display:none}
     header{justify-content:space-between}
     .slide{padding:44px 12% 70px 6%}
-    .hero{grid-template-columns:1fr; min-height:0}
-    .hero-art{max-width:340px}
     .about-wrap{grid-template-columns:1fr}
     .about-photo{max-width:220px}
     .about-bio{columns:1}
@@ -184,23 +173,13 @@
 
 <!-- ============ HERO ============ -->
 <section class="slide hero" id="hero">
+  <h1 class="slide-head"><span class="plus">+</span>How I Met Talia Naiman</h1>
+  <span class="bigplus" aria-hidden="true">+</span>
   <button class="hero-art" data-open="0" aria-label="Play How I Met Talia Naiman">
     <img id="heroPoster" src="media/hero-loop.gif" alt="Talia Naiman: How I Met Talia Naiman, series still">
-    <span class="bigplus" aria-hidden="true">+</span>
+    <span class="hero-play" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" fill="rgba(0,0,0,.45)" stroke="#fff" stroke-width="2"/><path d="M19 15l14 9-14 9z" fill="#fff"/></svg></span>
   </button>
-  <div class="hero-content">
-    <span class="eyebrow">New Series</span>
-    <h1>How I Met Talia Naiman</h1>
-    <p>A witty visual docu-series about the woman behind the worlds.</p>
-    <div class="hero-btns">
-      <button class="btn btn-play" data-open="0">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg> Play
-      </button>
-      <button class="btn btn-info" data-open="0">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7.5v.01"/></svg> More Info
-      </button>
-    </div>
-  </div>
+  <p class="hero-cap">A witty visual docu-series about the woman behind the worlds.</p>
   <span class="pn"></span>
 </section>
 

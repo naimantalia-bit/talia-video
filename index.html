@@ -6,186 +6,155 @@
 <title>Talia Naiman: Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* REPETTO-inspired v6: 75%-black (not pure black) ground, light warm ink, and the
-       turquoise accent (sampled from the necklace in the hero photo) for the signature. */
-    --bg:#1A1A1A; --bg-card:#242424; --bg-raised:#2E2E2E;
-    --accent:#1FA8BC; --ink:#F2EDE5;
-    --red:#1FA8BC;
-    --white:#ffffff; --grey:#B5ADA3; --grey-dim:#8A8078;
-    --line:#565656;
-    --sans:"Archivo",sans-serif;
-    --signature:"Caveat",cursive;
-    --shadow:0 12px 30px rgba(0,0,0,.4);
-    color-scheme:dark;
+    --gap:#E4E4E4; --bg:#F4F4F4; --bg-card:#E9E9E9;
+    --accent:#E8452C; --red:#E8452C; --ink:#111111;
+    --white:#ffffff; --grey:#5E5E5E; --grey-dim:#8C8C8C;
+    --line:#D6D6D6;
+    --sans:"Inter Tight","Helvetica Neue",Arial,sans-serif;
+    --shadow:0 18px 40px rgba(0,0,0,.18);
+    color-scheme:light;
   }
   *{box-sizing:border-box; margin:0; padding:0}
-  html,body{background:var(--bg); color:var(--ink); font-family:var(--sans);
+  html{scroll-behavior:smooth}
+  html,body{background:var(--gap); color:var(--ink); font-family:var(--sans);
     -webkit-font-smoothing:antialiased; overflow-x:hidden}
   button{font:inherit; cursor:pointer; border:none; background:none; color:inherit}
   a.card{text-decoration:none; color:inherit}
-  :focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .plus{color:var(--accent); font-weight:500}
 
   /* ---------- Nav ---------- */
   header{position:fixed; top:0; left:0; right:0; z-index:50;
-    display:flex; align-items:center; gap:2.5rem; padding:0 2.6%; height:74px;
-    background:var(--bg); border-bottom:1px solid var(--line);
-    transition:background-color .3s}
-  .logo{font-family:var(--signature); font-weight:700; font-size:2rem; letter-spacing:.01em;
-    white-space:nowrap; color:var(--red)}
-  nav{display:flex; gap:1.9rem; font-size:.8rem; letter-spacing:.08em; margin:0 auto}
-  nav a{color:var(--ink); text-decoration:none;
-    padding:6px 0; border-bottom:2px solid transparent; transition:color .2s}
-  nav a:hover{color:var(--accent)}
-  nav a.active{border-bottom-color:var(--red); font-weight:700}
-  .ig{width:34px; height:34px; display:flex; align-items:center; justify-content:center;
-    border:1.5px solid var(--ink); border-radius:9px; flex:0 0 auto; color:var(--ink)}
-  .ig svg{width:18px; height:18px}
+    display:flex; align-items:center; gap:2.5rem; padding:0 5%; height:60px;
+    background:rgba(244,244,244,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .logo{font-weight:600; font-size:1.2rem; letter-spacing:-.03em; white-space:nowrap; color:var(--ink)}
+  nav{display:flex; gap:1.7rem; font-size:.82rem; letter-spacing:-.01em; margin:0 auto}
+  nav a{color:var(--ink); text-decoration:none; padding:6px 0; transition:color .2s}
+  nav a:hover,nav a.active{color:var(--accent)}
+  .ig{width:32px; height:32px; display:flex; align-items:center; justify-content:center;
+    border:1.5px solid var(--ink); border-radius:8px; flex:0 0 auto; color:var(--ink)}
+  .ig svg{width:17px; height:17px}
+
+  /* ---------- Slides ---------- */
+  body{padding-top:60px}
+  .slide{position:relative; background:var(--bg); margin-bottom:6px; padding:64px 9% 84px 5%; scroll-margin-top:60px}
+  .slide::after{content:""; position:absolute; top:0; bottom:0; right:3.2%; width:1px; background:var(--accent); opacity:.55}
+  .slide .pn{position:absolute; right:calc(3.2% - .34em); bottom:22px; z-index:1; font-size:1.05rem; font-weight:600;
+    letter-spacing:-.03em; background:var(--bg); padding:2px 0 2px 6px; font-variant-numeric:tabular-nums}
+  .slide .pn .plus{margin-left:.18em}
+  .slide-head{font-size:clamp(1.6rem,3vw,2.3rem); font-weight:500; letter-spacing:-.045em; line-height:1.05;
+    display:flex; align-items:baseline; gap:.45em; margin-bottom:2rem}
+  .bigplus{position:absolute; top:44px; right:8.5%; font-size:3.4rem; line-height:1; font-weight:400; color:var(--accent)}
 
   /* ---------- Hero ---------- */
-  .hero{position:relative; min-height:88vh; display:flex; align-items:center;
-    padding:110px 2.6% 70px; overflow:hidden; background:var(--bg)}
-  .hero-art{position:absolute; top:0; right:0; bottom:0; z-index:0;
-    width:clamp(320px,50vw,760px); overflow:hidden; background:var(--bg-card);
-    padding:0; margin:0; display:block; cursor:pointer}
-  .hero-art img{position:absolute; inset:0; width:100%; height:100%;
-    object-fit:cover; object-position:62% 14%; transition:transform .4s ease}
-  .hero-art:hover img{transform:scale(1.03)}
-  .hero-art::before{content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
-    background:linear-gradient(to right, var(--bg) 0%, rgba(26,26,26,.85) 12%, rgba(26,26,26,.3) 38%, transparent 62%)}
-  .hero-art::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
-    background:linear-gradient(to top, var(--bg) 0%, transparent 22%),
-               linear-gradient(to bottom, var(--bg) 0%, transparent 16%)}
-  /* Light scrim under the text column alone: guarantees the (always-dark) hero text
-     stays legible even where hero-art's own photo panel doesn't reach (wide viewports). */
-  .hero::before{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(to right, rgba(26,26,26,.72) 0%, rgba(26,26,26,.72) 42%, transparent 66%)}
-  .hero-content{position:relative; z-index:2; max-width:560px; display:flex; flex-direction:column; gap:1.2rem}
-  @media (max-width:820px){
-    .hero-art{width:100%; left:0}
-    .hero-art::before{background:linear-gradient(to right, var(--bg) 0%, rgba(26,26,26,.88) 40%, rgba(26,26,26,.5) 75%)}
-    .hero-content{max-width:100%}
-  }
-  .eyebrow{color:var(--accent); font-size:.8rem; font-weight:700; letter-spacing:.28em}
-  .hero h1{font-family:var(--sans); font-weight:800; font-size:clamp(2.4rem,5.4vw,4.4rem);
-    line-height:1.2; letter-spacing:-.01em; text-wrap:balance; color:var(--ink)}
-  .hero h1 .marker{display:block; font-family:var(--signature); font-weight:700; color:var(--red);
-    font-size:1.85em; line-height:1; transform:rotate(-3deg); margin-top:.12em}
-  .hero p{font-size:1.15rem; line-height:1.5; color:var(--grey); max-width:38ch}
-  .hero-btns{display:flex; gap:.9rem; margin-top:.6rem}
-  .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.78rem 1.7rem;
-    border-radius:2px; font-weight:600; font-size:.95rem; letter-spacing:.06em;
-    transition:opacity .2s, background-color .2s}
-  .btn svg{width:1.05em; height:1.05em}
+  .hero{display:grid; grid-template-columns:minmax(240px,34%) 1fr; gap:4.5%; align-items:center; min-height:calc(88vh - 60px)}
+  .hero-art{position:relative; display:block; width:100%; aspect-ratio:4/5; background:var(--bg-card); cursor:pointer}
+  .hero-art img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:62% 14%}
+  .hero-art .bigplus{top:-.62em; right:-.36em}
+  .hero-content{display:flex; flex-direction:column; gap:1.1rem; max-width:620px}
+  .eyebrow{color:var(--accent); font-size:.8rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase}
+  .hero h1{font-weight:500; font-size:clamp(2.4rem,5.6vw,4.6rem); line-height:.98; letter-spacing:-.055em; text-wrap:balance}
+  .hero p{font-size:1.02rem; line-height:1.5; color:var(--grey); max-width:44ch}
+  .hero-btns{display:flex; gap:.7rem; margin-top:.5rem}
+  .btn{display:inline-flex; align-items:center; gap:.55rem; padding:.7rem 1.5rem; border-radius:999px;
+    font-weight:600; font-size:.88rem; transition:background-color .2s, color .2s}
+  .btn svg{width:1em; height:1em}
   .btn-play{background:var(--ink); color:var(--bg)}
-  .btn-play:hover{opacity:.8}
-  .btn-info{background:transparent; color:var(--ink); border:1.5px solid var(--ink)}
+  .btn-play:hover{background:var(--accent)}
+  .btn-info{color:var(--ink); border:1.5px solid var(--ink)}
   .btn-info:hover{background:var(--ink); color:var(--bg)}
 
-  /* ---------- Rows ---------- */
-  main{display:flex; flex-direction:column; gap:2.6rem; padding-bottom:4rem}
-  .row{display:flex; flex-direction:column; gap:.75rem}
-  .row-head{display:flex; align-items:center; gap:.45rem; padding:0 2.6%;
-    font-size:.92rem; font-weight:700; letter-spacing:.12em}
-  .row-head .chev{color:var(--red); display:flex}
-  .row-head .chev svg{width:1em; height:1em}
-  .strip-wrap{position:relative}
-  .strip>.card:only-child{aspect-ratio:21/9}
-  .strip{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; padding:12px 2.6%}
+  /* ---------- About ---------- */
+  .about-wrap{display:grid; grid-template-columns:minmax(180px,24%) 1fr; gap:4.5%; align-items:start}
+  .about-photo{aspect-ratio:1/1; background:var(--bg-card); overflow:hidden}
+  .about-photo img{width:100%; height:100%; object-fit:cover; display:block}
+  .about-bio{columns:2; column-gap:2.4rem; font-size:.9rem; line-height:1.6; color:var(--grey); text-align:justify; max-width:820px}
+  .about-bio p{margin-bottom:.9rem; break-inside:avoid}
+  .about-bio .sign-off{color:var(--accent)}
 
-  .card{position:relative; width:100%; aspect-ratio:16/9; isolation:isolate;
-    border-radius:4px; overflow:hidden; background:var(--bg-card); text-align:left;
-    transition:transform .25s ease, box-shadow .25s ease}
-  .card:hover,.card:focus-visible{transform:scale(1.08); z-index:4; box-shadow:var(--shadow)}
-  .card canvas,.card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-  .card.fit-contain{background:#000}
-  .card.fit-contain img{object-fit:contain; padding:2%; background:#000}
-  .card .shade{position:absolute; inset:0;
-    background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.25) 45%, transparent 65%)}
-  .card .label{position:absolute; left:16px; right:16px; bottom:12px; display:flex; flex-direction:column; gap:3px; color:#fff}
-  .card .label strong{font-size:.92rem; font-weight:700; letter-spacing:.08em; line-height:1.25}
-  .card .label span{font-size:.72rem; color:var(--red); letter-spacing:.1em}
-  .card .label .new{color:var(--red); font-size:.66rem; font-weight:700; letter-spacing:.22em}
+  /* ---------- Rows ---------- */
+  .strip{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:6px}
+  .card{display:flex; flex-direction:column; gap:.5rem; text-align:left; padding-bottom:.9rem; min-width:0}
+  .card .thumb{position:relative; display:block; width:100%; aspect-ratio:16/9; overflow:hidden; background:var(--bg-card)}
+  .strip>.card:only-child .thumb{aspect-ratio:21/9}
+  .card canvas,.card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .45s ease}
+  .card:hover img,.card:focus-visible img{transform:scale(1.04)}
+  .card.fit-contain .thumb{background:#000}
+  .card.fit-contain img{object-fit:contain; padding:2%}
+  .card .label{display:flex; flex-direction:column; gap:1px; padding-right:.6rem}
+  .card .label strong{font-size:.9rem; font-weight:600; letter-spacing:-.02em; line-height:1.25}
+  .card .label span{font-size:.74rem; color:var(--grey-dim)}
+  .card .label .new{color:var(--accent); font-weight:600}
   .card .playhint{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    opacity:0; transition:opacity .2s}
+    opacity:0; transition:opacity .2s; background:rgba(0,0,0,.18)}
   .card:hover .playhint{opacity:1}
-  .playhint svg{width:50px; height:50px; filter:drop-shadow(0 2px 8px rgba(0,0,0,.7))}
+  .playhint svg{width:46px; height:46px}
 
   /* ---------- Modal ---------- */
   #modal{position:fixed; inset:0; z-index:90; display:none; align-items:flex-start;
-    justify-content:center; overflow-y:auto; background:rgba(0,0,0,.75); padding:4vh 1rem}
+    justify-content:center; overflow-y:auto; background:rgba(17,17,17,.6); padding:4vh 1rem}
   #modal.open{display:flex}
-  .sheet{background:#0f0f0f; border-radius:8px; max-width:840px; width:100%;
-    overflow:hidden; box-shadow:var(--shadow); animation:pop .25s ease}
-  @keyframes pop{from{transform:scale(.96); opacity:0} to{transform:scale(1); opacity:1}}
-  .sheet-hero{position:relative; aspect-ratio:16/8}
+  .sheet{background:var(--bg); max-width:860px; width:100%; overflow:hidden; box-shadow:var(--shadow); animation:pop .25s ease}
+  @keyframes pop{from{transform:scale(.97); opacity:0} to{transform:scale(1); opacity:1}}
+  .sheet-hero{position:relative; aspect-ratio:16/9; background:#000}
   .sheet-hero canvas,.sheet-hero img,.sheet-hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000}
-  .sheet-hero::after{content:""; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(to top, #0f0f0f 3%, transparent 45%)}
-  .sheet-hero h2{position:absolute; left:2.2rem; bottom:1.4rem; right:2.2rem; z-index:2;
-    font-family:var(--sans); font-weight:700; font-size:clamp(1.7rem,3.6vw,2.7rem);
-    letter-spacing:0; text-wrap:balance; pointer-events:none; color:#fff}
-  .sheet-hero.has-video::after,.sheet-hero.has-video h2{opacity:0}
-  .sheet-close{position:absolute; top:14px; right:14px; z-index:3; width:36px; height:36px;
-    border-radius:50%; background:#000; display:flex; align-items:center; justify-content:center}
-  .sheet-close svg{width:20px; height:20px}
-  .sheet-body{padding:1.6rem 2.2rem 2.2rem; display:grid; gap:1.4rem; grid-template-columns:1.8fr 1fr}
-  .sheet-body .meta-line{display:flex; gap:.9rem; align-items:center; font-size:.85rem;
-    color:#8FB8BE; grid-column:1/-1; letter-spacing:.08em}
-  .meta-line .cat{color:var(--red); font-weight:700}
-  .sheet-body p{line-height:1.65; color:#e5e5e5}
-  .sheet-side{font-size:.85rem; display:flex; flex-direction:column; gap:.8rem; color:#e5e5e5}
-  .sheet-side dt{color:#8FB8BE}
+  .sheet-close{position:absolute; top:12px; right:12px; z-index:3; width:36px; height:36px;
+    border-radius:50%; background:var(--ink); display:flex; align-items:center; justify-content:center}
+  .sheet-close svg{width:18px; height:18px}
+  .sheet-body{padding:1.6rem 2.2rem 2.2rem; display:grid; gap:1.2rem 2rem; grid-template-columns:1.8fr 1fr}
+  .sheet-body h2{grid-column:1/-1; font-size:clamp(1.5rem,3vw,2.1rem); font-weight:500; letter-spacing:-.045em; display:flex; gap:.4em}
+  .sheet-body .meta-line{display:flex; gap:.9rem; align-items:center; font-size:.8rem; color:var(--grey-dim); grid-column:1/-1; margin-top:-.6rem}
+  .meta-line .cat{color:var(--accent); font-weight:600}
+  .sheet-body p{line-height:1.6; color:var(--grey); font-size:.95rem}
+  .sheet-side{font-size:.82rem; display:flex; flex-direction:column; gap:.7rem; color:var(--ink)}
+  .sheet-side dt{color:var(--accent); font-weight:600}
   .sheet-side dd{display:inline}
-  @media (max-width:760px){
-    .sheet-body{grid-template-columns:1fr}
-    nav{display:none}
-    .logo{font-size:1.15rem}
-  }
 
-  /* ---------- Footer ---------- */
-  footer{padding:3rem 2.6% 4rem; color:var(--grey); font-size:.85rem;
-    display:flex; flex-direction:column; gap:1.2rem; border-top:1px solid var(--line)}
-  footer .foot-logo{font-family:var(--signature); font-weight:700; letter-spacing:.01em;
-    color:var(--red); font-size:2.8rem}
-  footer .contact{display:flex; gap:1.6rem; flex-wrap:wrap; margin-top:1.4rem}
-  footer a{color:var(--grey); text-decoration:none}
-  footer a:hover{color:var(--ink)}
-  .about-wrap{display:flex; gap:2.4rem; align-items:flex-start; margin-top:.3rem}
-  .about-photo{flex:0 0 auto; width:150px; height:150px; border-radius:50%; overflow:hidden;
-    border:3px solid var(--accent)}
-  .about-photo img{width:100%; height:100%; object-fit:cover}
-  .about-bio{max-width:62ch; display:flex; flex-direction:column; gap:.9rem; font-size:1rem; line-height:1.65; color:#e5e5e5}
-  .about-bio strong{color:var(--white); font-weight:700}
-  .about-bio .sign-off{color:var(--accent); font-style:italic}
-  @media (max-width:640px){
-    .about-wrap{flex-direction:column; align-items:center; text-align:center}
-  }
+  /* ---------- Thank you ---------- */
+  .thanks{min-height:74vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding-bottom:110px}
+  .ty{position:relative; display:inline-block}
+  .ty b{display:block; font-size:clamp(3rem,9vw,7rem); font-weight:600; letter-spacing:-.06em; line-height:.9}
+  .ty .plus{position:absolute; left:-.52em; top:-.5em; font-size:clamp(2rem,5vw,3.6rem); line-height:1}
+  .ty i{display:block; text-align:right; font-style:normal; color:var(--accent); font-weight:500;
+    font-size:clamp(.8rem,1.6vw,1.2rem); letter-spacing:-.02em; margin-top:.35em}
+  .contact{position:absolute; left:5%; right:9%; bottom:26px; display:flex; flex-wrap:wrap; gap:.4rem 2.4rem;
+    justify-content:space-between; font-size:.76rem; letter-spacing:.02em; text-transform:uppercase}
+  .contact a{color:var(--ink); text-decoration:none}
+  .contact a:hover{color:var(--accent)}
 
   /* ---------- Full-image lightbox (Art) ---------- */
   #lightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center;
-    justify-content:center; background:rgba(0,0,0,.94); padding:6vh 4vw}
+    justify-content:center; background:rgba(244,244,244,.97); padding:6vh 4vw}
   #lightbox.open{display:flex}
   .lb-stage{position:relative; display:flex; align-items:center; gap:1.1rem; max-width:1080px; width:100%}
-  .lb-frame{flex:1; min-width:0; max-height:80vh; border-radius:8px; overflow:hidden;
-    display:flex; align-items:center; justify-content:center; background:#000}
+  .lb-frame{flex:1; min-width:0; max-height:80vh; overflow:hidden; display:flex; align-items:center; justify-content:center}
   .lb-frame img{max-width:100%; max-height:80vh; object-fit:contain; display:block}
-  .lb-btn{flex:0 0 auto; width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,.1);
+  .lb-btn{flex:0 0 auto; width:44px; height:44px; border-radius:50%; background:var(--ink);
     color:#fff; display:flex; align-items:center; justify-content:center; transition:background-color .2s}
-  .lb-btn:hover{background:rgba(255,255,255,.2)}
-  .lb-btn svg{width:1.4rem; height:1.4rem}
-  .lb-close{position:absolute; top:-3.4rem; right:0; width:40px; height:40px; border-radius:50%;
-    background:rgba(255,255,255,.1); color:#fff; display:flex; align-items:center; justify-content:center}
-  .lb-caption{position:absolute; left:0; right:0; bottom:-2.3rem; text-align:center;
-    color:#c9c2be; font-size:.8rem; letter-spacing:.08em;
-    font-variant-numeric:tabular-nums}
-  @media (max-width:640px){
+  .lb-btn:hover{background:var(--accent)}
+  .lb-btn svg{width:1.3rem; height:1.3rem}
+  .lb-close{position:absolute; top:-3.2rem; right:0; width:40px; height:40px; border-radius:50%;
+    background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center}
+  .lb-caption{position:absolute; left:0; right:0; bottom:-2.2rem; text-align:center;
+    color:var(--grey); font-size:.78rem; font-variant-numeric:tabular-nums}
+
+  @media (max-width:820px){
+    nav{display:none}
+    header{justify-content:space-between}
+    .slide{padding:44px 12% 70px 6%}
+    .hero{grid-template-columns:1fr; min-height:0}
+    .hero-art{max-width:340px}
+    .about-wrap{grid-template-columns:1fr}
+    .about-photo{max-width:220px}
+    .about-bio{columns:1}
+    .sheet-body{grid-template-columns:1fr}
+    .bigplus{font-size:2.4rem; top:30px}
     .lb-stage{gap:.6rem}
     .lb-btn{width:38px; height:38px}
   }
-
   @media (prefers-reduced-motion:reduce){
     *{transition:none !important; animation:none !important; scroll-behavior:auto !important}
   }
@@ -195,14 +164,15 @@
 
 <!-- ============ NAV ============ -->
 <header id="topbar">
-  <span class="logo">Talia Naiman</span>
+  <span class="logo"><span class="plus">+</span> Talia Naiman</span>
   <nav aria-label="Sections">
     <a href="#hero" class="active">Home</a>
+    <a href="#about">About</a>
     <a href="#row-documentary">Showreel</a>
-    <a href="#contact">About</a>
-    <a href="#row-branding">Branding</a>
+    <a href="#row-brand">Campaigns</a>
     <a href="#row-ai">Films</a>
-    <a href="#row-documentary">Series</a>
+    <a href="#row-branding">Branding</a>
+    <a href="#row-art">Art</a>
     <a href="#contact">Contact</a>
   </nav>
   <a class="ig" href="https://www.instagram.com/talianaillustration/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -213,13 +183,14 @@
 </header>
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="hero">
+<section class="slide hero" id="hero">
   <button class="hero-art" data-open="0" aria-label="Play How I Met Talia Naiman">
     <img id="heroPoster" src="media/hero-loop.gif" alt="Talia Naiman: How I Met Talia Naiman, series still">
+    <span class="bigplus" aria-hidden="true">+</span>
   </button>
   <div class="hero-content">
     <span class="eyebrow">New Series</span>
-    <h1>How I Met<br><span class="marker">Talia Naiman</span></h1>
+    <h1>How I Met Talia Naiman</h1>
     <p>A witty visual docu-series about the woman behind the worlds.</p>
     <div class="hero-btns">
       <button class="btn btn-play" data-open="0">
@@ -230,6 +201,23 @@
       </button>
     </div>
   </div>
+  <span class="pn"></span>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="slide" id="about">
+  <h2 class="slide-head"><span class="plus">+</span>Nice to meet you!</h2>
+  <div class="about-wrap">
+    <div class="about-photo"><img src="media/about/talia-headshot.jpg" alt="Talia Naiman"></div>
+    <div class="about-bio">
+      <p>I'm Talia Naiman, an AI Video Creative specializing in concept, visual storytelling, and creative direction.</p>
+      <p>I turn ideas into cinematic visual stories, taking projects from concept and storyboard through AI production, editing, and final delivery.</p>
+      <p>My background in art, illustration, fashion, and design shapes how I approach every frame: with a strong eye for composition, character, rhythm, and visual identity.</p>
+      <p>I work across AI video, design, and post-production, combining emerging technology with traditional creative craft to build work that feels intentional, distinctive, and human.</p>
+      <p class="sign-off">For me, AI is not the creative idea. It's the tool that lets the idea go further.</p>
+    </div>
+  </div>
+  <span class="pn"></span>
 </section>
 
 <main><!-- rows injected by JS --></main>
@@ -244,9 +232,9 @@
       <button class="sheet-close" aria-label="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
-      <h2 id="modalTitle"></h2>
     </div>
     <div class="sheet-body">
+      <h2><span class="plus">+</span><span id="modalTitle"></span></h2>
       <div class="meta-line" id="modalMeta"></div>
       <p id="modalDesc"></p>
       <dl class="sheet-side">
@@ -274,18 +262,8 @@
   </div>
 </div>
 
-<footer id="contact">
-  <span class="foot-logo">Nice to meet you!</span>
-  <div class="about-wrap">
-    <div class="about-photo"><img src="media/about/talia-headshot.jpg" alt="Talia Naiman"></div>
-    <div class="about-bio">
-      <p>I'm Talia Naiman, an AI Video Creative specializing in concept, visual storytelling, and creative direction.</p>
-      <p>I turn ideas into cinematic visual stories, taking projects from concept and storyboard through AI production, editing, and final delivery.</p>
-      <p>My background in art, illustration, fashion, and design shapes how I approach every frame: with a strong eye for composition, character, rhythm, and visual identity.</p>
-      <p>I work across AI video, design, and post-production, combining emerging technology with traditional creative craft to build work that feels intentional, distinctive, and human.</p>
-      <p class="sign-off">For me, AI is not the creative idea. It's the tool that lets the idea go further.</p>
-    </div>
-  </div>
+<footer class="slide thanks" id="contact">
+  <div class="ty"><span class="plus" aria-hidden="true">+</span><b>THANK YOU</b><i>FOR WATCHING</i></div>
   <div class="contact">
     <a href="mailto:naimantalia@gmail.com">naimantalia@gmail.com</a>
     <a href="https://www.instagram.com/talianaillustration/" target="_blank" rel="noopener">Instagram</a>
@@ -472,8 +450,8 @@ function makeCard(item){
   else if(item.lightbox) b.dataset.lightbox=item.lightbox;
   else { b.dataset.open=idx; b.dataset.p=item.p; }
   b.innerHTML=`
-    ${item.img?`<img src="${item.img}" alt="" loading="lazy">`:`<canvas></canvas>`}<span class="shade"></span>
-    <span class="playhint">${item.href||item.lightbox ? icons.view : icons.play}</span>
+    <span class="thumb">${item.img?`<img src="${item.img}" alt="" loading="lazy">`:`<canvas></canvas>`}
+      <span class="playhint">${item.href||item.lightbox ? icons.view : icons.play}</span></span>
     <span class="label">
       <strong>${item.title}</strong>
       ${item.sub?`<span>${item.sub}</span>`:""}
@@ -486,11 +464,10 @@ function makeCard(item){
 
 function makeRow(id, heading, nodes){
   const row=document.createElement("section");
-  row.className="row"; row.id=id;
-  row.innerHTML=`<h2 class="row-head">${heading}<span class="chev">${icons.chev}</span></h2>
-    <div class="strip-wrap">
-      <div class="strip"></div>
-    </div>`;
+  row.className="slide row"; row.id=id;
+  row.innerHTML=`<h2 class="slide-head"><span class="plus">+</span>${heading}</h2>
+    <span class="bigplus" aria-hidden="true">+</span>
+    <div class="strip"></div><span class="pn"></span>`;
   const strip=row.querySelector(".strip");
   nodes.forEach(n=>strip.appendChild(n));
   return row;
@@ -498,6 +475,7 @@ function makeRow(id, heading, nodes){
 
 const main=document.querySelector("main");
 DATA.rows.forEach(r=>main.appendChild(makeRow(r.id, r.name, r.items.map(makeCard))));
+document.querySelectorAll(".slide .pn").forEach((el,i)=>{ el.innerHTML=String(i+1).padStart(2,"0")+'<span class="plus">+</span>'; });
 
 /* ---------- modal ---------- */
 const modal=document.getElementById("modal");

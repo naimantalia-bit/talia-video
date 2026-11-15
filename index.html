@@ -157,11 +157,11 @@
   <nav aria-label="Sections">
     <a href="#hero" class="active">Home</a>
     <a href="#about">About</a>
-    <a href="#row-documentary">Showreel</a>
-    <a href="#row-brand">Campaigns</a>
-    <a href="#row-ai">Films</a>
+    <a href="#row-documentary">AI Video</a>
     <a href="#row-branding">Branding</a>
-    <a href="#row-art">Art</a>
+    <a href="#row-art">Illustration</a>
+    <a href="#row-social">Social</a>
+    <a href="#row-marketing">Marketing</a>
     <a href="#contact">Contact</a>
   </nav>
   <a class="ig" href="https://www.instagram.com/talianaillustration/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -253,76 +253,54 @@
 
 <script>
 const DATA = {
-  featured:{title:"How I Met Talia Naiman", cat:"Documentary", format:"Docu-series",
+  featured:{title:"How I Met Talia Naiman", cat:"Docu", format:"Docu-series",
     role:"Talia Naiman", tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
     img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
     desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0},
   rows:[
-    {id:"row-documentary", name:"Documentary", items:[
-      {title:"How I Met Talia Naiman", sub:"", extra:"New Series", cat:"Documentary", format:"Docu-series", role:"Talia Naiman",
+    {id:"row-documentary", name:"AI Video / Docu", items:[
+      {title:"How I Met Talia Naiman", sub:"", extra:"New Series", cat:"Docu", format:"Docu-series", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
-       desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0},
-      {title:"Showreel", sub:"Selected Works", cat:"Documentary", format:"Showreel", role:"Talia Naiman",
+       desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0}
+    ]},
+    {id:"row-showreel", name:"AI Video / Showreel", items:[
+      {title:"Showreel", sub:"Selected Works", cat:"Showreel", format:"Showreel", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/showreel-poster.jpg", video:"showreel2025.mp4",
-       desc:"A 2025 highlights reel of selected work.", p:1},
-      {title:"Hey Siri, Who Are You?", sub:"Concept Film", cat:"Documentary", format:"Concept film", role:"Talia Naiman",
-       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
-       img:"media/siri/siri-poster.jpg", video:"media/siri/siri.mp4",
-       desc:"A rainy New York walk, a coffee, and one loaded question for Siri: a short concept film about identity in the age of AI.", p:6}
+       desc:"A 2025 highlights reel of selected work.", p:1}
     ]},
-    {id:"row-brand", name:"Brand Stories", items:[
-      {title:"FIFA Live Scores", sub:"Campaign Film", cat:"Brand Stories", format:"Campaign film", role:"Talia Naiman",
+    {id:"row-brand", name:"AI Video / Brand Films", items:[
+      {title:"FIFA Live Scores", sub:"Campaign Film", cat:"Brand Films", format:"Campaign film", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/fifa-poster.jpg", video:"fifa21mg.mp4",
        desc:"Campaign film for the Ripples Live Scores display: real-time match tracking on the bar counter during the tournament.", p:6},
-      {title:"Amazon Ripple Maker", sub:"Product Film", cat:"Brand Stories", format:"Product film", role:"Talia Naiman",
+      {title:"Amazon Ripple Maker", sub:"Product Film", cat:"Brand Films", format:"Product film", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/amazon/amazon-ripple-maker-poster.jpg", video:"media/amazon/amazon-ripple-maker.mp4",
        desc:"Product film for the Ripple Maker on Amazon.", p:5},
-      {title:"Cocktail Recipe Films", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"Talia Naiman",
+      {title:"Captain Cruz", sub:"Disney Cruise Line", cat:"Brand Films", format:"Campaign film", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
-       img:"media/cocktail-poster.jpg", video:"media/cocktail.mp4",
-       desc:"Social recipe series: Hendrick's gin cocktail, step by step.", p:2},
-      {title:"Matcha Recipe Film", sub:"Social Campaign", cat:"Brand Stories", format:"Social series", role:"Talia Naiman",
-       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
-       img:"media/matcha-poster.jpg", video:"media/matcha.mp4",
-       desc:"Social recipe series: matcha latte, step by step.", p:3},
-      {title:"Seasonal Campaigns", sub:"Winter Olympics", cat:"Brand Stories", format:"Multi-format campaign", role:"Talia Naiman",
-       tools:"Hand-drawn illustrations, real latte art prints, Photoshop, Midjourney, VEO3, Kling, Runway",
-       img:"media/winter-poster.jpg", video:"media/winter-olympics.mp4",
-       desc:"A campaign made to celebrate the Winter Olympic Games held in Italy.", p:8},
-      {title:"Summer Campaign", sub:"Seasonal", cat:"Brand Stories", format:"Multi-format campaign", role:"Talia Naiman",
-       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
-       img:"media/summer-poster.jpg", video:"media/summer.mp4",
-       desc:"Seasonal styling shot: a summer lemon cocktail.", p:2},
-      {title:"Year of the Horse", sub:"Lunar New Year", cat:"Brand Stories", format:"Multi-format campaign", role:"Talia Naiman",
-       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
-       img:"media/horse-poster.jpg", video:"media/horse.mp4",
-       desc:"Seasonal campaign: Lunar New Year, Year of the Horse.", p:6}
+       img:"media/captain-cruz/captain-cruz-poster.jpg", video:"media/captain-cruz/captain-cruz.mp4",
+       desc:"A custom film made for Disney Cruise Line: Captain Mickey pours the coffee, latte art and all.", p:3}
     ]},
-    {id:"row-upside", name:"Campaign Case Study", items:[
-      {title:"Till Cash Back Do Us Part", sub:"Upside Campaign", cat:"Campaign Case Study", img:"media/upside/upside-poster.jpg",
-       href:"https://naimantalia-bit.github.io/UP/", p:6}
-    ]},
-    {id:"row-ai", name:"AI Films", items:[
-      {title:"Friday the 13th", sub:"Short Film", cat:"AI Films", format:"Short film", role:"Talia Naiman",
+    {id:"row-ai", name:"AI Video / Concept", items:[
+      {title:"Hey Siri, Who Are You?", sub:"Concept Film", cat:"Concept", format:"Concept film", role:"Talia Naiman",
+       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+       img:"media/siri/siri-poster.jpg", video:"media/siri/siri.mp4",
+       desc:"A rainy New York walk, a coffee, and one loaded question for Siri: a short concept film about identity in the age of AI.", p:6},
+      {title:"Friday the 13th", sub:"Short Film", cat:"Concept", format:"Short film", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/friday-13th-poster.jpg", video:"media/friday-the-13th.mp4",
        desc:"AI-made short film: a Friday the 13th latte-art gag.", p:4},
-      {title:"Beatles Day", sub:"Film", cat:"AI Films", format:"Film", role:"Talia Naiman",
+      {title:"Beatles Day", sub:"Film", cat:"Concept", format:"Film", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/beatles-poster.jpg", video:"media/beatles.mp4",
        desc:"An Abbey Road homage, reimagined.", p:1},
-      {title:"Captain Cruz", sub:"Disney Cruise Line", cat:"AI Films", format:"Campaign film", role:"Talia Naiman",
-       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
-       img:"media/captain-cruz/captain-cruz-poster.jpg", video:"media/captain-cruz/captain-cruz.mp4",
-       desc:"A custom film made for Disney Cruise Line: Captain Mickey pours the coffee, latte art and all.", p:3},
-      {title:"Zodiac Series", sub:"Concepts", cat:"AI Films", format:"Concept series", role:"Creator",
+      {title:"Zodiac Series", sub:"Concepts", cat:"Concept", format:"Concept series", role:"Creator",
        img:"media/zodiac/wheel.gif", href:"zodiac.html", fit:"contain",
        desc:"Twelve signs, twelve original illustrations, and a short film for each.", p:7},
-      {title:"ASL Alphabet", sub:"Concepts", cat:"AI Films", format:"Concept series", role:"Creator", fit:"contain",
+      {title:"ASL Alphabet", sub:"Concepts", cat:"Concept", format:"Concept series", role:"Creator", fit:"contain",
        img:"media/asl/asl-alphabet-inverted.gif", href:"asl.html",
        desc:"Twenty-six original hand-drawn illustrations of the ABCs, one for every ASL letter.", p:4}
     ]},
@@ -340,8 +318,34 @@ const DATA = {
        img:"media/round-kid/cup-only.jpg", href:"round-kid.html",
        desc:"A full identity built around one hand-drawn character: five original illustrations carried from the logo mark to the cup, the bag and the shop window.", p:5}
     ]},
-    {id:"row-art", name:"Art", items:[
-      {title:"Art", sub:"Original Illustrations", cat:"Art", img:"media/art/swans_flock.jpg", lightbox:"art", p:5}
+    {id:"row-art", name:"Illustration", items:[
+      {title:"Illustrations", sub:"Hand-drawn originals", cat:"Illustration", img:"media/art/swans_flock.jpg", lightbox:"art", p:5}
+    ]},
+    {id:"row-social", name:"Social", items:[
+      {title:"Cocktail Recipe Films", sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
+       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+       img:"media/cocktail-poster.jpg", video:"media/cocktail.mp4",
+       desc:"Social recipe series: Hendrick's gin cocktail, step by step.", p:2},
+      {title:"Matcha Recipe Film", sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
+       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+       img:"media/matcha-poster.jpg", video:"media/matcha.mp4",
+       desc:"Social recipe series: matcha latte, step by step.", p:3}
+    ]},
+    {id:"row-marketing", name:"Marketing", items:[
+      {title:"Till Cash Back Do Us Part", sub:"Upside Campaign", cat:"Marketing", img:"media/upside/upside-poster.jpg",
+       href:"https://naimantalia-bit.github.io/UP/", p:6},
+      {title:"Seasonal Campaigns", sub:"Winter Olympics", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
+       tools:"Hand-drawn illustrations, real latte art prints, Photoshop, Midjourney, VEO3, Kling, Runway",
+       img:"media/winter-poster.jpg", video:"media/winter-olympics.mp4",
+       desc:"A campaign made to celebrate the Winter Olympic Games held in Italy.", p:8},
+      {title:"Summer Campaign", sub:"Seasonal", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
+       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+       img:"media/summer-poster.jpg", video:"media/summer.mp4",
+       desc:"Seasonal styling shot: a summer lemon cocktail.", p:2},
+      {title:"Year of the Horse", sub:"Lunar New Year", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
+       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+       img:"media/horse-poster.jpg", video:"media/horse.mp4",
+       desc:"Seasonal campaign: Lunar New Year, Year of the Horse.", p:6}
     ]}
   ]
 };

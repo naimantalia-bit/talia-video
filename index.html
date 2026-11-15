@@ -92,6 +92,7 @@
   @keyframes pop{from{transform:scale(.97); opacity:0} to{transform:scale(1); opacity:1}}
   .sheet-hero{position:relative; aspect-ratio:16/9; background:#000}
   .sheet-hero canvas,.sheet-hero img,.sheet-hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000}
+  .sheet-hero video{object-fit:contain}
   .sheet-close{position:absolute; top:12px; right:12px; z-index:3; width:36px; height:36px;
     border-radius:50%; background:var(--ink); display:flex; align-items:center; justify-content:center}
   .sheet-close svg{width:18px; height:18px}
@@ -329,7 +330,15 @@ const DATA = {
       {title:"Matcha Recipe Film", sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/matcha-poster.jpg", video:"media/matcha.mp4",
-       desc:"Social recipe series: matcha latte, step by step.", p:3}
+       desc:"Social recipe series: matcha latte, step by step.", p:3},
+      {title:"Share the Print", sub:"Holiday Campaign", cat:"Social", format:"Social film", role:"Talia Naiman",
+       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+       img:"media/social/holiday-print-poster.jpg", video:"media/social/holiday-print.mp4",
+       desc:"Holiday social film for Ripples: one perfect print, from the café counter to the feed.", p:4},
+      {title:"Scare More Orders", sub:"Halloween", cat:"Social", format:"Social film, 1:1", role:"Talia Naiman",
+       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+       img:"media/social/halloween-poster.jpg", video:"media/social/halloween.mp4",
+       desc:"Halloween social film for Ripples: spooky latte art that gets the whole table ordering.", p:7}
     ]},
     {id:"row-marketing", name:"Marketing", items:[
       {title:"Till Cash Back Do Us Part", sub:"Upside Campaign", cat:"Marketing", img:"media/upside/upside-poster.jpg",

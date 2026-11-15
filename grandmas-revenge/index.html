@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html,body{margin:0}body{font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Grandma's Revenge Case Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@500;700;800&display=swap">
+<style>
+/* Layout: one loud magenta opening band that holds the logo and the claim, then a quiet reading column. The work itself (film, street strip, pose sheet, four deliverables) supplies the color; the page stays out of its way. */
+:root{
+  --bg:#fffaf3; --surface:#ffffff; --fg:#2a0a4a; --muted:#6d5c82; --line:#eadff3; --tag:#f4e9fb;
+  --accent:#7b2cbf; --hot:#e8127f; --hot-fg:#ffffff; --pop:#ffd21f; --pop-fg:#2a0a4a;
+  --title:"Luckiest Guy","Arial Black",Impact,sans-serif; --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#150a24; --surface:#20123a; --fg:#f6efff; --muted:#b9a8d1; --line:#38235a; --tag:#2c1a4c;
+  --accent:#c493f5; --hot:#e8127f; --hot-fg:#ffffff; --pop:#ffd21f; --pop-fg:#2a0a4a; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#150a24; --surface:#20123a; --fg:#f6efff; --muted:#b9a8d1; --line:#38235a; --tag:#2c1a4c;
+  --accent:#c493f5; --hot:#e8127f; --hot-fg:#ffffff; --pop:#ffd21f; --pop-fg:#2a0a4a; color-scheme:dark }
+
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;font-weight:500}
+.in{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--title);font-weight:400;letter-spacing:.015em;margin:0;text-wrap:balance}
+p{margin:0;max-width:62ch}
+a{color:var(--accent)}
+a:focus-visible,video:focus-visible,.strip:focus-visible{outline:3px solid var(--pop);outline-offset:3px}
+.eyebrow{font-weight:800;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+
+/* opening band */
+.open{background:var(--hot);color:var(--hot-fg);background-image:repeating-conic-gradient(from 0deg at 78% 46%,rgba(255,255,255,.07) 0 9deg,transparent 9deg 18deg)}
+.open .in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:center;padding-block:44px 48px}
+.open h1{font-size:clamp(34px,5.6vw,60px);line-height:1.02;text-shadow:0 4px 0 rgba(42,10,74,.35)}
+.open .lede{font-size:19px;font-weight:700;margin-top:16px;max-width:44ch}
+.open .logo{width:100%;max-width:440px;justify-self:center;filter:drop-shadow(0 14px 18px rgba(60,0,60,.35))}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:28px 0 0;padding:0}
+.meta div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.meta dt{font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.meta dd{margin:0;font-weight:800;font-size:15.5px;line-height:1.35}
+@media (max-width:720px){ .open .in{grid-template-columns:minmax(0,1fr)} .open .logo{max-width:300px;order:-1;justify-self:start} }
+
+main{display:flex;flex-direction:column;gap:72px;padding-block:64px 80px}
+section>.in{display:flex;flex-direction:column;gap:22px}
+h2{font-size:clamp(26px,3.6vw,36px);line-height:1.08}
+.eyebrow.c{color:var(--hot)}
+.two{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:40px;align-items:center}
+.two .txt{display:flex;flex-direction:column;gap:16px;min-width:0}
+@media (max-width:720px){ .two{grid-template-columns:minmax(0,1fr);gap:26px} .two video{max-width:300px} }
+video{display:block;width:100%;aspect-ratio:9/16;border-radius:22px;background:var(--tag);object-fit:cover;max-width:100%}
+.pull{font-family:var(--title);font-size:clamp(22px,3.2vw,30px);line-height:1.15;color:var(--accent);max-width:24ch}
+
+.cast{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.cast article{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;align-items:center}
+.cast img{width:100%;height:170px;object-fit:contain;display:block}
+.cast h3{font-size:22px}
+.cast p{font-size:15.5px;margin-top:6px}
+@media (max-width:720px){ .cast{grid-template-columns:minmax(0,1fr)} }
+.band{background:var(--hot);border-radius:22px;padding:14px 10px;overflow-x:auto}
+.band img{display:block;height:220px;max-width:none;margin:0 auto}
+figure{margin:0;display:flex;flex-direction:column;gap:10px}
+figcaption{font-size:14px;color:var(--muted);max-width:70ch}
+
+.strip{overflow-x:auto;border-radius:22px;-webkit-overflow-scrolling:touch}
+.strip img{display:block;height:min(46vw,330px);max-width:none}
+
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.four article{display:flex;flex-direction:column;gap:10px;min-width:0}
+.four img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:16px;display:block;background:var(--tag)}
+.four h3{font-size:20px}
+.four p{font-size:15px;line-height:1.45}
+.four .stage{color:var(--hot);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.four a{font-weight:800;font-size:15px}
+@media (max-width:820px){ .four{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px} }
+
+.hat{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.hat ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;max-width:66ch}
+.hat li::marker{font-family:var(--title);color:var(--hot)}
+.steps{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;align-items:start;font-size:16px;line-height:1.45}
+.steps li::before{content:counter(s);font-family:var(--title);font-size:20px;width:38px;height:38px;border-radius:50%;background:var(--pop);color:var(--pop-fg);display:flex;align-items:center;justify-content:center;padding-top:3px;box-sizing:border-box}
+.steps b{display:block}
+@media (max-width:720px){ .steps{grid-template-columns:minmax(0,1fr)} }
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.tools span{background:var(--tag);border-radius:999px;padding:5px 13px;font-size:14px;font-weight:800}
+.foot{border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:14.5px}
+</style>
+
+<header class="open">
+  <div class="in">
+    <div>
+      <p class="eyebrow">Spec campaign · mobile gaming</p>
+      <h1>A grandma, a missing purple hat, and a whole campaign.</h1>
+      <p class="lede">One story told four ways: a film, a playable ad, a store page and a game you can finish in two minutes.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Concept, character design, art direction, edit, game design</dd></div>
+        <div><dt>Deliverables</dt><dd>Film, playable ad, store listing, full game</dd></div>
+        <div><dt>Type</dt><dd>Self-initiated, original IP</dd></div>
+        <div><dt>By</dt><dd>Talia Naiman, 2026</dd></div>
+      </dl>
+    </div>
+    <img class="logo" src="logo.webp" alt="Grandma's Revenge logo">
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="in">
+      <p class="eyebrow c">The idea</p>
+      <div class="two">
+        <video src="film.mp4" poster="film.jpg" controls playsinline preload="metadata" aria-label="Grandma's Revenge campaign film, 40 seconds"></video>
+        <div class="txt">
+          <h2>She made her. She forgot the hat. Grandma did not forget.</h2>
+          <p>Village-raid games run on one feeling: someone attacked my village and I want it back. I made that feeling personal. Talia is a designer who creates a character, Grandma, and ignores the one thing Grandma asks for. So Grandma raids her village.</p>
+          <p>The designer is me, and the joke is on me. That gave the campaign a villain people like, a reason for the conflict, and a prize that is funnier than coins.</p>
+          <p class="pull">"Darling... you forgot your shield."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="in">
+      <p class="eyebrow c">The cast</p>
+      <h2>Two characters, one grudge</h2>
+      <div class="cast">
+        <article><img src="talia.webp" alt="Talia, a designer with pink wavy hair and wide pink trousers"><div><h3>Talia</h3><p>The designer. Pink hair, pink trousers, bad at reading briefs. She runs, jumps and loses hearts.</p></div></article>
+        <article><img src="grandma.webp" alt="Grandma in a pink fur coat sitting on a purple cloud"><div><h3>Grandma</h3><p>Pink fur, yellow glasses, a purple cloud and a bag of hammers. Every line she says is polite and a threat.</p></div></article>
+      </div>
+      <figure>
+        <div class="band" tabindex="0" role="region" aria-label="Grandma pose sheet"><img src="poses.webp" alt="Six Grandma poses: sitting, winding up, throwing a hammer, shocked, laughing behind a fan, wearing the purple hat"></div>
+        <figcaption>Grandma's six states in the game. She winds up before a throw, laughs when Talia is hit, and gets the hat only if the player earns it.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="in">
+      <p class="eyebrow c">The world</p>
+      <h2>Seven streets, painted to tile</h2>
+      <p>The village is seven backgrounds built to one rule: the pavement sits at the same height in every painting, so they join into a single street. Studio, bakery, café, print shop, greenhouse, market, and the square with the slot stall.</p>
+      <div class="strip" tabindex="0" role="region" aria-label="The seven village streets joined into one strip"><img src="streets.jpg" alt="Panorama of the seven village streets joined edge to edge"></div>
+      <p class="eyebrow" style="color:var(--muted)">Scroll sideways to walk the village</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="in">
+      <p class="eyebrow c">The funnel</p>
+      <h2>Four pieces, each with one job</h2>
+      <div class="four">
+        <article><img src="duel.jpg" alt="Split-screen duel frame from the film with a gold divider and the word Duel" loading="lazy"><p class="stage">Stop the scroll</p><h3>The film</h3><p>40 seconds, vertical. Sets up the grudge and ends on the hat. Captions in the logo lettering so it works on mute.</p></article>
+        <article><img src="playable.jpg" alt="Playable ad: Talia in a shield bubble with Grandma above the bakery" loading="lazy"><p class="stage">Let them try</p><h3>The playable</h3><p>20 seconds. Talia runs by herself and one tap jumps. One shield, one hat, one spin.</p><a href="playable/index.html" target="_blank" rel="noopener">Play the ad</a></article>
+        <article><img src="s4.jpg" alt="Store screenshot with the caption Find her purple hats" loading="lazy"><p class="stage">Close the install</p><h3>The store page</h3><p>Icon, preview video and six screenshots that repeat the film's promises in the same lettering.</p><a href="store.html" target="_blank" rel="noopener">Open the store page</a></article>
+        <article><img src="s6.jpg" alt="The village slot showing three purple hats" loading="lazy"><p class="stage">Keep the promise</p><h3>The game</h3><p>Seven streets, three kinds of hammer, three hidden hats and a slot finale.</p><a href="game/index.html" target="_blank" rel="noopener">Play the game</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="in">
+      <div class="hat">
+        <p class="eyebrow c">The thread</p>
+        <h2>The purple hat carries the player through</h2>
+        <p>A campaign falls apart when the ad promises one thing and the game delivers another. Here one object appears at every step, and each step pays off a little more of it.</p>
+        <ol>
+          <li>In the film, the hat is the reason for the whole fight, and the last shot before the logo.</li>
+          <li>In the playable, one hat is hidden mid-run. Catch it and the slot gives you three.</li>
+          <li>On the store page, "Find her purple hats" is one of five promises.</li>
+          <li>In the game, three hats are hidden above the rooftops. Find all three and Grandma finally wears one.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="in">
+      <p class="eyebrow c">The process</p>
+      <h2>From one character to a playable world</h2>
+      <ol class="steps">
+        <li><div><b>Characters</b>Designed Grandma and Talia and locked their look on reference sheets.</div></li>
+        <li><div><b>Shots</b>Wrote the script, then generated and directed each shot of the film from those references.</div></li>
+        <li><div><b>Edit and sound</b>Cut the film to a custom track and added the duel split screen.</div></li>
+        <li><div><b>Lettering</b>Built the logo, then a caption layer in the same letters and colors.</div></li>
+        <li><div><b>Game art kit</b>Painted streets, hammers, coins, platforms, pickups and interface in the characters' style.</div></li>
+        <li><div><b>Game</b>Designed the level, hazards, shield and hidden hats, and built it for phone and desktop.</div></li>
+        <li><div><b>Playable</b>Cut the game down to one tap and 20 seconds, with a tutorial beat and an end card.</div></li>
+        <li><div><b>Store</b>Made the icon, preview video, screenshots and copy from the same kit.</div></li>
+      </ol>
+      <div class="tools" aria-label="Tools"><span>AI image generation</span><span>AI video generation</span><span>AI music</span><span>Claude</span><span>After Effects</span><span>Premiere Pro</span><span>Photoshop</span></div>
+      <p class="foot">Grandma's Revenge is a self-initiated spec project. The characters, world and game are original. Images, video shots and music were generated with AI tools and directed, selected and edited by Talia Naiman.</p>
+    </div>
+  </section>
+</main>
+
+<a href="../index.html" style="position:fixed;top:12px;right:12px;z-index:9999;background:#111;color:#fff;font:600 13px/1 'Inter Tight',Arial,sans-serif;padding:10px 14px;border-radius:999px;text-decoration:none;letter-spacing:-.01em"><span style="color:#F2478F">+</span> Talia Naiman</a>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html,body{margin:0}body{font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Grandma's Revenge Store Page</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@500;700;800&display=swap">
+<style>
+/* Layout: a quiet store listing so the painted art carries the color. Header (icon + name + actions), one horizontal media rail (preview video, then six screenshots), then two columns: copy on the left, facts on the right. */
+:root{
+  --bg:#fbf8ff; --surface:#ffffff; --fg:#2a0a4a; --muted:#6b5a80; --line:#e6dcf3;
+  --accent:#7b2cbf; --accent-fg:#ffffff; --pop:#ffd21f; --pop-fg:#2a0a4a; --tag:#f1e7fb;
+  --title:"Luckiest Guy","Arial Black",Impact,sans-serif; --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#150a24; --surface:#20123a; --fg:#f6efff; --muted:#b9a8d1; --line:#38235a;
+  --accent:#c493f5; --accent-fg:#1c0b33; --pop:#ffd21f; --pop-fg:#2a0a4a; --tag:#2c1a4c; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#150a24; --surface:#20123a; --fg:#f6efff; --muted:#b9a8d1; --line:#38235a;
+  --accent:#c493f5; --accent-fg:#1c0b33; --pop:#ffd21f; --pop-fg:#2a0a4a; --tag:#2c1a4c; color-scheme:dark }
+
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;font-weight:500}
+.wrap{max-width:1040px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:32px}
+.spec{align-self:flex-start;background:var(--tag);color:var(--muted);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+
+.head{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.icon{width:128px;height:128px;border-radius:29px;display:block;flex:none;box-shadow:0 10px 24px rgba(74,21,128,.28)}
+.id{flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:6px}
+h1{font-family:var(--title);font-weight:400;font-size:clamp(30px,5.4vw,46px);line-height:1.02;margin:0;letter-spacing:.01em;text-wrap:balance}
+.sub{margin:0;color:var(--muted);font-weight:700;font-size:17px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.tags span{background:var(--tag);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;color:var(--fg)}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;font-family:var(--title);font-size:20px;text-decoration:none;letter-spacing:.02em;padding-top:3px}
+.btn.play{background:var(--pop);color:var(--pop-fg);box-shadow:0 5px 0 #c98f00}
+.btn.full{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:translateY(2px)}
+.btn:focus-visible,video:focus-visible,.rail:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+.rail{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.rail>*{flex:none;height:min(62vh,520px);min-height:380px;aspect-ratio:9/16;border-radius:22px;scroll-snap-align:start;background:var(--tag);display:block;object-fit:cover;max-width:100%}
+.rail figure{margin:0;position:relative;overflow:hidden}
+.rail video{width:100%;height:100%;display:block;object-fit:cover;border-radius:22px}
+.rail figcaption{position:absolute;left:10px;top:10px;background:rgba(42,10,74,.78);color:#fff;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;pointer-events:none}
+
+.cols{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:760px){ .cols{grid-template-columns:minmax(0,1fr);gap:28px} .icon{width:96px;height:96px;border-radius:22px} }
+.copy{display:flex;flex-direction:column;gap:28px;min-width:0}
+section{display:flex;flex-direction:column;gap:10px}
+h2{font-family:var(--title);font-weight:400;font-size:22px;margin:0;letter-spacing:.02em}
+p{margin:0;max-width:65ch}
+ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:65ch}
+li::marker{color:var(--accent)}
+.quote{font-family:var(--title);font-size:clamp(20px,3.4vw,26px);line-height:1.2;color:var(--accent);margin:0;text-wrap:balance}
+.quote small{display:block;font-family:var(--body);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.facts dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px}
+.facts dt{color:var(--muted);font-weight:700;font-size:14px}
+.facts dd{margin:0;font-weight:800;font-size:14px;text-align:right}
+.note{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+
+<div class="wrap">
+  <span class="spec">Spec store listing · portfolio campaign</span>
+
+  <header class="head">
+    <img class="icon" src="icon.jpg" alt="App icon: Grandma laughing behind a purple fan" width="128" height="128">
+    <div class="id">
+      <h1>Grandma's Revenge</h1>
+      <p class="sub">Run the village. Dodge the hammers.</p>
+      <div class="tags"><span>Casual</span><span>Runner</span><span>Single player</span></div>
+    </div>
+    <div class="acts">
+      <a class="btn play" href="playable/index.html" target="_blank" rel="noopener">Play the ad</a>
+      <a class="btn full" href="game/index.html" target="_blank" rel="noopener">Full game</a>
+    </div>
+  </header>
+
+  <div class="rail" tabindex="0" role="region" aria-label="Preview video and screenshots">
+    <figure><video id="preview" src="preview.mp4" poster="poster.jpg" controls muted playsinline loop preload="metadata" aria-label="Gameplay preview video"></video><figcaption>Preview</figcaption></figure>
+    <img src="s1.jpg" alt="Key art: the Grandma's Revenge logo with Talia and Grandma on her cloud" loading="lazy">
+    <img src="s2.jpg" alt="Screenshot: Dodge her hammers. Talia runs past falling hammers outside the bakery" loading="lazy">
+    <img src="s3.jpg" alt="Screenshot: Grab the shield. Talia inside a turquoise shield bubble at the café" loading="lazy">
+    <img src="s4.jpg" alt="Screenshot: Find her purple hats. Talia jumps for a hat above a platform" loading="lazy">
+    <img src="s5.jpg" alt="Screenshot: 7 streets to save. Grandma throws a hammer over the market" loading="lazy">
+    <img src="s6.jpg" alt="Screenshot: Spin the village slot. Three purple hats on the reels" loading="lazy">
+  </div>
+
+  <div class="cols">
+    <div class="copy">
+      <section>
+        <p class="quote">"Darling, I asked for one purple hat."<small>Grandma, moments before the hammers</small></p>
+      </section>
+      <section>
+        <h2>About this game</h2>
+        <p>Talia designed Grandma and forgot the one thing she asked for: a purple hat. Now Grandma is back on a cloud with a bag of hammers, and Talia's village is in the way.</p>
+        <p>Run seven hand-painted streets, from the art studio to the market. Jump the rolling hammers, time the swinging ones, and keep moving when Grandma starts throwing. Reach the village slot at the end for one last spin.</p>
+      </section>
+      <section>
+        <h2>What you do</h2>
+        <ul>
+          <li>Dodge three kinds of hammer: rolling, swinging and falling.</li>
+          <li>Pick up a shield to take one hit for free.</li>
+          <li>Find the three purple hats hidden above the rooftops.</li>
+          <li>Collect all three and the final slot spin is rigged in your favor.</li>
+          <li>Listen to Grandma comment on every mistake you make.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>What's new</h2>
+        <ul>
+          <li>Three new streets: the bakery, the greenhouse and the market.</li>
+          <li>Shields and hidden purple hats.</li>
+          <li>Grandma finally gets her hat, if you earn it.</li>
+        </ul>
+      </section>
+    </div>
+
+    <aside class="facts" aria-label="Game details">
+      <h2>Details</h2>
+      <dl>
+        <dt>Genre</dt><dd>Casual runner</dd>
+        <dt>Mode</dt><dd>Single player</dd>
+        <dt>Controls</dt><dd>Touch or keyboard</dd>
+        <dt>Session</dt><dd>1 to 2 minutes</dd>
+        <dt>Language</dt><dd>English</dd>
+        <dt>Design</dt><dd>Talia Naiman</dd>
+      </dl>
+      <p class="note">This is a spec listing made for a portfolio campaign. The game, characters and art are original, and the game runs in the browser rather than in an app store.</p>
+    </aside>
+  </div>
+</div>
+
+<script>
+// The preview starts muted when it scrolls into view and pauses when it leaves, the way store previews behave.
+(function(){
+  var v=document.getElementById("preview");
+  if(!v||!("IntersectionObserver" in window)) return;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } else v.pause(); }); },{threshold:0.6}).observe(v);
+})();
+</script>
+
+<a href="../index.html" style="position:fixed;top:12px;right:12px;z-index:9999;background:#111;color:#fff;font:600 13px/1 'Inter Tight',Arial,sans-serif;padding:10px 14px;border-radius:999px;text-decoration:none;letter-spacing:-.01em"><span style="color:#F2478F">+</span> Talia Naiman</a>
+</body>
+</html>

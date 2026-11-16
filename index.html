@@ -47,6 +47,14 @@
   .slide .pn .plus{margin-left:.18em}
   .slide-head{font-size:clamp(1.6rem,3vw,2.3rem); font-weight:500; letter-spacing:-.045em; line-height:1.05;
     display:flex; align-items:baseline; gap:.45em; margin-bottom:2rem}
+  .tag{font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:var(--accent);
+    padding:5px 11px 4px; border-radius:999px; align-self:center; white-space:nowrap}
+  .hd-badge{position:absolute; left:8px; top:8px; z-index:2; font-size:.62rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color:#fff; background:var(--accent); padding:4px 8px 3px; border-radius:999px; line-height:1.1; pointer-events:none}
+  .strip.art-grid{grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:6px}
+  .art-grid button{position:relative; display:block; padding:0; border:0; background:var(--bg-card); aspect-ratio:1/1; overflow:hidden; cursor:zoom-in}
+  .art-grid button img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .45s ease}
+  .art-grid button:hover img,.art-grid button:focus-visible img{transform:scale(1.05)}
   .bigplus{position:absolute; top:44px; right:8.5%; font-size:3.4rem; line-height:1; font-weight:400; color:var(--accent)}
 
   /* ---------- Hero ---------- */
@@ -304,10 +312,10 @@ const DATA = {
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/beatles-poster.jpg", video:"media/beatles.mp4",
        desc:"An Abbey Road homage, reimagined.", p:1},
-      {title:"Zodiac Series", sub:"Concepts", cat:"Concept", format:"Concept series", role:"Creator",
+      {title:"Zodiac Series", hand:true, sub:"Concepts", cat:"Concept", format:"Concept series", role:"Creator",
        img:"media/zodiac/wheel.gif", href:"zodiac.html", fit:"contain",
        desc:"Twelve signs, twelve original illustrations, and a short film for each.", p:7},
-      {title:"ASL Alphabet", sub:"Concepts", cat:"Concept", format:"Concept series", role:"Creator", fit:"contain",
+      {title:"ASL Alphabet", hand:true, sub:"Concepts", cat:"Concept", format:"Concept series", role:"Creator", fit:"contain",
        img:"media/asl/asl-alphabet-inverted.gif", href:"asl.html",
        desc:"Twenty-six original hand-drawn illustrations of the ABCs, one for every ASL letter.", p:4}
     ]},
@@ -321,24 +329,24 @@ const DATA = {
       {title:"My Neighbor Coffee Co. × Totoro", sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
        img:"media/totoro/machine.jpg", href:"totoro.html",
        desc:"A full identity for a forest-spirit coffee roaster: hand-illustrated bags, a shop that feels like stepping into the woods, and a machine with a face everyone recognizes.", p:9},
-      {title:"Round Kid Coffee House", sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
+      {title:"Round Kid Coffee House", hand:true, sub:"Coffee Branding Concept", cat:"Branding", format:"Case study", role:"Brand Designer",
        img:"media/round-kid/cup-only.jpg", href:"round-kid.html",
        desc:"A full identity built around one hand-drawn character: five original illustrations carried from the logo mark to the cup, the bag and the shop window.", p:5}
     ]},
     {id:"row-social", name:"Social", items:[
-      {title:"Cocktail Recipe Films", sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
+      {title:"Cocktail Recipe Films", hand:true, sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/cocktail-poster.jpg", video:"media/cocktail.mp4",
        desc:"Social recipe series: Hendrick's gin cocktail, step by step.", p:2},
-      {title:"Matcha Recipe Film", sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
+      {title:"Matcha Recipe Film", hand:true, sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/matcha-poster.jpg", video:"media/matcha.mp4",
        desc:"Social recipe series: matcha latte, step by step.", p:3},
-      {title:"Share the Print", sub:"Holiday Campaign", cat:"Social", format:"Social film", role:"Talia Naiman",
+      {title:"Share the Print", hand:true, sub:"Holiday Campaign", cat:"Social", format:"Social film", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/social/holiday-print-poster.jpg", video:"media/social/holiday-print.mp4",
        desc:"Holiday social film for Ripples: one perfect print, from the café counter to the feed.", p:4},
-      {title:"Scare More Orders", sub:"Halloween", cat:"Social", format:"Social film, 1:1", role:"Talia Naiman",
+      {title:"Scare More Orders", hand:true, sub:"Halloween", cat:"Social", format:"Social film, 1:1", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/social/halloween-poster.jpg", video:"media/social/halloween.mp4",
        desc:"Halloween social film for Ripples: spooky latte art that gets the whole table ordering.", p:7}
@@ -346,7 +354,7 @@ const DATA = {
     {id:"row-marketing", name:"Marketing", items:[
       {title:"Till Cash Back Do Us Part", sub:"Upside Campaign", cat:"Marketing", img:"media/upside/upside-poster.jpg",
        href:"https://naimantalia-bit.github.io/UP/", p:6},
-      {title:"Seasonal Campaigns", sub:"Winter Olympics", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
+      {title:"Seasonal Campaigns", hand:true, sub:"Winter Olympics", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
        tools:"Hand-drawn illustrations, real latte art prints, Photoshop, Midjourney, VEO3, Kling, Runway",
        img:"media/winter-poster.jpg", video:"media/winter-olympics.mp4",
        desc:"A campaign made to celebrate the Winter Olympic Games held in Italy.", p:8},
@@ -354,7 +362,7 @@ const DATA = {
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/summer-poster.jpg", video:"media/summer.mp4",
        desc:"Seasonal styling shot: a summer lemon cocktail.", p:2},
-      {title:"Year of the Horse", sub:"Lunar New Year", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
+      {title:"Year of the Horse", hand:true, sub:"Lunar New Year", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/horse-poster.jpg", video:"media/horse.mp4",
        desc:"Seasonal campaign: Lunar New Year, Year of the Horse.", p:6},
@@ -461,6 +469,7 @@ function makeCard(item){
   else { b.dataset.open=idx; b.dataset.p=item.p; }
   b.innerHTML=`
     <span class="thumb">${item.img?`<img src="${item.img}" alt="" loading="lazy">`:`<canvas></canvas>`}
+      ${item.hand?'<span class="hd-badge">Hand Drawn Included</span>':""}
       <span class="playhint">${item.href||item.lightbox ? icons.view : icons.play}</span></span>
     <span class="label">
       <strong>${item.title}</strong>
@@ -485,6 +494,16 @@ function makeRow(id, heading, nodes){
 
 const main=document.querySelector("main");
 DATA.rows.forEach(r=>main.appendChild(makeRow(r.id, r.name, r.items.map(makeCard))));
+/* Illustration row: label + dense grid of the originals, each opens the lightbox at its piece */
+(()=>{
+  const row=document.getElementById("row-art"); if(!row) return;
+  row.querySelector(".slide-head").insertAdjacentHTML("beforeend",'<span class="tag">Original Hand Drawn</span>');
+  const strip=row.querySelector(".strip"); strip.classList.add("art-grid"); strip.innerHTML="";
+  ART_ITEMS.forEach((it,i)=>{
+    const b=document.createElement("button"); b.type="button"; b.dataset.lbidx=i; b.setAttribute("aria-label",it.title);
+    b.innerHTML=`<img src="${it.img}" alt="${it.title}" loading="lazy">`; strip.appendChild(b);
+  });
+})();
 document.querySelectorAll(".slide .pn").forEach((el,i)=>{ el.innerHTML=String(i+1).padStart(2,"0")+'<span class="plus">+</span>'; });
 
 /* ---------- modal ---------- */
@@ -532,6 +551,8 @@ document.addEventListener("click",e=>{
   if(e.target===modal||e.target.closest(".sheet-close")) closeModal();
   const lbTrigger=e.target.closest("[data-lightbox]");
   if(lbTrigger) openLightbox(0);
+  const lbIdx=e.target.closest("[data-lbidx]");
+  if(lbIdx) openLightbox(+lbIdx.dataset.lbidx);
 });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&modal.classList.contains("open")) closeModal(); });
 

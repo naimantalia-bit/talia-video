@@ -170,6 +170,7 @@
   <span class="logo"><span class="plus">+</span> Talia Naiman</span>
   <nav aria-label="Sections">
     <a href="#hero" class="active">Home</a>
+    <a href="#row-featured">Featured</a>
     <a href="#about">About</a>
     <a href="#row-documentary">Video</a>
     <a href="#row-branding">Branding</a>
@@ -269,46 +270,56 @@
 <script>
 const DATA = {
   featured:{title:"How I Met Talia Naiman", cat:"Docu", format:"Docu-series",
-    role:"Talia Naiman", tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+    role:"Creative direction · AI video production · Edit", tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
     img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
     desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0},
   rows:[
+    {id:"row-featured", name:"Featured Work", items:[
+      {title:"Grandma's Revenge", sub:"Mobile Game Campaign", extra:"Film · Playable · Store page · Game", cat:"Gaming", img:"media/grandma-cover.jpg",
+       href:"grandmas-revenge/index.html", p:7},
+      {title:"Till Cash Back Do Us Part", sub:"Upside Campaign", extra:"3 ad concepts · 15 variations · 3 hooks", cat:"Marketing", img:"media/upside/upside-poster.jpg",
+       href:"https://naimantalia-bit.github.io/UP/", p:6},
+      {title:"Captain Cruz", sub:"Disney Cruise Line", extra:"Brand film", cat:"Brand Films", format:"Campaign film", role:"Creative direction · AI video production · Edit",
+       tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
+       img:"media/captain-cruz/captain-cruz-poster.jpg", video:"media/captain-cruz/captain-cruz.mp4",
+       desc:"A custom film made for Disney Cruise Line: Captain Mickey pours the coffee, latte art and all.", p:3}
+    ]},
     {id:"row-documentary", name:"Video / Docu", items:[
-      {title:"How I Met Talia Naiman", sub:"", extra:"New Series", cat:"Docu", format:"Docu-series", role:"Talia Naiman",
+      {title:"How I Met Talia Naiman", sub:"", extra:"New Series", cat:"Docu", format:"Docu-series", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/how-i-met-talia-poster.jpg", video:"media/how-i-met-talia.mp4",
        desc:"Episode 1: The Purple Hat. A witty visual docu-series about the woman behind the worlds.", p:0}
     ]},
     {id:"row-showreel", name:"Video / Showreel", items:[
-      {title:"Showreel", sub:"Selected Works", cat:"Showreel", format:"Showreel", role:"Talia Naiman",
+      {title:"Showreel", sub:"Selected Works", cat:"Showreel", format:"Showreel", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/showreel-poster.jpg", video:"showreel2025.mp4",
        desc:"A 2025 highlights reel of selected work.", p:1}
     ]},
     {id:"row-brand", name:"Video / Brand Films", items:[
-      {title:"FIFA Live Scores", sub:"Campaign Film", cat:"Brand Films", format:"Campaign film", role:"Talia Naiman",
+      {title:"FIFA Live Scores", sub:"Campaign Film", cat:"Brand Films", format:"Campaign film", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/fifa-poster.jpg", video:"fifa21mg.mp4",
        desc:"Campaign film for the Ripples Live Scores display: real-time match tracking on the bar counter during the tournament.", p:6},
-      {title:"Amazon Ripple Maker", hand:true, sub:"Product Film", cat:"Brand Films", format:"Product film", role:"Talia Naiman",
+      {title:"Amazon Ripple Maker", hand:true, sub:"Product Film", cat:"Brand Films", format:"Product film", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/amazon/amazon-ripple-maker-poster.jpg", video:"media/amazon/amazon-ripple-maker.mp4",
        desc:"Product film for the Ripple Maker on Amazon.", p:5},
-      {title:"Captain Cruz", sub:"Disney Cruise Line", cat:"Brand Films", format:"Campaign film", role:"Talia Naiman",
+      {title:"Captain Cruz", sub:"Disney Cruise Line", cat:"Brand Films", format:"Campaign film", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/captain-cruz/captain-cruz-poster.jpg", video:"media/captain-cruz/captain-cruz.mp4",
        desc:"A custom film made for Disney Cruise Line: Captain Mickey pours the coffee, latte art and all.", p:3}
     ]},
     {id:"row-ai", name:"Video / Concept", items:[
-      {title:"Hey Siri, Who Are You?", sub:"Concept Film", cat:"Concept", format:"Concept film", role:"Talia Naiman",
+      {title:"Hey Siri, Who Are You?", sub:"Concept Film", cat:"Concept", format:"Concept film", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/siri/siri-poster.jpg", video:"media/siri/siri.mp4",
        desc:"A rainy New York walk, a coffee, and one loaded question for Siri: a short concept film about identity in the age of AI.", p:6},
-      {title:"Friday the 13th", sub:"Short Film", cat:"Concept", format:"Short film", role:"Talia Naiman",
+      {title:"Friday the 13th", sub:"Short Film", cat:"Concept", format:"Short film", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/friday-13th-poster.jpg", video:"media/friday-the-13th.mp4",
        desc:"AI-made short film: a Friday the 13th latte-art gag.", p:4},
-      {title:"Beatles Day", sub:"Film", cat:"Concept", format:"Film", role:"Talia Naiman",
+      {title:"Beatles Day", sub:"Film", cat:"Concept", format:"Film", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/beatles-poster.jpg", video:"media/beatles.mp4",
        desc:"An Abbey Road homage, reimagined.", p:1},
@@ -334,49 +345,49 @@ const DATA = {
        desc:"A full identity built around one hand-drawn character: five original illustrations carried from the logo mark to the cup, the bag and the shop window.", p:5}
     ]},
     {id:"row-social", name:"Social", items:[
-      {title:"Cocktail Recipe Films", hand:true, sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
+      {title:"Cocktail Recipe Films", hand:true, sub:"Social Campaign", cat:"Social", format:"Social series", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/cocktail-poster.jpg", video:"media/cocktail.mp4",
        desc:"Social recipe series: Hendrick's gin cocktail, step by step.", p:2},
-      {title:"Matcha Recipe Film", hand:true, sub:"Social Campaign", cat:"Social", format:"Social series", role:"Talia Naiman",
+      {title:"Matcha Recipe Film", hand:true, sub:"Social Campaign", cat:"Social", format:"Social series", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/matcha-poster.jpg", video:"media/matcha.mp4",
        desc:"Social recipe series: matcha latte, step by step.", p:3},
-      {title:"Share the Print", hand:true, sub:"Holiday Campaign", cat:"Social", format:"Social film", role:"Talia Naiman",
+      {title:"Share the Print", hand:true, sub:"Holiday Campaign", cat:"Social", format:"Social film", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/social/holiday-print-poster.jpg", video:"media/social/holiday-print.mp4",
        desc:"Holiday social film for Ripples: one perfect print, from the café counter to the feed.", p:4},
-      {title:"Scare More Orders", hand:true, sub:"Halloween", cat:"Social", format:"Social film, 1:1", role:"Talia Naiman",
+      {title:"Scare More Orders", hand:true, sub:"Halloween", cat:"Social", format:"Social film, 1:1", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/social/halloween-poster.jpg", video:"media/social/halloween.mp4",
        desc:"Halloween social film for Ripples: spooky latte art that gets the whole table ordering.", p:7}
     ]},
     {id:"row-marketing", name:"Marketing", items:[
-      {title:"Till Cash Back Do Us Part", sub:"Upside Campaign", cat:"Marketing", img:"media/upside/upside-poster.jpg",
+      {title:"Till Cash Back Do Us Part", sub:"Upside Campaign", extra:"Spec campaign", cat:"Marketing", img:"media/upside/upside-poster.jpg",
        href:"https://naimantalia-bit.github.io/UP/", p:6},
-      {title:"Seasonal Campaigns", hand:true, sub:"Winter Olympics", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
+      {title:"Seasonal Campaigns", hand:true, sub:"Winter Olympics", cat:"Marketing", format:"Multi-format campaign", role:"Creative direction · AI video production · Edit",
        tools:"Hand-drawn illustrations, real latte art prints, Photoshop, Midjourney, VEO3, Kling, Runway",
        img:"media/winter-poster.jpg", video:"media/winter-olympics.mp4",
        desc:"A campaign made to celebrate the Winter Olympic Games held in Italy.", p:8},
-      {title:"Summer Campaign", sub:"Seasonal", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
+      {title:"Summer Campaign", sub:"Seasonal", cat:"Marketing", format:"Multi-format campaign", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/summer-poster.jpg", video:"media/summer.mp4",
        desc:"Seasonal styling shot: a summer lemon cocktail.", p:2},
-      {title:"Year of the Horse", hand:true, sub:"Lunar New Year", cat:"Marketing", format:"Multi-format campaign", role:"Talia Naiman",
+      {title:"Year of the Horse", hand:true, sub:"Lunar New Year", cat:"Marketing", format:"Multi-format campaign", role:"Creative direction · AI video production · Edit",
        tools:"Midjourney, VEO3, Kling, Nano Banana, Photoshop, After Effects, Premiere",
        img:"media/horse-poster.jpg", video:"media/horse.mp4",
        desc:"Seasonal campaign: Lunar New Year, Year of the Horse.", p:6},
-      {title:"Black Friday, Orbit", sub:"Paid Media, Motion", cat:"Marketing", format:"Paid social ad, 1:1", role:"Talia Naiman",
+      {title:"Black Friday, Orbit", sub:"Paid Media, Motion", cat:"Marketing", format:"Paid social ad, 1:1", role:"Concept · Motion design",
        tools:"Photoshop, After Effects, Premiere",
        img:"media/marketing/black-friday-orbit-poster.jpg", video:"media/marketing/black-friday-orbit.mp4",
        desc:"Black Friday paid ad for the Ripple Maker package: the offer orbits the machine as a ring of neon type.", p:0},
-      {title:"Black Friday, Neon", sub:"Paid Media, Motion", cat:"Marketing", format:"Paid social ad, 1:1", role:"Talia Naiman",
+      {title:"Black Friday, Neon", sub:"Paid Media, Motion", cat:"Marketing", format:"Paid social ad, 1:1", role:"Concept · Motion design",
        tools:"Photoshop, After Effects, Premiere",
        img:"media/marketing/black-friday-neon-poster.jpg", video:"media/marketing/black-friday-neon.mp4",
        desc:"Black Friday paid ad for the Ripple Maker package: a neon line draws the machine out of the dark before the offer lands.", p:0}
     ]},
     {id:"row-gaming", name:"Gaming", items:[
-      {title:"Grandma's Revenge", sub:"Mobile Game Campaign", cat:"Gaming", img:"media/grandma-cover.jpg",
+      {title:"Grandma's Revenge", sub:"Mobile Game Campaign", extra:"Spec project", cat:"Gaming", img:"media/grandma-cover.jpg",
        href:"grandmas-revenge/index.html", p:7}
     ]},
     {id:"row-art", name:"Illustration", items:[
@@ -494,6 +505,8 @@ function makeRow(id, heading, nodes){
 
 const main=document.querySelector("main");
 DATA.rows.forEach(r=>main.appendChild(makeRow(r.id, r.name, r.items.map(makeCard))));
+/* Featured row sits right after the hero, before About */
+(()=>{ const f=document.getElementById("row-featured"), a=document.getElementById("about"); if(f&&a) a.before(f); })();
 /* Illustration row: label + dense grid of the originals, each opens the lightbox at its piece */
 (()=>{
   const row=document.getElementById("row-art"); if(!row) return;

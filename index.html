@@ -79,6 +79,10 @@
   .card{display:flex; flex-direction:column; gap:.5rem; text-align:left; padding-bottom:.9rem; min-width:0}
   .card .thumb{position:relative; display:block; width:100%; aspect-ratio:16/9; overflow:hidden; background:var(--bg-card)}
   .strip>.card:only-child .thumb{aspect-ratio:21/9}
+  .card .pv{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .4s ease; background:#000}
+  .card .pv.on{opacity:1}
+  .card .pv.tall{object-fit:contain}
+  .card.fit-contain .pv{object-fit:contain; background:#fff}
   .card canvas,.card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .45s ease}
   .card:hover img,.card:focus-visible img{transform:scale(1.04)}
   .card.fit-contain .thumb{background:#000}
@@ -172,10 +176,9 @@
     <a href="#hero" class="active">Home</a>
     <a href="#row-featured">Featured</a>
     <a href="#about">About</a>
-    <a href="#row-showreel">Video</a>
-    <a href="#row-branding">Branding</a>
-    <a href="#row-social">Social</a>
-    <a href="#row-marketing">Marketing</a>
+    <a href="#row-showreel">Showreel</a>
+    <a href="#row-client">Client Work</a>
+    <a href="#row-concepts">Concepts</a>
     <a href="#row-art">Illustration</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -484,8 +487,42 @@ function makeRow(id, heading, nodes){
   return row;
 }
 
+/* Regroup by what the work is for, not by media type */
+const byTitle={}; DATA.rows.forEach(r=>{ if(r.id!=="row-featured") r.items.forEach(it=>byTitle[it.title]=it); });
+const pick=(...t)=>t.map(x=>{ if(!byTitle[x]) console.warn("missing item",x); return byTitle[x]; }).filter(Boolean);
+const LAYOUT=[
+  {id:"row-featured", name:"Featured Work", items:DATA.rows[0].items},
+  {id:"row-showreel", name:"Showreel", items:pick("Showreel")},
+  {id:"row-client", name:"Brand & Client Campaigns", items:pick("FIFA Live Scores","Amazon Ripple Maker","Cocktail Recipe Films","Matcha Recipe Film","Share the Print","Scare More Orders","Seasonal Campaigns","Summer Campaign","Year of the Horse","Black Friday, Orbit","Black Friday, Neon")},
+  {id:"row-concepts", name:"Hand-Drawn & Concepts", items:pick("Zodiac Series","ASL Alphabet","Hey Siri, Who Are You?","Friday the 13th","Beatles Day","Mmm...Coffee × The Simpsons","1-UP Coffee × Super Mario","My Neighbor Coffee Co. × Totoro","Round Kid Coffee House")},
+  {id:"row-art", name:"Illustration", items:pick("Illustrations")}
+];
 const main=document.querySelector("main");
-DATA.rows.forEach(r=>main.appendChild(makeRow(r.id, r.name, r.items.map(makeCard))));
+LAYOUT.forEach(r=>main.appendChild(makeRow(r.id, r.name, r.items.map(makeCard))));
+
+/* Silent looping previews: cards play when on screen, so nothing needs to be opened to be seen */
+const PREVIEW={"Showreel":"showreel","FIFA Live Scores":"fifa","Amazon Ripple Maker":"amazon","Captain Cruz":"captain-cruz",
+  "Hey Siri, Who Are You?":"siri","Friday the 13th":"friday13","Beatles Day":"beatles","Cocktail Recipe Films":"cocktail",
+  "Matcha Recipe Film":"matcha","Share the Print":"print","Scare More Orders":"halloween","Seasonal Campaigns":"winter",
+  "Summer Campaign":"summer","Year of the Horse":"horse","Black Friday, Orbit":"bf-orbit","Black Friday, Neon":"bf-neon",
+  "Grandma's Revenge":"grandma","Till Cash Back Do Us Part":"upside","ASL Alphabet":"asl","Zodiac Series":"zodiac"};
+(()=>{
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches || (navigator.connection&&navigator.connection.saveData);
+  if(still||!("IntersectionObserver" in window)) return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    const v=e.target;
+    if(e.isIntersecting){ if(!v.src) v.src=v.dataset.src; v.play().then(()=>v.classList.add("on")).catch(()=>{}); }
+    else v.pause();
+  }),{threshold:.55});
+  document.querySelectorAll(".card").forEach(c=>{
+    const t=c.querySelector("strong"); const slug=t&&PREVIEW[t.textContent]; if(!slug) return;
+    const v=document.createElement("video");
+    v.className="pv"; v.muted=true; v.loop=true; v.playsInline=true; v.preload="none"; v.setAttribute("aria-hidden","true");
+    v.dataset.src="media/previews/"+slug+".mp4";
+    v.addEventListener("loadedmetadata",()=>{ if(v.videoHeight>v.videoWidth) v.classList.add("tall"); });
+    c.querySelector(".thumb").insertBefore(v,c.querySelector(".playhint")); io.observe(v);
+  });
+})();
 /* Featured row sits right after the hero, before About */
 (()=>{ const f=document.getElementById("row-featured"), a=document.getElementById("about"); if(f&&a) a.before(f); })();
 /* Illustration row: label + dense grid of the originals, each opens the lightbox at its piece */

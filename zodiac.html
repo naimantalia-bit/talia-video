@@ -56,6 +56,11 @@
   .case .steps li{counter-increment:s; display:grid; grid-template-columns:34px 1fr; gap:.8rem; font-size:.96rem; line-height:1.45}
   .case .steps li::before{content:counter(s); width:34px; height:34px; border-radius:50%; background:var(--pink); color:#fff; font-weight:600; display:flex; align-items:center; justify-content:center}
   .case .steps b{display:block; font-weight:600}
+  .drawvid{display:grid; grid-template-columns:minmax(0,420px) 1fr; gap:2.4rem; align-items:center; margin:0 0 5rem}
+  .drawvid video{width:100%; aspect-ratio:1/1; background:#fff; border-radius:8px; display:block}
+  @media (max-width:760px){.drawvid{grid-template-columns:1fr}}
+  .drawvid h2{font-weight:500; letter-spacing:-.04em; font-size:clamp(1.4rem,2.6vw,1.9rem); line-height:1.1}
+  .drawvid p{color:var(--ink-dim); line-height:1.6; max-width:48ch; margin-top:.8rem}
   .section-label{display:flex; align-items:center; gap:.9rem; margin:0 0 1.6rem;
     font-size:.78rem; font-weight:700; letter-spacing:.2em; color:var(--ink-dim)}
   .section-label::after{content:""; flex:1; height:1px; background:rgba(0,0,0,.14)}
@@ -183,19 +188,27 @@
     </ol>
   </section>
 
+  <section class="drawvid">
+    <video src="media/zodiac/aquarius-draw.mp4" poster="media/zodiac/aquarius-draw-poster.jpg" controls muted loop playsinline preload="metadata" aria-label="Aquarius being drawn"></video>
+    <div>
+      <h2>Watch Aquarius take shape</h2>
+      <p>A drawing animation of one of the twelve illustrations: the ink follows the lines of the original artwork, from the big shapes to the lettering.</p>
+    </div>
+  </section>
+
   <div class="section-label">The Signs: Original Hand-Drawn Illustrations</div>
   <div class="signs-grid">
-    <div class="sign-card"><figure><img src="media/zodiac/aries.jpg" alt="Aries illustration"></figure><figcaption>Aries</figcaption></div>
+    <div class="sign-card"><figure><img src="media/zodiac/aquarius.jpg" alt="Aries illustration"></figure><figcaption>Aries</figcaption></div>
     <div class="sign-card"><figure><img src="media/zodiac/taurus.jpg" alt="Taurus illustration"></figure><figcaption>Taurus</figcaption></div>
     <div class="sign-card"><figure><img src="media/zodiac/gemini.jpg" alt="Gemini illustration"></figure><figcaption>Gemini</figcaption></div>
-    <div class="sign-card"><figure><img src="media/zodiac/cancer.jpg" alt="Cancer illustration"></figure><figcaption>Cancer</figcaption></div>
+    <div class="sign-card"><figure><img src="media/zodiac/capricorn.jpg" alt="Cancer illustration"></figure><figcaption>Cancer</figcaption></div>
     <div class="sign-card"><figure><img src="media/zodiac/leo.jpg" alt="Leo illustration"></figure><figcaption>Leo</figcaption></div>
     <div class="sign-card"><figure><img src="media/zodiac/virgo.jpg" alt="Virgo illustration"></figure><figcaption>Virgo</figcaption></div>
     <div class="sign-card"><figure><img src="media/zodiac/libra.jpg" alt="Libra illustration"></figure><figcaption>Libra</figcaption></div>
     <div class="sign-card"><figure><img src="media/zodiac/scorpio.jpg" alt="Scorpio illustration"></figure><figcaption>Scorpio</figcaption></div>
     <div class="sign-card"><figure><img src="media/zodiac/sagittarius.jpg" alt="Sagittarius illustration"></figure><figcaption>Sagittarius</figcaption></div>
-    <div class="sign-card"><figure><img src="media/zodiac/capricorn.jpg" alt="Capricorn illustration"></figure><figcaption>Capricorn</figcaption></div>
-    <div class="sign-card"><figure><img src="media/zodiac/aquarius.jpg" alt="Aquarius illustration"></figure><figcaption>Aquarius</figcaption></div>
+    <div class="sign-card"><figure><img src="media/zodiac/cancer.jpg" alt="Capricorn illustration"></figure><figcaption>Capricorn</figcaption></div>
+    <div class="sign-card"><figure><img src="media/zodiac/aries.jpg" alt="Aquarius illustration"></figure><figcaption>Aquarius</figcaption></div>
     <div class="sign-card"><figure><img src="media/zodiac/pisces.jpg" alt="Pisces illustration"></figure><figcaption>Pisces</figcaption></div>
   </div>
 

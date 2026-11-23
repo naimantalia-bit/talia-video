@@ -6,7 +6,7 @@
 <title>Talia Naiman: Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --gap:#E4E4E4; --bg:#F4F4F4; --bg-card:#E9E9E9;
@@ -70,6 +70,19 @@
   .about-wrap{display:grid; grid-template-columns:minmax(180px,24%) 1fr; gap:4.5%; align-items:start}
   .about-photo{aspect-ratio:1/1; background:var(--bg-card); overflow:hidden}
   .about-photo img{width:100%; height:100%; object-fit:cover; display:block}
+  /* ---------- About clapper reveal (stop-motion) ---------- */
+  .about-photo{position:relative; cursor:pointer}
+  .about-photo .clap-svg{position:absolute; inset:0; width:100%; height:100%; pointer-events:none}
+  .clap-svg .arm{transform-origin:70px 85px; transform:rotate(-34deg)}
+  .clap-svg .name{font-family:"Caveat","Segoe Script",cursive; font-weight:700; fill:#1a1a1a}
+  .clap-svg .lbl{font:700 7.5px "Inter Tight",Arial,sans-serif; fill:#222; letter-spacing:.04em}
+  .about-photo.play .arm{animation:clapArm 3.2s steps(1,end) forwards}
+  .about-photo.play .clap{animation:clapFall 3.2s steps(1,end) forwards}
+  .about-photo.play img{animation:clapJitter 3.2s steps(1,end) forwards}
+  @keyframes clapArm{0%,12%{transform:rotate(-34deg)} 18%{transform:rotate(-22deg)} 24%{transform:rotate(-9deg)} 30%,100%{transform:rotate(0)}}
+  @keyframes clapFall{0%,56%{transform:translateY(0) rotate(0)} 62%{transform:translateY(34px) rotate(-3deg)} 68%{transform:translateY(96px) rotate(2deg)} 74%{transform:translateY(190px) rotate(-4deg)} 80%,100%{transform:translateY(420px) rotate(3deg)}}
+  @keyframes clapJitter{0%,56%{transform:none} 64%{transform:rotate(.7deg) scale(1.015)} 72%{transform:rotate(-.5deg) scale(1.01)} 80%,100%{transform:none}}
+  @media (prefers-reduced-motion:reduce){ .clap-svg{display:none} }
   .about-bio{columns:2; column-gap:2.4rem; font-size:.9rem; line-height:1.6; color:var(--grey); text-align:justify; max-width:820px}
   .about-bio p{margin-bottom:.9rem; break-inside:avoid}
   .about-bio .sign-off{color:var(--accent)}
@@ -205,7 +218,28 @@
 <section class="slide" id="about">
   <h2 class="slide-head"><span class="plus">+</span>Nice to meet you!</h2>
   <div class="about-wrap">
-    <div class="about-photo"><img src="media/about/talia-headshot.jpg" alt="Talia Naiman"></div>
+    <div class="about-photo" id="aboutPhoto" role="img" aria-label="Talia Naiman: portrait revealed from behind a clapperboard">
+      <img src="media/about/talia-headshot.jpg" alt="Talia Naiman">
+      <svg class="clap-svg" viewBox="0 0 400 400" aria-hidden="true">
+        <g class="clap">
+          <g class="arm">
+            <rect x="70" y="58" width="260" height="27" fill="#1c1c1c"/>
+            <g fill="#bdbdbd"><path d="M96 58h28l-14 27H82z"/><path d="M156 58h28l-14 27h-28z"/><path d="M216 58h28l-14 27h-28z"/><path d="M276 58h28l-14 27h-28z"/></g>
+          </g>
+          <rect x="70" y="85" width="260" height="27" fill="#1c1c1c"/>
+          <g fill="#bdbdbd"><path d="M110 85h28l-14 27H96z"/><path d="M170 85h28l-14 27h-28z"/><path d="M230 85h28l-14 27h-28z"/><path d="M290 85h28l-14 27h-28z"/></g>
+          <rect x="70" y="112" width="260" height="123" fill="#cdbb98" stroke="#1c1c1c" stroke-width="2"/>
+          <g stroke="#1c1c1c" stroke-width="1.5" fill="none">
+            <path d="M70 134h260M70 176h260M70 205h260M157 112v22M243 112v22M200 205v30"/>
+          </g>
+          <text class="lbl" x="76" y="127">SCENE</text><text class="lbl" x="163" y="127">CUT</text><text class="lbl" x="249" y="127">TAKE</text>
+          <text class="lbl" x="76" y="146">DATE</text>
+          <text class="name" x="200" y="170" text-anchor="middle" font-size="40">Talia Naiman</text>
+          <text class="lbl" x="76" y="189">PROD CO.</text>
+          <text class="lbl" x="76" y="218">DIRECTOR</text><text class="lbl" x="206" y="218">CAMERAMAN</text>
+        </g>
+      </svg>
+    </div>
     <div class="about-bio">
       <p><strong>I'm Talia Naiman, a Brand &amp; Visual Designer</strong> and creative director across marketing, motion, video and generative AI, based in Israel. I hold a B.F.A. from Bezalel Academy of Arts and Design, Jerusalem, with a background in illustration, branding and art direction.</p>
       <p>I work closely with marketing teams to turn ideas, products and campaigns into clear, engaging visual communication: from identity and graphic design to motion, cinematic video and AI content.</p>
@@ -622,6 +656,17 @@ document.addEventListener("keydown",e=>{
 addEventListener("scroll",()=>{
   document.getElementById("topbar").classList.toggle("solid", scrollY>40);
 });
+
+/* ---------- About: clapperboard reveal plays once when scrolled into view, click to replay ---------- */
+(()=>{
+  const el=document.getElementById("aboutPhoto"); if(!el) return;
+  const play=()=>{ el.classList.remove("play"); void el.offsetWidth; el.classList.add("play"); };
+  if("IntersectionObserver" in window){
+    const io=new IntersectionObserver(es=>{ if(es[0].isIntersecting){ play(); io.disconnect(); } },{threshold:.6});
+    io.observe(el);
+  } else play();
+  el.addEventListener("click",play);
+})();
 
 /* ---------- footer showreel link ---------- */
 document.getElementById("footShowreelLink").addEventListener("click", e=>{

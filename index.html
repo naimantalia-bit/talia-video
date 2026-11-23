@@ -637,7 +637,7 @@ addEventListener("scroll",()=>{
   const still=()=>{ ["--jx","--jy","--jr","--js","--jb"].forEach(v=>el.style.removeProperty(v)); };
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){ show(fr.length-1); return; }
   /* shot "on twos": one tick = one drawn frame (~9 fps). Each entry is the photo shown for that tick. */
-  const TICKS=[0,0,0,0,0,0,0,0,0, 1,1, 2,2,2,2,2,2, 3,3,3,3,3,3,3, 4];
+  const TICKS=[0,0,0,0,0,0,0,0,0, 1,1, 2,2,2,2,2,2, 3,3,3,3,3, 4];
   const TICK=115; let timer=null, seed=7;
   const rnd=()=>{ seed=(seed*9301+49297)%233280; return seed/233280-.5; };   // repeatable "hand" wobble
   const wobble=(i,settle)=>{

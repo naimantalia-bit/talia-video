@@ -70,10 +70,6 @@
   .about-wrap{display:grid; grid-template-columns:minmax(180px,24%) 1fr; gap:4.5%; align-items:start}
   .about-photo{aspect-ratio:1/1; background:var(--bg-card); overflow:hidden}
   .about-photo img{width:100%; height:100%; object-fit:cover; display:block}
-  /* ---------- About clapper reveal (stop-motion photo sequence) ---------- */
-  .about-photo{position:relative; cursor:pointer; background:#f1ebe4; overflow:hidden}
-  .about-photo .cf{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:translate(var(--jx,0),var(--jy,0)) rotate(var(--jr,0deg)) scale(var(--js,1)); filter:brightness(var(--jb,1))}
-  .about-photo .cf.on{opacity:1}
   .about-bio{columns:2; column-gap:2.4rem; font-size:.9rem; line-height:1.6; color:var(--grey); text-align:justify; max-width:820px}
   .about-bio p{margin-bottom:.9rem; break-inside:avoid}
   .about-bio .sign-off{color:var(--accent)}
@@ -209,9 +205,7 @@
 <section class="slide" id="about">
   <h2 class="slide-head"><span class="plus">+</span>Nice to meet you!</h2>
   <div class="about-wrap">
-    <div class="about-photo" id="aboutPhoto" role="img" aria-label="Talia Naiman: portrait revealed from behind a clapperboard">
-      <img class="cf on" src="media/about/clap-1.jpg" alt="" ><img class="cf" src="media/about/clap-2.jpg" alt=""><img class="cf" src="media/about/clap-3.jpg" alt=""><img class="cf" src="media/about/clap-4.jpg" alt=""><img class="cf" src="media/about/clap-5.jpg" alt="Talia Naiman">
-    </div>
+    <div class="about-photo"><img src="media/about/talia-headshot.jpg" alt="Talia Naiman"></div>
     <div class="about-bio">
       <p><strong>I'm Talia Naiman, a Brand &amp; Visual Designer</strong> and creative director across marketing, motion, video and generative AI, based in Israel. I hold a B.F.A. from Bezalel Academy of Arts and Design, Jerusalem, with a background in illustration, branding and art direction.</p>
       <p>I work closely with marketing teams to turn ideas, products and campaigns into clear, engaging visual communication: from identity and graphic design to motion, cinematic video and AI content.</p>
@@ -628,36 +622,6 @@ document.addEventListener("keydown",e=>{
 addEventListener("scroll",()=>{
   document.getElementById("topbar").classList.toggle("solid", scrollY>40);
 });
-
-/* ---------- About: stop-motion clapper reveal, plays once when scrolled into view, click to replay ---------- */
-(()=>{
-  const el=document.getElementById("aboutPhoto"); if(!el) return;
-  const fr=[...el.querySelectorAll(".cf")];
-  const show=i=>fr.forEach((f,k)=>f.classList.toggle("on",k===i));
-  const still=()=>{ ["--jx","--jy","--jr","--js","--jb"].forEach(v=>el.style.removeProperty(v)); };
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches){ show(fr.length-1); return; }
-  /* shot "on twos": one tick = one drawn frame (~9 fps). Each entry is the photo shown for that tick. */
-  const TICKS=[0,0,0,0,0,0,0,0,0, 1,1, 2,2,2,2,2,2, 3,3,3,3,3, 4];
-  const TICK=115; let timer=null, seed=7;
-  const rnd=()=>{ seed=(seed*9301+49297)%233280; return seed/233280-.5; };   // repeatable "hand" wobble
-  const wobble=(i,settle)=>{
-    if(settle){ still(); return; }
-    el.style.setProperty("--jx",(rnd()*1.6).toFixed(2)+"%");
-    el.style.setProperty("--jy",(rnd()*1.6).toFixed(2)+"%");
-    el.style.setProperty("--jr",(rnd()*1.2).toFixed(2)+"deg");
-    el.style.setProperty("--js",(1.035+rnd()*.012).toFixed(3));
-    el.style.setProperty("--jb",(1+rnd()*.05).toFixed(3));
-  };
-  const play=()=>{ clearTimeout(timer); seed=7; let k=0;
-    const step=()=>{ const last=k===TICKS.length-1; show(TICKS[k]); wobble(k,last); k++; if(k<TICKS.length) timer=setTimeout(step,TICK); };
-    step(); };
-  show(0); wobble(0,false);
-  if("IntersectionObserver" in window){
-    const io=new IntersectionObserver(es=>{ if(es[0].isIntersecting){ play(); io.disconnect(); } },{threshold:.6});
-    io.observe(el);
-  } else play();
-  el.addEventListener("click",play);
-})();
 
 /* ---------- footer showreel link ---------- */
 document.getElementById("footShowreelLink").addEventListener("click", e=>{
